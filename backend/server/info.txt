@@ -1,0 +1,1 @@
+Serwer będzie odpowiadał za logikę biznesową potrzebną do przetwarzania różnych danych, np. rejestracja, logowanie, dodawanie oferty .itd

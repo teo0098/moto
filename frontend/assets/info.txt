@@ -1,0 +1,2 @@
+Tutaj będą trafiały różne zasoby naszej aplikacji (jeśli takie będą), np. jakieś statyczne zdjęcia, typu logo lub jakiś favicon.ico
+Zdjęcia ofert samochodów będą pobierane z serwera.
