@@ -10,5 +10,12 @@
 </head>
 <body>
     <?php include "../templates/navigation.php" ?>
+    <?php
+        include "../../backend/db/dbCredentials.php";
+        include "../../backend/db/dbConnect.php";
+        $db = new DB($host, $user, $password, $database);
+        if ($db->connect()) echo "Polaczono";
+        else echo 'ERROR';
+    ?>
 </body>
 </html>
