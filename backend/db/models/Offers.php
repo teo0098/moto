@@ -1,5 +1,5 @@
 <?php
-    class OffersModel {
+    class Offers {
         
     }
 ?>
