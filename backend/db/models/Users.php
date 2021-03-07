@@ -27,5 +27,14 @@
             }
             return false;
         }
+
+        public static function getUserByEmail($email, $connection) {
+            $sqlQuery = "SELECT * FROM users WHERE email='$email'";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result->num_rows > 0) {
+                return $result;
+            }
+            return false;
+        }
     }
 ?>
