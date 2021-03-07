@@ -28,12 +28,18 @@
                     echo "User does not exist";
                 }
                 else {
-                    $user = mysqli_fetch_assoc(Users::getUserByEmail($this->email, $connection));
-                    if (!password_verify($this->password, $user["password"])) {
+                    $user = Users::getUserByEmail($this->email, $connection);
+                    if (!$user) {
                         echo "User does not exist";
                     }
                     else {
-                        echo 'User logged in';
+                        $user = mysqli_fetch_assoc($user);
+                        if (!password_verify($this->password, $user["password"])) {
+                            echo "User does not exist";
+                        }
+                        else {
+                            echo 'User logged in';
+                        }
                     }
                 }
             }
