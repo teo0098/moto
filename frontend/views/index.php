@@ -19,6 +19,7 @@
         else echo 'ERROR';
         $reg = new Registration("Janusz", "Kowalski", "janek@wp.pl", "345897154", "haslo12345");
         $reg->register($db->getConnection());
+        echo "test";
     ?>
 </body>
 </html>

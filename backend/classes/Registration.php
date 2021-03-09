@@ -29,7 +29,7 @@
 
         public function register($connection) {
             if (!$this->areDataValid()) {
-                echo 'Data is invalid';
+                echo 'Data are invalid';
             }
             else {
                 if (Users::findUserByEmail($this->email, $connection)) {
