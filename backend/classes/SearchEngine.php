@@ -46,7 +46,7 @@
         }
 
         public function searchOffers($connection) {
-            if (!this->areDataValid()) {
+            if (!$this->areDataValid()) {
                 echo "Data are invalid";
             }
             else {
