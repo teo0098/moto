@@ -4,7 +4,7 @@
 </head>
 
 <body>
-    <header class="logo">
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" style="margin-left: 10px" href="../views/">Moto.pl</a>
