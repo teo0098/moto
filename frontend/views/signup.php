@@ -12,75 +12,7 @@
 </head>
 <body>
     <?php include "../templates/navigation.php" 
-
-     //  $nameErr = $emailErr = $pwdErr = $pwdcErr = $genderErr = $websiteErr = $acceptErr = '';
-     //  $name = $email = $pwd = $pwdc = $gender = $website = $accept = '';
-   
-     //  if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])){
-     //      if (empty($name)){
-     //          $nameErr = 'name is required!';
-     //      }else{
-     //          $name = validate($_POST['name']);
-               //check if name format is correct
-     //          if (!preg_match("/^[a-zA-Z ]*$/",$name)){
-     //              $nameErr = 'only letters and white space allowed!';
-     //          }
-     //      }
-   
-     //      if (empty($email)){
-     //          $emailErr = 'email is required!';
-     //      }else{
-     //          $email = validate($_POST['email']);
-               //check if the email format is correct
-     //          if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
-     //              $emailErr = 'email format is not correct!';
-     //          }
-     //      }
-   
-     //      if (empty($pwd)){
-     //          $pwdErr = 'password is required!';
-     //      }else{
-     //          $pwd = validate($_POST['pwd']);
-               //check if the password format is correct
-      //     }
-   
-      //     if (empty($pwdc)){
-     //          $pwdcErr = 'password is not confirmed!';
-     //      }else{
-     //          $pwdc = validate($_POST['pwdc']);
-               //check if the password is matched or not
-     //      }
-   
-     //      if (empty($gender)) {
-     //          $genderErr = 'gender is required!';
-     //      }else{
-   //            $gender = validate($_POST['gender']);
-    //       }
-    //       
-    //       if (empty($website)) {
-            //   $websiteErr = '';
-          // }else{
-             //  $website = validate($_POST['website']);
-               //check if URL address syntax is valid (this regular expression also allows dashes in the URL)
-           //    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-         //          $websiteErr = "Invalid URL";
-       //        }
-     //      }
-   //
-       //    if (empty($accept)) {
-     //          $acceptErr = 'you must accept the terms and conditions!';
-    //       }else{
-     //          $accept = validate($_POST['accept']);
-    //       }
-    //   }
-     
-   //  function validate($data) {
-   //    $data = trim($data);
-   //    $data = stripslashes($data);
-   //    $data = htmlspecialchars($data);
-   //    return $data;
-  // }
-    ?>
+?>
     <div class="container">
             <div class="card card-container-">
                 <article class="card-body mx-auto" style="max-width: 400px;">
@@ -91,20 +23,20 @@
 		                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-user"></i> </span>
 		                </div>
-                        <input name="" class="form-control" placeholder="Imię" type="text">
-                        <input name="" class="form-control" placeholder="Nazwisko" type="text">
+                        <input name="" class="form-control" pattern="[A-Za-z]{2,99}" required placeholder="Imię" type="text">
+                        <input name="" class="form-control" pattern="[A-Za-z]{2,99}" required placeholder="Nazwisko" type="text">
                     </div>
                     <div class="form-group input-group">
     	                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-envelope"></i> </span>
 		                </div>
-                        <input name="" class="form-control" placeholder="Adres Email" type="email">
+                        <input name="" class="form-control" pattern="[a-zA-Z0-9-]{3,}@[a-zA-Z0-9-]{3,}[.]{1}[a-zA-Z]{2,}" required placeholder="Adres Email" type="email">
                     </div>
                     <div class="form-group input-group">
     	                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-phone"></i> </span>
 		                </div>
-    	                <input name="" class="form-control" placeholder="Numer Telefonu" type="text">
+    	                <input name="" class="form-control" pattern="[0-9]{9}" required placeholder="Numer Telefonu" type="text">
                     </div>
                     <div class="form-group input-group">
     	                <div class="input-group-prepend">
