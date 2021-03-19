@@ -5,7 +5,8 @@
 
     $db = new DB($host, $user, $password, $database);
     if (!$db->connect()) {
-        echo 'Error with connecting to database';
+        $_SESSION['loginError'] = 'Błąd połączenia z bazą';
+        header('Location: ../../frontend/views/signin.php');
     }
     else {
         $email = $_POST['email'];

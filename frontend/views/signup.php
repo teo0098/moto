@@ -18,37 +18,37 @@
                 <article class="card-body mx-auto" style="max-width: 400px;">
 	            <h4 class="card-title mt-3 text-center">Tworzenie konta</h4>
 	            <p class="text-center">Załóż darmowe konto!</p>
-	            <form class="form-signup">
+	            <form class="form-signup" method='POST' action="../../backend/server/registration.php">
 	                <div class="form-group input-group">
 		                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-user"></i> </span>
 		                </div>
-                        <input name="" class="form-control" pattern="[A-Za-z]{2,99}" required placeholder="Imię" type="text">
-                        <input name="" class="form-control" pattern="[A-Za-z]{2,99}" required placeholder="Nazwisko" type="text">
+                        <input name="name" class="form-control" pattern="^[A-Za-z]{2,20}$" required placeholder="Imię" type="text">
+                        <input name="surname" class="form-control" pattern="^[A-Za-z]{2,30}$" required placeholder="Nazwisko" type="text">
                     </div>
                     <div class="form-group input-group">
     	                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-envelope"></i> </span>
 		                </div>
-                        <input name="" class="form-control" pattern="[a-zA-Z0-9-]{3,}@[a-zA-Z0-9-]{3,}[.]{1}[a-zA-Z]{2,}" required placeholder="Adres Email" type="email">
+                        <input name="email" class="form-control" required placeholder="Adres Email" type="email">
                     </div>
                     <div class="form-group input-group">
     	                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-phone"></i> </span>
 		                </div>
-    	                <input name="" class="form-control" pattern="[0-9]{9}" required placeholder="Numer Telefonu" type="text">
+    	                <input name="phone" class="form-control" pattern="^[0-9]{9}$" required placeholder="Numer Telefonu" type="text">
                     </div>
                     <div class="form-group input-group">
     	                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-lock"></i> </span>
 		                </div>
-                        <input class="form-control" placeholder="Hasło" type="password">
+                        <input name='password' pattern="^[A-Z0-9a-z!@#$_]{8,20}$" required class="form-control" placeholder="Hasło" type="password">
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i style="height:24px;"class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Powtórz hasło" type="password">
+                        <input required class="form-control" placeholder="Powtórz hasło" type="password">
                     </div>   
                     <br>                                  
                     <div class="form-group">

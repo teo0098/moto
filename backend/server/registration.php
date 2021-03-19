@@ -5,7 +5,8 @@
 
     $db = new DB($host, $user, $password, $database);
     if (!$db->connect()) {
-        echo 'Error with connecting to database';
+        $_SESSION['registerError'] = 'Błąd połączenia z bazą';
+        header('Location: ../../frontend/views/signup.php');
     }
     else {
         $name = $_POST['name'];

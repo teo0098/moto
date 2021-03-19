@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     include realpath(dirname(__FILE__) . '/../db/models/Users.php');
 
@@ -21,24 +22,30 @@
 
         public function login($connection) {
             if (!$this->areDataValid()) {
-                echo 'Data are invalid';
+                $_SESSION['loginError'] = 'Dane są niepoprawne';
+                header('Location: ../../frontend/views/signin.php');
             }
             else {
                 if (!Users::findUserByEmail($this->email, $connection)) {
-                    echo "User does not exist";
+                    $_SESSION['loginError'] = 'Złe dane logowania';
+                    header('Location: ../../frontend/views/signin.php');
                 }
                 else {
                     $user = Users::getUserByEmail($this->email, $connection);
                     if (!$user) {
-                        echo "User does not exist";
+                        $_SESSION['loginError'] = 'Złe dane logowania';
+                        header('Location: ../../frontend/views/signin.php');
                     }
                     else {
                         $user = mysqli_fetch_assoc($user);
                         if (!password_verify($this->password, $user["password"])) {
-                            echo "User does not exist";
+                            $_SESSION['loginError'] = 'Złe dane logowania';
+                            header('Location: ../../frontend/views/signin.php');
                         }
                         else {
-                            echo 'User logged in';
+                            $_SESSION['userID'] = $user["id"];
+                            $_SESSION['userName'] = $user["name"];
+                            header('Location: ../../frontend/views/index.php');
                         }
                     }
                 }
