@@ -51,10 +51,10 @@
         <div class="card card-container">
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
+            <form class="form-signin" method="POST" action="../../backend/server/login.php">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Adres Email" required autofocus>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Hasło" required>
+                <input name='email' type="email" id="inputEmail" class="form-control" placeholder="Adres Email" required autofocus>
+                <input name='password' type="password" id="inputPassword" class="form-control" placeholder="Hasło" required>
                 <div id="remember" class="checkbox">
                     <label>
                         <input type="checkbox" value="remember-me"> Zapamiętaj mnie

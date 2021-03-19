@@ -29,7 +29,7 @@
         }
 
         public static function getUserByEmail($email, $connection) {
-            $sqlQuery = "SELECT * FROM users WHERE email='$email'";
+            $sqlQuery = "SELECT * FROM users WHERE email='$email' AND `status`='active'";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result->num_rows > 0) {
                 return $result;
