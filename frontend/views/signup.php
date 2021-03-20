@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -19,6 +22,20 @@
 	            <h4 class="card-title mt-3 text-center">Tworzenie konta</h4>
 	            <p class="text-center">Załóż darmowe konto!</p>
 	            <form class="form-signup" method='POST' action="../../backend/server/registration.php">
+                    <?php
+                        if (isset($_SESSION['registerError'])) {
+                            echo '<div class="alert alert-danger" role="alert">
+                                        '.$_SESSION['registerError'].'
+                                    </div>';
+                        }
+                        else if (isset($_SESSION['registerSuccess'])) {
+                            echo '<div class="alert alert-success" role="alert">
+                                        '.$_SESSION['registerSuccess'].'
+                                    </div>';
+                        }
+                        $_SESSION['registerError'] = null;
+                        $_SESSION['registerSuccess'] = null;
+                    ?>
 	                <div class="form-group input-group">
 		                <div class="input-group-prepend">
 		                    <span class="input-group-text"> <i style="height:24px;" class="fa fa-user"></i> </span>
