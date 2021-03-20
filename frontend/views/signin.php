@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -52,6 +55,14 @@
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" method="POST" action="../../backend/server/login.php">
+                <?php
+                    if (isset($_SESSION['loginError'])) {
+                        echo '<div class="alert alert-danger" role="alert">
+                                    '.$_SESSION['loginError'].'
+                                </div>';
+                    }
+                    $_SESSION['loginError'] = null;
+                ?>
                 <span id="reauth-email" class="reauth-email"></span>
                 <input name='email' type="email" id="inputEmail" class="form-control" placeholder="Adres Email" required autofocus>
                 <input name='password' type="password" id="inputPassword" class="form-control" placeholder="Hasło" required>
