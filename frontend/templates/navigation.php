@@ -2,7 +2,7 @@
     <header class="logo">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" style="margin-left: 10px" href="../views/">Moto.pl</a>
+                <a class="navbar-brand" style="margin-left: 10px" href="../views/"><img width="100px" height="50px" src="../assets/logo4_1.jpg"  style="position:relative;top:-5px" alt="..."></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#onDisplayResolutionChange" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
