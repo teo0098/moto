@@ -21,8 +21,8 @@ session_start();
     <div class="container">
         <div class="card card-container-">
             <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Tworzenie konta</h4>
-                <p class="text-center">Załóż darmowe konto!</p>
+                <h4 class="card-title mt-3 text-center">Załóż konta</h4>
+                <br>
                 <form class="form-signup" method='POST' action="../../backend/server/registration.php">
                     <?php
                     if (isset($_SESSION['registerError'])) {
@@ -69,8 +69,14 @@ session_start();
                         <input required class="form-control" placeholder="Powtórz hasło" type="password">
                     </div>
                     <br>
+                    <div id="remember" class="checkbox">
+                    <label>
+                        <input type="checkbox" value="accept"> Akceptuję <a class="underlineHover" href="../views/signin.php">Regulamin</a>
+                    </label>
+                    </div>
+                    <br>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-signup"> Stwórz konto </button>
+                        <button type="submit" class="btn btn-primary btn-block btn-signup"> Załóż konto </button>
                     </div>
                     <div class="formFooter">
                         <p class="divider-text">
