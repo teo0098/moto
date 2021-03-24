@@ -18,45 +18,9 @@ session_start();
     <header class="sticky-top">
         <?php include "../templates/navigation.php" ?>
     </header>
-    <?php
-
-    //    $emailErr = $pwdErr = $rememberErr = '';
-    //    $email = $pwd = $remember = '';
-
-    //    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
-    //        if (empty($_POST['email'])){
-    //            $emailErr = 'Email is required!';
-    //        }else{
-    //            $email = validate($_POST['email']);
-    //check if email address is well form
-    //            if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
-    //                $emailErr = 'Invalid email format!';
-    //            }
-    //        }
-
-    //        if (empty($_POST['pwd'])){
-    //            $pwdErr = 'Password is required!';
-    //        }else{
-    //            $pwd = validate($_POST['pwd']);
-    //        }
-
-    //        if (empty($_POST['remember'])) {
-    //            $remember = '';
-    //        }else{
-    //            $remember = validate($_POST['remember']);
-    //        }
-    //    }
-
-    //    function validate($data){
-    //        $data = trim($data);
-    //        $data = stripcslashes($data);
-    //        $data = htmlspecialchars($data);
-    //        return $data;
-    //    }
-    ?>
     <div class="container">
         <div class="card card-container">
-            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <img id="profile-img" class="profile-img-card" src="../assets/logo.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" method="POST" action="../../backend/server/login.php">
                 <?php
