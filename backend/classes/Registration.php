@@ -2,6 +2,7 @@
     session_start();
 
     include realpath(dirname(__FILE__) . '/../db/models/Users.php');
+    include realpath(dirname(__FILE__) . '/../db/models/Verifications.php');
 
     class Registration {
 
@@ -41,11 +42,22 @@
                 }
                 else {
                     $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
-                    if (!Users::insertUser($this->name, $this->surname, $this->email, $this->phone, $hashedPassword, $connection)) {
+                    $hash = md5(time().$this->email);
+                    if (!$hash) {
                         $_SESSION['registerError'] = 'Błąd podczas zakładania konta';
                     }
                     else {
-                        $_SESSION['registerSuccess'] = 'Konto zostało założone pomyślnie';
+                        if (!Verifications::insertUser($this->name, $this->surname, $this->email, $this->phone, $hashedPassword, $hash, $connection)) {
+                            $_SESSION['registerError'] = 'Błąd podczas zakładania konta';
+                        }
+                        else {
+                            if (!Verifications::sendEmail($this->email, $hash)) {
+                                $_SESSION['registerError'] = 'Coś poszło nie tak podczas wysyłania linku aktywującego, prosimy spróbować w innym terminie';
+                            }
+                            else {
+                                $_SESSION['registerSuccess'] = 'Wysłaliśmy na podany email link aktywujący konto, który wygaśnie po 24h';
+                            }
+                        }
                     }
                 }
             }
