@@ -1,5 +1,17 @@
-.img-top {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+
+span{
+    width: 200px;
 }
+
+input[type=text] {
+    width: 200px;
+  }
+
+.input-group{
+    width: 400px !important;    
+}
+
+
+
+
+
