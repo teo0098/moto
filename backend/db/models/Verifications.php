@@ -32,7 +32,7 @@
         public static function sendEmail($email, $hash) {
             $to = $email;
             $subject = "Moto.pl - potwierdzenie rejestracji w serwisie";
-            $message = "<a style='text-align: center; padding: 20px; font-weight: bold;' href='https://moto-offers.000webhostapp.com/verification?hash=$hash'>Kliknij w ten link aby potwierdzić rejestrację w naszym serwisie :)</a>";
+            $message = "<a style='text-align: center; padding: 20px; font-weight: bold;' href='https://moto-offers.000webhostapp.com/frontend/views/verification.php?hash=$hash'>Kliknij w ten link aby potwierdzić rejestrację w naszym serwisie :)</a>";
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
             $headers .= "From: Moto.pl <agnachel0098@gmail.com>" . "\r\n";
