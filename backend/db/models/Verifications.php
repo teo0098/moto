@@ -41,5 +41,10 @@
             }
             return false;
         }
+
+        public static function deleteUser($id, $connection) {
+            $sqlQuery = "DELETE FROM verifications WHERE id=$id";
+            mysqli_query($connection, $sqlQuery);
+        }
     }
 ?>

@@ -37,6 +37,7 @@
                         </div>';
                 }
                 else {
+                    $user = mysqli_fetch_assoc($user);
                     if (!Users::insertUser($user['name'], $user['surname'], $user['email'], $user['phone'], $user['password'], $db->getConnection())) {
                         echo '<div class="alert alert-danger" role="alert">
                                     Proces weryfikacji nie powiódł się, prosimy spróbować później
@@ -46,6 +47,7 @@
                         echo '<div class="alert alert-success" role="alert">
                                     Proces weryfikacji przebiegł pomyślnie, możesz się teraz zalogować na swoje konto
                                 </div>';
+                        Verifications::deleteUser($user['id'], $db->getConnection());
                     }
                 }
             }
