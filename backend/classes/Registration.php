@@ -40,10 +40,13 @@
                 else if (Users::findUserByPhone($this->phone, $connection)) {
                     $_SESSION['registerError'] = 'Numer telefonu już istnieje';
                 }
+                else if (Verifications::findUserByEmailOrPhone($this->email, $this->phone, $connection)) {
+                    $_SESSION['registerError'] = 'To konto oczekuje potwierdzenia';
+                }
                 else {
                     $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
                     $hash = md5(time().$this->email);
-                    if (!$hash) {
+                    if (!$hash || !$hashedPassword) {
                         $_SESSION['registerError'] = 'Błąd podczas zakładania konta';
                     }
                     else {

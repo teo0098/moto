@@ -1,5 +1,14 @@
 <?php
     class Verifications {
+
+        public static function findUserByEmailOrPhone($email, $phone, $connection) {
+            $sqlQuery = "SELECT * FROM verifications WHERE email='$email' OR phone='$phone'";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result->num_rows > 0) {
+                return true;
+            }
+            return false;
+        }
         
         public static function insertUser($name, $surname, $email, $phone, $password, $hash, $connection) {
             $sqlQuery = "INSERT INTO users (`id`, `name`, `surname`, `email`, `phone`, `password`, `hash`) VALUES (NULL, '$name', '$surname', '$email', '$phone', '$password', '$hash')";
