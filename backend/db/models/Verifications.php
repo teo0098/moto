@@ -11,7 +11,7 @@
         }
         
         public static function insertUser($name, $surname, $email, $phone, $password, $hash, $connection) {
-            $sqlQuery = "INSERT INTO users (`id`, `name`, `surname`, `email`, `phone`, `password`, `hash`) VALUES (NULL, '$name', '$surname', '$email', '$phone', '$password', '$hash')";
+            $sqlQuery = "INSERT INTO verifications (`id`, `name`, `surname`, `email`, `phone`, `password`, `hash`) VALUES (NULL, '$name', '$surname', '$email', '$phone', '$password', '$hash')";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result) {
                 return true;
