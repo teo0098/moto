@@ -17,19 +17,26 @@
     </header>
     <div class="container">
         <br>
+        <div class="card_container">
+            <div class="material-button">
+                <span class="fa fa-star-o"> </span>
+            </div>
+            <h1>Moje obserwowane ogłoszenia</h1>
+        </div>
         <div class="row" id="ads">
 
             <div class="col-md-4">
                 <div class="card rounded">
                     <div class="card-image">
-                        <span class="card-notify-badge">Obserwowany</span>
-                        <span class="card-notify-year">Rok</span>
+                        <span class="card-notify-badge">CENA</span>
+                        <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
                     <div class="card-image-overlay m-auto">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
-                        <span class="card-detail-badge">Cena</span>
+                        <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
+                        <span class="card-detail-badge">Silnik</span>
                     </div>
                     <div class="card-body text-center">
                         <a class="ad-btn" href="#"></a>
@@ -40,14 +47,15 @@
             <div class="col-md-4">
                 <div class="card rounded">
                     <div class="card-image">
-                        <span class="card-notify-badge">Obserwowany</span>
-                        <span class="card-notify-year">Rok</span>
+                        <span class="card-notify-badge">CENA</span>
+                        <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
                     <div class="card-image-overlay m-auto">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
-                        <span class="card-detail-badge">Cena</span>
+                        <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
+                        <span class="card-detail-badge">Silnik</span>
                     </div>
                     <div class="card-body text-center">
                         <a class="ad-btn" href="#"></a>
@@ -58,14 +66,15 @@
             <div class="col-md-4">
                 <div class="card rounded">
                     <div class="card-image">
-                        <span class="card-notify-badge">Obserwowany</span>
-                        <span class="card-notify-year">Rok</span>
+                        <span class="card-notify-badge">CENA</span>
+                        <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
                     <div class="card-image-overlay m-auto">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
-                        <span class="card-detail-badge">Cena</span>
+                        <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
+                        <span class="card-detail-badge">Silnik</span>
                     </div>
                     <div class="card-body text-center">
                         <a class="ad-btn" href="#"></a>
@@ -76,14 +85,15 @@
             <div class="col-md-4">
                 <div class="card rounded">
                     <div class="card-image">
-                        <span class="card-notify-badge">Obserwowany</span>
-                        <span class="card-notify-year">Rok</span>
+                        <span class="card-notify-badge">CENA</span>
+                        <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
                     <div class="card-image-overlay m-auto">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
-                        <span class="card-detail-badge">Cena</span>
+                        <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
+                        <span class="card-detail-badge">Silnik</span>
                     </div>
                     <div class="card-body text-center">
                         <a class="ad-btn" href="#"></a>
@@ -94,14 +104,15 @@
             <div class="col-md-4">
                 <div class="card rounded">
                     <div class="card-image">
-                        <span class="card-notify-badge">Obserwowany</span>
-                        <span class="card-notify-year">Rok</span>
+                        <span class="card-notify-badge">CENA</span>
+                        <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
                     <div class="card-image-overlay m-auto">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
-                        <span class="card-detail-badge">Cena</span>
+                        <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
+                        <span class="card-detail-badge">Silnik</span>
                     </div>
                     <div class="card-body text-center">
                         <a class="ad-btn" href="#"></a>
@@ -112,14 +123,15 @@
             <div class="col-md-4">
                 <div class="card rounded">
                     <div class="card-image">
-                        <span class="card-notify-badge">Obserwowany</span>
-                        <span class="card-notify-year">Rok</span>
+                        <span class="card-notify-badge">CENA</span>
+                        <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
                     <div class="card-image-overlay m-auto">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
-                        <span class="card-detail-badge">Cena</span>
+                        <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
+                        <span class="card-detail-badge">Silnik</span>
                     </div>
                     <div class="card-body text-center">
                         <a class="ad-btn" href="#"></a>
@@ -128,6 +140,7 @@
             </div>
 
         </div>
+        
     </div>
 
     <?php include "../templates/footer.php" ?>
