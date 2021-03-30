@@ -1,7 +1,6 @@
 <?php
     include realpath(dirname(__FILE__) . './../../../vendor/autoload.php');
-    include '../dbCredentials.php';
-
+    
     class Verifications {
 
         public static function findUserByEmailOrPhone($email, $phone, $connection) {
