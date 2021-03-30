@@ -50,15 +50,15 @@
                         $_SESSION['registerError'] = 'Błąd podczas zakładania konta';
                     }
                     else {
-                        if (!Verifications::insertUser($this->name, $this->surname, $this->email, $this->phone, $hashedPassword, $hash, $connection)) {
-                            $_SESSION['registerError'] = 'Błąd podczas zakładania konta';
+                        if (!Verifications::sendEmail($this->email, $hash)) {
+                            $_SESSION['registerError'] = 'Coś poszło nie tak podczas wysyłania linku aktywującego, prosimy spróbować w innym terminie';
                         }
                         else {
-                            if (!Verifications::sendEmail($this->email, $hash)) {
-                                $_SESSION['registerError'] = 'Coś poszło nie tak podczas wysyłania linku aktywującego, prosimy spróbować w innym terminie';
+                            if (!Verifications::insertUser($this->name, $this->surname, $this->email, $this->phone, $hashedPassword, $hash, $connection)) {
+                                $_SESSION['registerError'] = 'Błąd podczas zakładania konta';
                             }
                             else {
-                                $_SESSION['registerSuccess'] = 'Wysłaliśmy na podany email link aktywujący konto, który wygaśnie po 24h';
+                                $_SESSION['registerSuccess'] = 'Wysłaliśmy na podany email link aktywujący konto, który wygaśnie po 24h';   
                             }
                         }
                     }

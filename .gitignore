@@ -1,1 +1,3 @@
 dbCredentials.php
+/vendor/
+.env
