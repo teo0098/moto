@@ -1,4 +1,7 @@
 <?php
+    include realpath(dirname(__FILE__) . './../../../vendor/autoload.php');
+    include '../dbCredentials.php';
+
     class Verifications {
 
         public static function findUserByEmailOrPhone($email, $phone, $connection) {
@@ -29,17 +32,24 @@
             return false;
         }
 
-        public static function sendEmail($email, $hash) {
-            $to = $email;
-            $subject = "Moto.pl - potwierdzenie rejestracji w serwisie";
-            $message = "<a style='text-align: center; padding: 20px; font-weight: bold;' href='https://moto-offers.000webhostapp.com/frontend/views/verification.php?hash=$hash'>Kliknij w ten link aby potwierdzić rejestrację w naszym serwisie :)</a>";
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-            $headers .= "From: Moto.pl <agnachel0098@gmail.com>" . "\r\n";
-            if (mail($to, $subject, $message, $headers)) {
-                return true;
+        public static function sendEmail($userEmail, $hash) {
+            $email = new SendGrid\Mail\Mail(); 
+            $email->setFrom("agnachel0098@gmail.com", "Moto.pl");
+            $email->setSubject("Moto.pl - potwierdzenie rejestracji w serwisie");
+            $email->addTo($userEmail);
+            $email->addContent(
+                "text/html", "<a style='text-align: center; padding: 20px; font-weight: bold;' href='https://moto-offers.000webhostapp.com/frontend/views/verification.php?hash=$hash'>Kliknij w ten link aby potwierdzić rejestrację w naszym serwisie :)</a>"
+            );
+            $sendgrid = new SendGrid($GLOBALS['MOTO_PL_SENDGRID_KEY']);
+            try {
+                $response = $sendgrid->send($email);
+                if ($response->statusCode() == 202) {
+                    return true;
+                }
+                return false;
+            } catch (Exception $e) {
+                return false;
             }
-            return false;
         }
 
         public static function deleteUser($id, $connection) {

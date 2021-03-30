@@ -1,0 +1,7 @@
+{
+    "name": "teo/moto",
+    "description": "Cars offers website",
+    "require": {
+        "sendgrid/sendgrid": "^7.9"
+    }
+}
