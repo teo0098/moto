@@ -12,6 +12,7 @@ session_start();
   <link rel="stylesheet" href="../styles/global.css">
   <link rel="stylesheet" href="../styles/signin.css">
   <link rel="stylesheet" href="../styles/postOffer.css">
+  <link rel="stylesheet" href="../styles/dropzone.css">
   <title>Moto.pl</title>
 </head>
 
@@ -54,9 +55,14 @@ session_start();
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
-                    <span class="input-group-text">Model samochodu</span>
+                    <span class="input-group-text">Model samochodu </span>
                   </div>
-                  <input name="carModel" class="form-control" type="text">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected></option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
@@ -217,6 +223,18 @@ session_start();
                 </div>
               </div>
             </div>
+            <div class="col-12">
+              <div class="row" style="margin-top: 30px;">
+                <div class="form-group">
+                  <label for="miniature">
+                    <h4>Dodaj miniaturkę oferty <i class="fas fa-paperclip"></i></h4>
+                  </label>
+                  <div style="border: 2px solid red; height:400px " id='addedPh2otos'>
+                    <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div class="col-12">
               <div class="row" style="margin-top: 30px;">
@@ -224,25 +242,12 @@ session_start();
                   <label for="addedPhotos">
                     <h4>Dodaj zdjęcia <i class="fas fa-paperclip"></i></h4>
                   </label>
-                  <div style="border: 2px solid red; height:200px " id='addedPhotos'>
-
+                  <div style="border: 2px solid red; height:400px " id='addedP3hotos'>
+                    <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div class="col-12">
-              <div class="row" style="margin-top: 30px;">
-                <div class="form-group">
-                  <label for="miniature">
-                    <h4>Dodaj miniaturkę oferty <i class="fas fa-paperclip"></i></h4>
-                  </label>
-                  <div style="border: 2px solid red; height:200px" id="miniature">
-
-                  </div>
-                </div>
-              </div>
-            </div>
+            </div>          
 
             <div class="col-12">
               <div class="row" style="margin-top: 30px;">
@@ -251,7 +256,7 @@ session_start();
                     <h4>Opłata za wystawienie aukcji:</h4>
                   </label>
                   <div class="form-check" id="radio1">
-                    <input class="form-check-input" type="radio" name="flexRadio" id="flexRadioBlik">
+                    <input class="form-check-input" type="radio" name="flexRadio" id="flexRadioBlik" checked>
                     <label class="form-check-label" for="flexRadioBlik">
                       <h5>Blik</h5>
                     </label>
@@ -288,10 +293,28 @@ session_start();
   </div>
   <div style="margin-top: 30px;"></div>
 
+
+  <div class="col-12">
+    <div class="row" style="margin-top: 30px;">
+      <div class="form-group">
+        <label for="addedPhotos">
+          <h4>Dodaj zdjęcia <i class="fas fa-paperclip"></i></h4>
+        </label>
+        <div style="border: 2px solid red; height:400px " id='addedPhotos'>
+          <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <?php include "../templates/footer.php" ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/3810206ae2.js" crossorigin="anonymous"></script>
+  <script src="../js/dropzone.js"></script>
+
+  <script src="../js/displayImage.js"></script>
+
 </body>
 
 </html>
