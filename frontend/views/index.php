@@ -23,153 +23,32 @@ session_start();
     ?>
 
     <div class="container" style="margin-top:20px; height:100%">
-        <div class="row">
-            <div class="col">
-                <a style="text-decoration: none;" href="">
-                    <div class="card">
-                        <img src="../assets/insi.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h1 style="color: black;" class="card-title">Opel Insignia Sports Tourer GSi 2.0 BiTurbo 4x4</h1>
-                            <p style="color: black;" class="card-text">2020 12750km Benzyna 1979cm3</p>
-                            <h5 style="color: red;" class="card-title">159 900 zł</h5>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-6 col-12" style="background-color: white; ">
-                <h3 class="card-title">Oferty wyróżnione</h3>
-                <div class="row2" style="width: auto; ">
-                    <div class="row row-cols-4 row-cols-md-2 g-4">
-                        <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
-                                    <img src="../assets/audia5.jpg" class="card-img-top-" alt="...">
-                                    <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">Audi A5 2.0 TFSI QUATTRO</h5>
-                                        <p style="color: black;" class="card-text">2020 12750km Benzyna 1979cm3</p>
-                                        <h5 style="color: red;" class="card-title">200 000 zł</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
-                                    <img src="../assets/bmwm3.jpg" class="card-img-top-" alt="...">
-                                    <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">BMW M3 Competition</h5>
-                                        <p style="color: black;" class="card-text">2017 38650km Benzyna 2979cm3</p>
-                                        <h5 style="color: red;" class="card-title">299 777 zł</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
-                                    <img src="../assets/alfa2018.jpg" class="card-img-top-" alt="...">
-                                    <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">Alfa Romeo Veloce 2.0 </h5>
-                                        <p style="color: black;" class="card-text">2018 121031km Benzyna 1979cm3</p>
-                                        <h5 style="color: red;" class="card-title">179 900 zł</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
-                                    <img src="../assets/volvo.jpg" class="card-img-top-" alt="...">
-                                    <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">Volvo V60</h5>
-                                        <p style="color: black;" class="card-text">2017 142000km Diesel 1969cm3</p>
-                                        <h5 style="color: red;" class="card-title">67 700 zł</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="margin-top:10px">
-            <div class="row">
-                <div class="col-md-12 col-12">
-                    <div class="card-group">
-                        <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/golf7.jpg" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Volkswagen Golf VI</h5>
-                                    <p style="color: black;" class="card-text">2010 181665km Diesel 1598cm3</p>
-                                    <h5 style="color: red; " class="card-title">25 600 zł</h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/seati.jpg" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Seat Ibiza 1.4</h5>
-                                    <p style="color: black;" class="card-text">2008 145000km Benzyna 1390cm3</p>
-                                    <h5 style="color: red; " class="card-title">13 500 zł</h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/passatb5.jpg" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Volkswagen Passat 1.9</h5>
-                                    <p style="color: black;" class="card-text">1999 275000km Diesel 1896cm3</p>
-                                    <h5 style="color: red; " class="card-title">6 999 zł</h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/audia4.jpg" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Audi A4 2.0</h5>
-                                    <p style="color: black;" class="card-text">2017 118700km Diesel 1968cm3</p>
-                                    <h5 style="color: red; " class="card-title">134 800 zł</h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/fordedge.jpg" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Ford EDGE</h5>
-                                    <p style="color: black;" class="card-text">2018 32000km Benzyna 2000cm3</p>
-                                    <h5 style="color: red; " class="card-title">99 999 zł</h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/toyotarav4.jpg" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Toyota RAV4</h5>
-                                    <p style="color: black;" class="card-text">2018 24200km Benzyna 2498cm3</p>
-                                    <h5 style="color: red; " class="card-title">94 900 zł</h5>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container" style="margin-top:10px; height: auto">
-            <div class="row align-items-center content" style="height:100%;">
-                <div class="col-12">
-                    <img src="../assets/1.jpg" class="img-thumbnail" style="height: auto; max-width: 100%">
-                </div>
-            </div>
-        </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../assets/1.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/a8.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="../assets/insi.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
         <?php include "../templates/footer.php" ?>
 
