@@ -57,12 +57,7 @@ session_start();
                   <div class="input-group-prepend">
                     <span class="input-group-text">Model samochodu </span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                  <input name="carModel" class="form-control" type="text">                 
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
