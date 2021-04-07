@@ -52,32 +52,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin-top: 3px;">
-                                        <span>Typ wyszukiwarki</span>
-                                        <div class="col-md-5 col-5">
-
-                                            <button class="btn btn-primary" onclick="<?php $_SESSION['typWyszukiwarki'] = 'true' ?>">Prosta</button>
-                                        </div>
-                                        <div class="col-md-5 col-5">
-                                            <button class="btn btn-info" onclick="<?php $_SESSION['typWyszukiwarki'] = 'false' ?>">Zaawansowana</button>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="col-md-6 col-12">
                                     <span>Model samochodu</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        <div class="input-group-append">
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton6" data-bs-toggle="dropdown" aria-expanded="false">
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
-                                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <input type="text" class="form-control">
                                     </div>
                                     <span>Rok produkcji</span>
                                     <div class="input-group">

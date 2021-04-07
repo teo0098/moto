@@ -20,7 +20,7 @@
         overflow: scroll;
         overflow-y: hidden;
         overflow-x: auto;
-        max-width: 1000px;
+        max-width: 1000px; 
         min-width: 600px;
         display: inline-block;     
     }

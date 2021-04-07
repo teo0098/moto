@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -16,8 +19,7 @@
         <?php include "../templates/navigation.php" ?>
     </header>
     <?php
-    session_start();
-    include "../templates/searchLong.php";  // change searchLong to searchShort to switch search layout. *Issue with php code line 59&62 on searchShort.php 
+    include "../templates/searchShort.php";
     ?>
 
     <div class="container" style="margin-top:20px; height:100%">
