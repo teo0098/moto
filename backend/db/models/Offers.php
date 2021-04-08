@@ -14,9 +14,10 @@
         }
 
         public static function insertOffer($data, $carID, $userID, $connection) {
-            $date = date('Y-m-d H:i:s');
-            $sqlQuery = "INSERT INTO offers VALUES (NULL, '".$data['price']."', '".$data['province']."',
-            '".$data['district']."', '".$data['city']."', '".$data["description"]."', ".$carID.", ".$userID.", '".$date."')";
+            $date = date('Y-m-d');
+            $desc = filter_var($data['description'], FILTER_SANITIZE_STRING);
+            $sqlQuery = "INSERT INTO offers (`id`, `price`, `province`, `district`, `city`, `description`, `car_id`, `user_id`, `date`) VALUES (NULL, '".$data['price']."', '".$data['province']."',
+            '".$data['district']."', '".$data['city']."', '$desc', $carID, $userID, '$date')";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result) {
                 return true;

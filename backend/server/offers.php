@@ -5,6 +5,7 @@
     include "../db/dbConnect.php";
     include "../db/models/Offers.php";
     include "../db/models/Cars.php";
+    include "../db/models/CarImages.php";
 
     header('Content-Type: application/json');
 
