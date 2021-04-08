@@ -9,8 +9,19 @@
             return $result;
         }
 
-        public static function getOffer($id, $connection) {
+        public static function getOfferById($id, $connection) {
 
+        }
+
+        public static function insertOffer($data, $carID, $userID, $connection) {
+            $date = date('Y-m-d H:i:s');
+            $sqlQuery = "INSERT INTO offers VALUES (NULL, '".$data['price']."', '".$data['province']."',
+            '".$data['district']."', '".$data['city']."', '".$data["description"]."', ".$carID.", ".$userID.", '".$date."')";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result) {
+                return true;
+            }
+            return false;
         }
     }
 ?>
