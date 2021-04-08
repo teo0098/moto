@@ -1,7 +1,11 @@
 <div class="container-fluid" style="background-image: url('../assets/cars-gora-prawa.jpg'); min-height: 400px; max-height: 750px; background-size: cover; background-position:center">
     <div class="row">
+        <div class="col-md-4 col-12" style="height:0px">
+          
+        </div>
+
         <div class="col-md-4 col-12" style="height:400px">
-            <div class="d-flex justify-content-center" style="margin-top: 20px;">
+        <div class="d-flex justify-content-center" style="margin-top: 20px;">
                 <div class="card" style="width:100%;">
                     <article class="card-body" style="max-width: 100%;">
                         <h4 class="card-title mt-3 text-center">Panel wyszukiwania</h4>
@@ -86,9 +90,6 @@
                 </form>
                 </article>
             </div>
-        </div>
-
-        <div class="col-md-4 col-12" style="height:400px">
         </div>
         <div class="col-md-4 col-12" style="height:400px">
         </div>
