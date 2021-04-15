@@ -30,6 +30,29 @@
         if (!$db->connect()) {
             throw new Exception("Unable to connect to the database");
         }
+        $sqlQuery = "CREATE TABLE IF NOT EXISTS `offers` (
+            `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+            `price` varchar(40) COLLATE utf8_polish_ci NOT NULL,
+            `province` int(10) unsigned NOT NULL,
+            `district` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+            `city` varchar(50) COLLATE utf8_polish_ci NOT NULL,
+            `description` longtext COLLATE utf8_polish_ci NOT NULL,
+            `car_id` int(10) unsigned NOT NULL,
+            `user_id` int(10) unsigned NOT NULL,
+            `date` date NOT NULL,
+            `visible` tinyint(3) unsigned NOT NULL DEFAULT 1,
+            PRIMARY KEY (`id`),
+            KEY `offers_cars` (`car_id`),
+            KEY `offers_users` (`user_id`),
+            KEY `offers_provinces` (`province`),
+            CONSTRAINT `offers_cars` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+            CONSTRAINT `offers_provinces` FOREIGN KEY (`province`) REFERENCES `provinces` (`id`) ON UPDATE NO ACTION,
+            CONSTRAINT `offers_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
+           ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_polish_ci";
+        $result = mysqli_query($db->getConnection(), $sqlQuery);
+        if (!$result) {
+            throw new Exception("Unable to create table offers");
+        }
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'GET': {
                 if (isset($_GET['id']) && $_GET['id'] != null) {
