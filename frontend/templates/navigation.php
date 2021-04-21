@@ -10,7 +10,7 @@
                     <li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/watched.php"><i style="margin-right: 5px" class="far fa-star"></i> Obserwowane</a></li>
                     <?php
                         if (isset($_SESSION['userName'])) {
-                            echo '<li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="#"><i style="margin-right: 5px" class="fas fa-user"></i>'.$_SESSION['userName'].'</a></li>
+                            echo '<li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/userprofile.php"><i style="margin-right: 5px" class="fas fa-user"></i>'.$_SESSION['userName'].'</a></li>
                             <li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../../backend/server/logout.php"><i style="margin-right: 5px" class="fas fa-user-plus"></i>Wyloguj się</a></li>';
                         }
                         else {
