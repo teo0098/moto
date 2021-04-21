@@ -14,17 +14,27 @@
 .card {
     box-shadow: rgb(20 35 85 / 10%) 0px 8px 20px 0px;
 }
+.card1 {
+    box-shadow: rgb(20 35 85 / 10%) 0px 8px 20px 0px;
+    display:block
+}
 
-@media (max-width:800px){
-    .row2 {
-        overflow: scroll;
-        overflow-y: hidden;
-        overflow-x: auto;
-        max-width: 1000px; 
-        min-width: 600px;
-        display: inline-block;     
+@media (max-width:800px)
+{
+    .row2 
+    {
+        width: 100%;
+        overflow-x: auto; 
     }
-    .row3 {
-        overflow-x: scroll;
+
+
+
+
+    .card1 
+    {   
+        display: block;
+        border: 2px solid red;
+        width: 300px;
+        
     }
 }

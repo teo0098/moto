@@ -39,11 +39,11 @@ session_start();
 
             <div class="col-md-6 col-12" style="background-color: white; ">
                 <h3 class="card-title">Oferty wyróżnione</h3>
-                <div class="row2" style="width: auto; ">
-                    <div class="row row-cols-4 row-cols-md-2 g-4">
+                <div class="row2" >
+                    <div class="row row-cols-2 row-cols-md-2 g-4">
                         <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
+                            <a class="card1" style="text-decoration: none;" href="">
+                                <div>
                                     <img src="../assets/audia5.jpg" class="card-img-top-" alt="...">
                                     <div class="card-body">
                                         <h5 style="color: black;" class="card-title">Audi A5 2.0 TFSI QUATTRO</h5>
@@ -54,8 +54,8 @@ session_start();
                             </a>
                         </div>
                         <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
+                            <a class="card1" style=" text-decoration: none;" href="">
+                                <div>
                                     <img src="../assets/bmwm3.jpg" class="card-img-top-" alt="...">
                                     <div class="card-body">
                                         <h5 style="color: black;" class="card-title">BMW M3 Competition</h5>
@@ -66,8 +66,8 @@ session_start();
                             </a>
                         </div>
                         <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
+                            <a class="card1" style="text-decoration: none;" href="">
+                                <div>
                                     <img src="../assets/alfa2018.jpg" class="card-img-top-" alt="...">
                                     <div class="card-body">
                                         <h5 style="color: black;" class="card-title">Alfa Romeo Veloce 2.0 </h5>
@@ -78,8 +78,8 @@ session_start();
                             </a>
                         </div>
                         <div class="col">
-                            <a style="text-decoration: none;" href="">
-                                <div class="card">
+                            <a class="card1" style="text-decoration: none;" href="">
+                                <div>
                                     <img src="../assets/volvo.jpg" class="card-img-top-" alt="...">
                                     <div class="card-body">
                                         <h5 style="color: black;" class="card-title">Volvo V60</h5>
