@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -17,14 +21,14 @@
     </header>
     <div class="container">
         <br>
-        <div class="card_container">
-            <div class="material-button">
-                <span class="fa fa-star-o"> </span>
+        <div class="card_container shadow">
+            <div class="material-button rounded-circle text-center mt-3 ms-auto me-auto">
+                <span class="fa fa-star-o mt-4"> </span>
             </div>
-            <h1>Moje obserwowane ogłoszenia</h1>
+            <h1 class="text-center mt-3">Moje obserwowane ogłoszenia</h1>
         </div>
         <div class="row" id="ads">
-
+            
             <div class="col-md-4">
                 <div class="card rounded">
                     <div class="card-image">
@@ -32,16 +36,14 @@
                         <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
-                    <div class="card-image-overlay m-auto">
+                    <div class="card-image-overlay m-auto mt-1 mb-2">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
                         <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
                         <span class="card-detail-badge">Silnik</span>
                     </div>
-                    <div class="card-body text-center">
-                        <a class="ad-btn" href="#"></a>
-                    </div>
                 </div>
+                <br>
             </div>
 
             <div class="col-md-4">
@@ -51,16 +53,14 @@
                         <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
-                    <div class="card-image-overlay m-auto">
+                    <div class="card-image-overlay m-auto mt-1 mb-2">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
                         <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
                         <span class="card-detail-badge">Silnik</span>
                     </div>
-                    <div class="card-body text-center">
-                        <a class="ad-btn" href="#"></a>
-                    </div>
                 </div>
+                <br>
             </div>
 
             <div class="col-md-4">
@@ -70,16 +70,14 @@
                         <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
-                    <div class="card-image-overlay m-auto">
+                    <div class="card-image-overlay m-auto mt-1 mb-2">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
                         <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
                         <span class="card-detail-badge">Silnik</span>
                     </div>
-                    <div class="card-body text-center">
-                        <a class="ad-btn" href="#"></a>
-                    </div>
                 </div>
+                <br>
             </div>
 
             <div class="col-md-4">
@@ -89,16 +87,14 @@
                         <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
-                    <div class="card-image-overlay m-auto">
+                    <div class="card-image-overlay m-auto mt-1 mb-2">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
                         <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
                         <span class="card-detail-badge">Silnik</span>
                     </div>
-                    <div class="card-body text-center">
-                        <a class="ad-btn" href="#"></a>
-                    </div>
                 </div>
+                <br>
             </div>
 
             <div class="col-md-4">
@@ -108,16 +104,14 @@
                         <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
-                    <div class="card-image-overlay m-auto">
+                    <div class="card-image-overlay m-auto mt-1 mb-2">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
                         <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
                         <span class="card-detail-badge">Silnik</span>
                     </div>
-                    <div class="card-body text-center">
-                        <a class="ad-btn" href="#"></a>
-                    </div>
                 </div>
+                <br>
             </div>
 
             <div class="col-md-4">
@@ -127,16 +121,14 @@
                         <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
                         <img class="img-fluid" src="../assets/insi.jpg" alt="" />
                     </div>
-                    <div class="card-image-overlay m-auto">
+                    <div class="card-image-overlay m-auto mt-1 mb-2">
                         <span class="card-detail-badge">Benzyna/Diesel</span>
                         <span class="card-detail-badge">Rok</span>
                         <span class="card-detail-badge">Kilometry</span>
                         <span class="card-detail-badge">Silnik</span>
                     </div>
-                    <div class="card-body text-center">
-                        <a class="ad-btn" href="#"></a>
-                    </div>
                 </div>
+                <br>
             </div>
 
         </div>
