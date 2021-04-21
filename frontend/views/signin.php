@@ -25,7 +25,7 @@ session_start();
             <form class="form-signin" method="POST" action="../../backend/server/login.php">
                 <?php
                 if (isset($_SESSION['loginError'])) {
-                    echo '<div class="alert alert-danger" role="alert">
+                    echo '<div data-test-id="error__box" class="alert alert-danger" role="alert">
                                     ' . $_SESSION['loginError'] . '
                                 </div>';
                 }
