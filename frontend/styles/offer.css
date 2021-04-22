@@ -1,0 +1,25 @@
+.imgslid
+{
+    width: 700px;
+    height: 700px;
+}
+
+.imgbutton
+{
+    height: 520px;
+}
+
+
+@media (max-width: 800px)
+{
+    .imgslid 
+    {
+        width: 430px;
+        height: 430px;
+    }
+
+    .imgbutton
+    {
+        height: 320px;
+    }
+}
