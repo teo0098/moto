@@ -45,6 +45,9 @@
                         else {
                             $_SESSION['userID'] = $user["id"];
                             $_SESSION['userName'] = $user["name"];
+                            $_SESSION['userEmail'] = $user["email"];
+                            $_SESSION['userPhone'] = $user["phone"];
+                            $_SESSION['userSurname'] = $user['surname'];
                             header('Location: ../../frontend/views/index.php');
                         }
                     }
