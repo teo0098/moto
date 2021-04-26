@@ -22,16 +22,32 @@ session_start();
     include "../templates/searchShort.php";
     ?>
 
+    <?php
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/Offers.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+
+    $db = new DB($host, $user, $password, $database);
+    if (!$db->connect()) {
+        echo '<div class="alert alert-danger" role="alert">
+                            Nie udało się nawiązać połączenia z bazą
+                        </div>';
+    } else {
+        $cars = Offers::getOffers(11, 0, $db->getConnection());
+        $cars = mysqli_fetch_all($cars, MYSQLI_ASSOC);
+    }
+    ?>
+
     <div class="container" style="margin-top:20px; height:100%">
         <div class="row">
             <div class="col">
-                <a style="text-decoration: none;" href="">
+                <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[0]['id'] ?>">
                     <div class="card">
-                        <img src="../assets/insi.jpg" class="card-img-top" alt="...">
+                        <img src="<?php echo $cars[0]["image_url"] ?>" alt="...">
                         <div class="card-body">
-                            <h1 style="color: black;" class="card-title">Opel Insignia Sports Tourer GSi 2.0 BiTurbo 4x4</h1>
-                            <p style="color: black;" class="card-text">2020 12750km Benzyna 1979cm3</p>
-                            <h5 style="color: red;" class="card-title">159 900 zł</h5>
+                            <h3 style="color: black;" class="card-title"><?php echo $cars[0]["brand"] . ' ' . $cars[0]["model"]; ?></h3>
+                            <p style="color: black;" class="card-text"><?php echo $cars[0]["production_year"] . ' ' . $cars[0]["run"] . 'km ' . $cars[0]["fuel"] . ' ' . $cars[0]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                            <h5 style="color: red;" class="card-title"><?php echo $cars[0]["price"] . ' zł'; ?></h5>
                         </div>
                     </div>
                 </a>
@@ -39,52 +55,52 @@ session_start();
 
             <div class="col-md-6 col-12" style="background-color: white; ">
                 <h3 class="card-title">Oferty wyróżnione</h3>
-                <div class="row2" >
-                    <div class="row row-cols-2 row-cols-md-2 g-4">
+                <div class="row2" style="width: auto; ">
+                    <div class="row row-cols-4 row-cols-md-2 g-4">
                         <div class="col">
-                            <a class="card1" style="text-decoration: none;" href="">
-                                <div>
-                                    <img src="../assets/audia5.jpg" class="card-img-top-" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[1]['id'] ?>">
+                                <div class="card">
+                                    <img src="<?php echo $cars[1]["image_url"] ?>" class="card-img-top-" alt="...">
                                     <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">Audi A5 2.0 TFSI QUATTRO</h5>
-                                        <p style="color: black;" class="card-text">2020 12750km Benzyna 1979cm3</p>
-                                        <h5 style="color: red;" class="card-title">200 000 zł</h5>
+                                        <h3 style="color: black;" class="card-title"><?php echo $cars[1]["brand"] . ' ' . $cars[1]["model"]; ?></h3>
+                                        <p style="color: black;" class="card-text"><?php echo $cars[1]["production_year"] . ' ' . $cars[1]["run"] . 'km ' . $cars[1]["fuel"] . ' ' . $cars[1]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                        <h5 style="color: red;" class="card-title"><?php echo $cars[1]["price"] . ' zł'; ?></h5>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="col">
-                            <a class="card1" style=" text-decoration: none;" href="">
-                                <div>
-                                    <img src="../assets/bmwm3.jpg" class="card-img-top-" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[2]['id'] ?>">
+                                <div class="card">
+                                    <img src="<?php echo $cars[2]["image_url"] ?>" class="card-img-top-" alt="...">
                                     <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">BMW M3 Competition</h5>
-                                        <p style="color: black;" class="card-text">2017 38650km Benzyna 2979cm3</p>
-                                        <h5 style="color: red;" class="card-title">299 777 zł</h5>
+                                        <h3 style="color: black;" class="card-title"><?php echo $cars[2]["brand"] . ' ' . $cars[2]["model"]; ?></h3>
+                                        <p style="color: black;" class="card-text"><?php echo $cars[2]["production_year"] . ' ' . $cars[2]["run"] . 'km ' . $cars[2]["fuel"] . ' ' . $cars[2]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                        <h5 style="color: red;" class="card-title"><?php echo $cars[2]["price"] . ' zł'; ?></h5>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="col">
-                            <a class="card1" style="text-decoration: none;" href="">
-                                <div>
-                                    <img src="../assets/alfa2018.jpg" class="card-img-top-" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[3]['id'] ?>">
+                                <div class="card">
+                                    <img src="<?php echo $cars[3]["image_url"] ?>" class="card-img-top--" alt="...">
                                     <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">Alfa Romeo Veloce 2.0 </h5>
-                                        <p style="color: black;" class="card-text">2018 121031km Benzyna 1979cm3</p>
-                                        <h5 style="color: red;" class="card-title">179 900 zł</h5>
+                                        <h3 style="color: black;" class="card-title"><?php echo $cars[3]["brand"] . ' ' . $cars[3]["model"]; ?></h3>
+                                        <p style="color: black;" class="card-text"><?php echo $cars[3]["production_year"] . ' ' . $cars[3]["run"] . 'km ' . $cars[3]["fuel"] . ' ' . $cars[3]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                        <h5 style="color: red;" class="card-title"><?php echo $cars[3]["price"] . ' zł'; ?></h5>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="col">
-                            <a class="card1" style="text-decoration: none;" href="">
-                                <div>
-                                    <img src="../assets/volvo.jpg" class="card-img-top-" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[4]['id'] ?>">
+                                <div class="card">
+                                    <img src="<?php echo $cars[4]["image_url"] ?>" class="card-img-top--" alt="...">
                                     <div class="card-body">
-                                        <h5 style="color: black;" class="card-title">Volvo V60</h5>
-                                        <p style="color: black;" class="card-text">2017 142000km Diesel 1969cm3</p>
-                                        <h5 style="color: red;" class="card-title">67 700 zł</h5>
+                                        <h3 style="color: black;" class="card-title"><?php echo $cars[4]["brand"] . ' ' . $cars[4]["model"]; ?></h3>
+                                        <p style="color: black;" class="card-text"><?php echo $cars[4]["production_year"] . ' ' . $cars[4]["run"] . 'km ' . $cars[4]["fuel"] . ' ' . $cars[4]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                        <h5 style="color: red;" class="card-title"><?php echo $cars[4]["price"] . ' zł'; ?></h5>
                                     </div>
                                 </div>
                             </a>
@@ -99,62 +115,62 @@ session_start();
                 <div class="col-md-12 col-12">
                     <div class="card-group">
                         <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/golf7.jpg" class="card-img-top--" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[5]['id'] ?>">
+                                <img src="<?php echo $cars[5]["image_url"] ?>" class="card-img-top--" alt="...">
                                 <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Volkswagen Golf VI</h5>
-                                    <p style="color: black;" class="card-text">2010 181665km Diesel 1598cm3</p>
-                                    <h5 style="color: red; " class="card-title">25 600 zł</h5>
+                                    <h3 style="color: black;" class="card-title"><?php echo $cars[5]["brand"] . ' ' . $cars[5]["model"]; ?></h3>
+                                    <p style="color: black;" class="card-text"><?php echo $cars[5]["production_year"] . ' ' . $cars[5]["run"] . 'km ' . $cars[5]["fuel"] . ' ' . $cars[5]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                    <h5 style="color: red;" class="card-title"><?php echo $cars[5]["price"] . ' zł'; ?></h5>
                                 </div>
                             </a>
                         </div>
                         <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/seati.jpg" class="card-img-top--" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[6]['id'] ?>">
+                                <img src="<?php echo $cars[6]["image_url"] ?>" class="card-img-top--" alt="...">
                                 <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Seat Ibiza 1.4</h5>
-                                    <p style="color: black;" class="card-text">2008 145000km Benzyna 1390cm3</p>
-                                    <h5 style="color: red; " class="card-title">13 500 zł</h5>
+                                    <h3 style="color: black;" class="card-title"><?php echo $cars[6]["brand"] . ' ' . $cars[6]["model"]; ?></h3>
+                                    <p style="color: black;" class="card-text"><?php echo $cars[6]["production_year"] . ' ' . $cars[6]["run"] . 'km ' . $cars[6]["fuel"] . ' ' . $cars[6]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                    <h5 style="color: red;" class="card-title"><?php echo $cars[6]["price"] . ' zł'; ?></h5>
                                 </div>
                             </a>
                         </div>
                         <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/passatb5.jpg" class="card-img-top--" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[7]['id'] ?>">
+                                <img src="<?php echo $cars[7]["image_url"] ?>" class="card-img-top--" alt="...">
                                 <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Volkswagen Passat 1.9</h5>
-                                    <p style="color: black;" class="card-text">1999 275000km Diesel 1896cm3</p>
-                                    <h5 style="color: red; " class="card-title">6 999 zł</h5>
+                                    <h3 style="color: black;" class="card-title"><?php echo $cars[7]["brand"] . ' ' . $cars[7]["model"]; ?></h3>
+                                    <p style="color: black;" class="card-text"><?php echo $cars[7]["production_year"] . ' ' . $cars[7]["run"] . 'km ' . $cars[7]["fuel"] . ' ' . $cars[7]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                    <h5 style="color: red;" class="card-title"><?php echo $cars[7]["price"] . ' zł'; ?></h5>
                                 </div>
                             </a>
                         </div>
                         <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/audia4.jpg" class="card-img-top--" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[8]['id'] ?>">
+                                <img src="<?php echo $cars[8]["image_url"] ?>" class="card-img-top--" alt="...">
                                 <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Audi A4 2.0</h5>
-                                    <p style="color: black;" class="card-text">2017 118700km Diesel 1968cm3</p>
-                                    <h5 style="color: red; " class="card-title">134 800 zł</h5>
+                                    <h3 style="color: black;" class="card-title"><?php echo $cars[8]["brand"] . ' ' . $cars[8]["model"]; ?></h3>
+                                    <p style="color: black;" class="card-text"><?php echo $cars[8]["production_year"] . ' ' . $cars[8]["run"] . 'km ' . $cars[8]["fuel"] . ' ' . $cars[8]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                    <h5 style="color: red;" class="card-title"><?php echo $cars[8]["price"] . ' zł'; ?></h5>
                                 </div>
                             </a>
                         </div>
                         <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/fordedge.jpg" class="card-img-top--" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[9]['id'] ?>">
+                                <img src="<?php echo $cars[9]["image_url"] ?>" class="card-img-top--" alt="...">
                                 <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Ford EDGE</h5>
-                                    <p style="color: black;" class="card-text">2018 32000km Benzyna 2000cm3</p>
-                                    <h5 style="color: red; " class="card-title">99 999 zł</h5>
+                                    <h3 style="color: black;" class="card-title"><?php echo $cars[9]["brand"] . ' ' . $cars[9]["model"]; ?></h3>
+                                    <p style="color: black;" class="card-text"><?php echo $cars[9]["production_year"] . ' ' . $cars[9]["run"] . 'km ' . $cars[9]["fuel"] . ' ' . $cars[9]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                    <h5 style="color: red;" class="card-title"><?php echo $cars[9]["price"] . ' zł'; ?></h5>
                                 </div>
                             </a>
                         </div>
                         <div class="card">
-                            <a style="text-decoration: none;" href="">
-                                <img src="../assets/toyotarav4.jpg" class="card-img-top--" alt="...">
+                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[10]['id'] ?>">
+                                <img src="<?php echo $cars[10]["image_url"] ?>" class="card-img-top--" alt="...">
                                 <div class="card-body">
-                                    <h5 style="color: black;" class="card-title">Toyota RAV4</h5>
-                                    <p style="color: black;" class="card-text">2018 24200km Benzyna 2498cm3</p>
-                                    <h5 style="color: red; " class="card-title">94 900 zł</h5>
+                                    <h3 style="color: black;" class="card-title"><?php echo $cars[10]["brand"] . ' ' . $cars[10]["model"]; ?></h3>
+                                    <p style="color: black;" class="card-text"><?php echo $cars[10]["production_year"] . ' ' . $cars[10]["run"] . 'km ' . $cars[10]["fuel"] . ' ' . $cars[10]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                    <h5 style="color: red;" class="card-title"><?php echo $cars[10]["price"] . ' zł'; ?></h5>
                                 </div>
                             </a>
                         </div>

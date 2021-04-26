@@ -14,49 +14,84 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <title>Moto.pl</title>
 </head>
+
 <body>
 
     <header class="sticky-top">
         <?php include "../templates/navigation.php" ?>
     </header>
 
+    <?php
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/Offers.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/CarImages.php');
+
+
+
+    $db = new DB($host, $user, $password, $database);
+    if (!$db->connect()) {
+        echo '<div class="alert alert-danger" role="alert">
+                            Nie udało się nawiązać połączenia z bazą
+                        </div>';
+    } else {
+        $car = Offers::getOfferById($_GET['id'], $db->getConnection());
+        $car = mysqli_fetch_assoc($car);
+        $carImages = CarImages::getCarImages($car["car_id"], $db->getConnection());
+        $carImages = mysqli_fetch_all($carImages, MYSQLI_ASSOC);       
+    }
+    ?>
+
+
     <div class="container">
         <div class="row">
-            <div class="col mt-2">
+            <div class="col mt-2 col-md-6 col-12 d-flex justify-content-center">
                 <div id="carouselExampleControls" class="carousel slide imgslid h-auto" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="../assets/golfvii1.jpg" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/golfvii2.jpg" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../assets/golfvii3.jpg" class="d-block w-100" alt="...">
-                        </div>
+                    <div class="carousel-inner" style="max-height: 400px; height:400px">
+                        <?php 
+                            for($i=0; $i<count($carImages); $i++){
+                                $image=$carImages[$i]['url'];
+                                if($i==0){
+                                    echo '<div class="carousel-item active">
+                                    <img src="'.$image.'" class="d-block w-100" alt="..."/>
+                                </div>';  
+                                }else{
+                                    echo '<div class="carousel-item">
+                                <img src="'.$image.'" class="d-block w-100" alt="..."/>
+                            </div>';  
+                                }
+                                  
+                            }
+                        ?>                                                                                                    
+                            
+                        
+                        
                     </div>
+
+                 
                     <button class="carousel-control-prev imgbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </button>
                     <button class="carousel-control-next imgbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </button>
+                    <p class="mt-3"> Data dodania ogłoszenia: <?php echo $car["date"] ?> </p>
                 </div>
-                <p class="mt-3"> Data dodania ogłoszenia </p>
             </div>
+            
             <div class="col mt-5 ms-5">
-                <h2 class="d-flex justify-content-center mt-5">Golf VII 2.0 TDI</h2>
+                <h2 class="d-flex justify-content-center mt-5"><?php echo $car["brand"] . ' ' . $car["model"] ?></h2>
                 <div class="d-flex justify-content-center mt-2">
-                    <span class="">Diesel</span>
+                    <span class=""><?php echo $car["fuel"] ?></span>
                     <span class="ms-2">|</span>
-                    <span class="ms-2">Rok</span>
+                    <span class="ms-2"><?php echo $car["production_year"] ?></span>
                     <span class="ms-2">|</span>
-                    <span class="ms-2">Kilometry</span>
+                    <span class="ms-2"><?php echo $car["run"] . ' km'; ?></span>
                     <span class="ms-2">|</span>
-                    <span class="ms-2">Silnik</span>
+                    <span class="ms-2"><?php echo $car["engine_capacity"] . 'cm<sup>3</sup>'; ?></span>
                 </div>
-                <div class="d-flex justify-content-left mt-2">
-                    <h3 class="">Cena</h3>
+                <div class="d-flex justify-content-center mt-2">
+                    <h3><?php echo 'Cena: ' . $car["price"] . ' zł'; ?></h3>
                 </div>
                 <hr>
                 <div class="d-flex justify-content-center">
@@ -64,18 +99,17 @@ session_start();
                 </div>
                 <hr>
                 <div class="d-flex justify-content-center mt-2">
-                    <span class="me-5">Imię sprzedawcy</span>
-                    <span class="ms-5">Lokalizacja</span>
+                    <span class="me-5"><?php echo $car["name"] . ' ' . $car["surname"] ?></span>
+                    <span class="ms-5"><?php echo $car["province"] ?></span>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <hr>
-                <div class="d-flex justify-content-center">
-                    <h4 class="d-flex justify-content-center"> Szczegóły </h4>
-                </div>
-                <div class="row d-flex justify-content-center mt-3 ms-5">
+
+        <h4 class="d-flex justify-content-center" style="margin-top: 3%;">Szczegóły</h4>
+        <div class="container d-flex justify-content-center" style="display:flex">
+
+            <div class="row" style="margin-left: 5%; margin-right: 5%">
+                <div class="col col-md-3 col-6 mt-3">
                     <div class="col text-black-50">
                         <p class="">Marka samochodu</p>
                         <p class="">Model samochodu</p>
@@ -86,17 +120,19 @@ session_start();
                         <p class="">Skrzynia biegów</p>
                         <p class="">Napęd</p>
                     </div>
-                    <div class="col me-5">
-                        <p class="">Vw</p>
-                        <p class="">Golf</p>
-                        <p class="">2017</p>
-                        <p class="">67023 km</sp>
-                        <p class="">Diesel</p>
-                        <p class="">170 km</p>
-                        <p class="">Manualna</p>
-                        <p class="">Przód</p>
-                    </div>
-                    <div class="col text-black-50 me-5">
+                </div>
+                <div class="col col-md-3 col-6 mt-3">
+                    <p class=""><?php echo $car["brand"] ?></p>
+                    <p class=""><?php echo $car["model"] ?></p>
+                    <p class=""><?php echo $car["production_year"] ?></p>
+                    <p class=""><?php echo $car["run"] ?></sp>
+                    <p class=""><?php echo $car["fuel"] ?></p>
+                    <p class=""><?php echo $car["power"] ?></p>
+                    <p class=""><?php echo $car["gearbox"] ?></p>
+                    <p class=""><?php echo $car["drive"] ?></p>
+                </div>
+                <div class="col col-md-3 col-6 mt-3">
+                    <div class="col text-black-50">
                         <p class="">Pojemnośc skokowa</p>
                         <p class="">Typ samochodu</p>
                         <p class="">Kolor samochodu</p>
@@ -106,30 +142,26 @@ session_start();
                         <p class="">Stan</p>
                         <p class="">VIN</p>
                     </div>
-                    <div class="col me-5">
-                        <p class="">1974 cm3</p>
-                        <p class="">Hatchback</p>
-                        <p class="">Czarny</p>
-                        <p class="">4/5</sp>
-                        <p class="">5</p>
-                        <p class="">Niemcy</p>
-                        <p class="">Używany</p>
-                        <p class="">ASD123ASD34</p>
-                    </div>
                 </div>
-                <hr>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="d-flex justify-content-center">
-                    <h4 class="d-flex justify-content-center"> Opis </h4>
-                </div>
-                <div class="row d-flex justify-content-center mt-3 ms-5">
-                    <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> 
+                <div class="col col-md-3 col-6 mt-3">
+                    <p class=""><?php echo $car["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                    <p class=""><?php echo $car["type"] ?></p>
+                    <p class=""><?php echo $car["color"] ?></p>
+                    <p class=""><?php echo $car["door"] ?></sp>
+                    <p class=""><?php echo $car["seats"] ?></p>
+                    <p class=""><?php echo $car["origin"] ?></p>
+                    <p class=""><?php echo $car["state"] ?></p>
+                    <p class=""><?php echo $car["VIN"] ?></p>
                 </div>
             </div>
         </div>
+
+        <h4 class="d-flex justify-content-center" style="margin-top: 3%;">Opis</h4>
+        <div class="justify-content-center px-5">
+            <p><?php echo $car["description"] ?></p>
+        </div>
+
+
     </div>
 
     <?php include "../templates/footer.php" ?>
