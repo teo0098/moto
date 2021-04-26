@@ -14,6 +14,7 @@
             JOIN car_types ON cars.type=car_types.id
             JOIN car_states ON cars.state=car_states.id
             WHERE offers.visible=1
+            ORDER BY offers.date DESC
             LIMIT $limit OFFSET $offset";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result->num_rows > 0) {
@@ -23,9 +24,9 @@
         }
 
         public static function getOfferById($id, $connection) {
-            $sqlQuery = "SELECT offers.id, offers.price, provinces.name, offers.district, offers.city, offers.description, 
-            offers.date, offers.car_id, cars.brand, cars.model, cars.production_year, cars.run, car_fuels.fuel, cars.power, gearbox.type,
-            car_drives.drive, car_types.type, cars.door, cars.seats, cars.color, cars.origin, car_states.state, cars.VIN, cars.engine_capacity, cars.image_url
+            $sqlQuery = "SELECT offers.id, offers.price, provinces.name AS province, offers.district, offers.city, offers.description, 
+            offers.date, offers.car_id, cars.brand, cars.model, cars.production_year, cars.run, car_fuels.fuel, cars.power, gearbox.type AS gearbox,
+            car_drives.drive, car_types.type, cars.door, cars.seats, cars.color, cars.origin, car_states.state, cars.VIN, cars.engine_capacity, cars.image_url, users.name, users.surname, users.phone
             FROM offers 
             JOIN cars ON offers.car_id=cars.id 
             JOIN provinces ON offers.province=provinces.id
@@ -34,6 +35,7 @@
             JOIN car_drives ON cars.drive=car_drives.id
             JOIN car_types ON cars.type=car_types.id
             JOIN car_states ON cars.state=car_states.id 
+            JOIN users ON users.id=offers.user_id
             WHERE offers.id=$id
             AND offers.visible=1";
             $result = mysqli_query($connection, $sqlQuery);
