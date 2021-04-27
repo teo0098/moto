@@ -76,5 +76,15 @@
             }
             return false;
         }
+
+        public static function getOffersAmount($connection) {
+            $sqlQuery = "SELECT COUNT(*) AS offersAmount FROM offers";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result) {
+                return $result;
+            }
+            return false;
+        }
+       
     }
 ?>

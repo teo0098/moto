@@ -12,7 +12,6 @@ session_start();
   <link rel="stylesheet" href="../styles/global.css">
   <link rel="stylesheet" href="../styles/signin.css">
   <link rel="stylesheet" href="../styles/postOffer.css">
-  <link rel="stylesheet" href="../styles/dropzone.css">
   <title>Moto.pl</title>
 </head>
 
@@ -25,21 +24,7 @@ session_start();
       <div class="card" style="width:1000px">
         <article class="card-body" style="max-width: 1200px;">
           <h4 class="card-title mt-3 text-center">Dodaj swoją ofertę</h4>
-          <form class="form-postOffer" method='POST' action="#">
-            <?php
-            /*if (isset($_SESSION['registerError'])) {
-                        echo '<div class="alert alert-danger" role="alert">
-                                        ' . $_SESSION['registerError'] . '
-                                    </div>';
-                    } else if (isset($_SESSION['registerSuccess'])) {
-                        echo '<div class="alert alert-success" role="alert">
-                                        ' . $_SESSION['registerSuccess'] . '
-                                    </div>';
-                    }
-                    $_SESSION['registerError'] = null;
-                    $_SESSION['registerSuccess'] = null;
-                    */
-            ?>
+          <form class="form-postOffer" method='POST' action="../../backend/server/offers.php">           
             <div class="row" style="margin-top: 20px;">
               <div class="col-md-6 col-12">
                 <div class="form-group input-group">
@@ -57,7 +42,7 @@ session_start();
                   <div class="input-group-prepend">
                     <span class="input-group-text">Model samochodu </span>
                   </div>
-                  <input name="carModel" class="form-control" type="text">                 
+                  <input name="carModel" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
@@ -224,8 +209,8 @@ session_start();
                   <label for="miniature">
                     <h4>Dodaj miniaturkę oferty <i class="fas fa-paperclip"></i></h4>
                   </label>
-                  <div style="border: 2px solid red; height:400px " id='addedPh2otos'>
-                    <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+                  <div id='singleImage'>
+                    <input type="file">
                   </div>
                 </div>
               </div>
@@ -237,12 +222,12 @@ session_start();
                   <label for="addedPhotos">
                     <h4>Dodaj zdjęcia <i class="fas fa-paperclip"></i></h4>
                   </label>
-                  <div style="border: 2px solid red; height:400px " id='addedP3hotos'>
-                    <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
+                  <div id='multipleImages'>                    
+                    <input type="file" multiple>                                        
                   </div>
                 </div>
               </div>
-            </div>          
+            </div>
 
             <div class="col-12">
               <div class="row" style="margin-top: 30px;">
@@ -289,24 +274,11 @@ session_start();
   <div style="margin-top: 30px;"></div>
 
 
-  <div class="col-12">
-    <div class="row" style="margin-top: 30px;">
-      <div class="form-group">
-        <label for="addedPhotos">
-          <h4>Dodaj zdjęcia <i class="fas fa-paperclip"></i></h4>
-        </label>
-        <div style="border: 2px solid red; height:400px " id='addedPhotos'>
-          <form action="/file-upload" class="dropzone" id="my-awesome-dropzone"></form>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <?php include "../templates/footer.php" ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/3810206ae2.js" crossorigin="anonymous"></script>
-  <script src="../js/dropzone.js"></script>
 
   <script src="../js/displayImage.js"></script>
 
