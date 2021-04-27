@@ -57,54 +57,21 @@ session_start();
                 <h3 class="card-title">Oferty wyróżnione</h3>
                 <div class="row2" style="width: auto; ">
                     <div class="row row-cols-4 row-cols-md-2 g-4">
-                        <div class="col">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[1]['id'] ?>">
-                                <div class="card">
-                                    <img src="<?php echo $cars[1]["image_url"] ?>" class="card-img-top-" alt="...">
-                                    <div class="card-body">
-                                        <h3 style="color: black;" class="card-title"><?php echo $cars[1]["brand"] . ' ' . $cars[1]["model"]; ?></h3>
-                                        <p style="color: black;" class="card-text"><?php echo $cars[1]["production_year"] . ' ' . $cars[1]["run"] . 'km ' . $cars[1]["fuel"] . ' ' . $cars[1]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                        <h5 style="color: red;" class="card-title"><?php echo $cars[1]["price"] . ' zł'; ?></h5>
-                                    </div>
+                        <?php
+                            for ($i = 1; $i < 5; $i++) {?>
+                                <div class="col">
+                                    <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
+                                        <div class="card">
+                                            <img src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top-" alt="...">
+                                            <div class="card-body">
+                                                <h3 style="color: black;" class="card-title"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h3>
+                                                <p style="color: black;" class="card-text"><?php echo $cars[$i]["production_year"] . ' ' . $cars[$i]["run"] . 'km ' . $cars[$i]["fuel"] . ' ' . $cars[$i]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                                <h5 style="color: red;" class="card-title"><?php echo $cars[$i]["price"] . ' zł'; ?></h5>
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[2]['id'] ?>">
-                                <div class="card">
-                                    <img src="<?php echo $cars[2]["image_url"] ?>" class="card-img-top-" alt="...">
-                                    <div class="card-body">
-                                        <h3 style="color: black;" class="card-title"><?php echo $cars[2]["brand"] . ' ' . $cars[2]["model"]; ?></h3>
-                                        <p style="color: black;" class="card-text"><?php echo $cars[2]["production_year"] . ' ' . $cars[2]["run"] . 'km ' . $cars[2]["fuel"] . ' ' . $cars[2]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                        <h5 style="color: red;" class="card-title"><?php echo $cars[2]["price"] . ' zł'; ?></h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[3]['id'] ?>">
-                                <div class="card">
-                                    <img src="<?php echo $cars[3]["image_url"] ?>" class="card-img-top--" alt="...">
-                                    <div class="card-body">
-                                        <h3 style="color: black;" class="card-title"><?php echo $cars[3]["brand"] . ' ' . $cars[3]["model"]; ?></h3>
-                                        <p style="color: black;" class="card-text"><?php echo $cars[3]["production_year"] . ' ' . $cars[3]["run"] . 'km ' . $cars[3]["fuel"] . ' ' . $cars[3]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                        <h5 style="color: red;" class="card-title"><?php echo $cars[3]["price"] . ' zł'; ?></h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[4]['id'] ?>">
-                                <div class="card">
-                                    <img src="<?php echo $cars[4]["image_url"] ?>" class="card-img-top--" alt="...">
-                                    <div class="card-body">
-                                        <h3 style="color: black;" class="card-title"><?php echo $cars[4]["brand"] . ' ' . $cars[4]["model"]; ?></h3>
-                                        <p style="color: black;" class="card-text"><?php echo $cars[4]["production_year"] . ' ' . $cars[4]["run"] . 'km ' . $cars[4]["fuel"] . ' ' . $cars[4]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                        <h5 style="color: red;" class="card-title"><?php echo $cars[4]["price"] . ' zł'; ?></h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                            <?php } ?>
                     </div>
                 </div>
             </div>
@@ -114,66 +81,19 @@ session_start();
             <div class="row">
                 <div class="col-md-12 col-12">
                     <div class="card-group">
-                        <div class="card">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[5]['id'] ?>">
-                                <img src="<?php echo $cars[5]["image_url"] ?>" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h3 style="color: black;" class="card-title"><?php echo $cars[5]["brand"] . ' ' . $cars[5]["model"]; ?></h3>
-                                    <p style="color: black;" class="card-text"><?php echo $cars[5]["production_year"] . ' ' . $cars[5]["run"] . 'km ' . $cars[5]["fuel"] . ' ' . $cars[5]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                    <h5 style="color: red;" class="card-title"><?php echo $cars[5]["price"] . ' zł'; ?></h5>
+                        <?php
+                            for ($i = 5; $i < 11; $i++) {?>
+                                <div class="card">
+                                    <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
+                                        <img src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top--" alt="...">
+                                        <div class="card-body">
+                                            <h3 style="color: black;" class="card-title"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h3>
+                                            <p style="color: black;" class="card-text"><?php echo $cars[$i]["production_year"] . ' ' . $cars[$i]["run"] . 'km ' . $cars[$i]["fuel"] . ' ' . $cars[$i]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                            <h5 style="color: red;" class="card-title"><?php echo $cars[$i]["price"] . ' zł'; ?></h5>
+                                        </div>
+                                    </a>
                                 </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[6]['id'] ?>">
-                                <img src="<?php echo $cars[6]["image_url"] ?>" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h3 style="color: black;" class="card-title"><?php echo $cars[6]["brand"] . ' ' . $cars[6]["model"]; ?></h3>
-                                    <p style="color: black;" class="card-text"><?php echo $cars[6]["production_year"] . ' ' . $cars[6]["run"] . 'km ' . $cars[6]["fuel"] . ' ' . $cars[6]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                    <h5 style="color: red;" class="card-title"><?php echo $cars[6]["price"] . ' zł'; ?></h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[7]['id'] ?>">
-                                <img src="<?php echo $cars[7]["image_url"] ?>" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h3 style="color: black;" class="card-title"><?php echo $cars[7]["brand"] . ' ' . $cars[7]["model"]; ?></h3>
-                                    <p style="color: black;" class="card-text"><?php echo $cars[7]["production_year"] . ' ' . $cars[7]["run"] . 'km ' . $cars[7]["fuel"] . ' ' . $cars[7]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                    <h5 style="color: red;" class="card-title"><?php echo $cars[7]["price"] . ' zł'; ?></h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[8]['id'] ?>">
-                                <img src="<?php echo $cars[8]["image_url"] ?>" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h3 style="color: black;" class="card-title"><?php echo $cars[8]["brand"] . ' ' . $cars[8]["model"]; ?></h3>
-                                    <p style="color: black;" class="card-text"><?php echo $cars[8]["production_year"] . ' ' . $cars[8]["run"] . 'km ' . $cars[8]["fuel"] . ' ' . $cars[8]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                    <h5 style="color: red;" class="card-title"><?php echo $cars[8]["price"] . ' zł'; ?></h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[9]['id'] ?>">
-                                <img src="<?php echo $cars[9]["image_url"] ?>" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h3 style="color: black;" class="card-title"><?php echo $cars[9]["brand"] . ' ' . $cars[9]["model"]; ?></h3>
-                                    <p style="color: black;" class="card-text"><?php echo $cars[9]["production_year"] . ' ' . $cars[9]["run"] . 'km ' . $cars[9]["fuel"] . ' ' . $cars[9]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                    <h5 style="color: red;" class="card-title"><?php echo $cars[9]["price"] . ' zł'; ?></h5>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="card">
-                            <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[10]['id'] ?>">
-                                <img src="<?php echo $cars[10]["image_url"] ?>" class="card-img-top--" alt="...">
-                                <div class="card-body">
-                                    <h3 style="color: black;" class="card-title"><?php echo $cars[10]["brand"] . ' ' . $cars[10]["model"]; ?></h3>
-                                    <p style="color: black;" class="card-text"><?php echo $cars[10]["production_year"] . ' ' . $cars[10]["run"] . 'km ' . $cars[10]["fuel"] . ' ' . $cars[10]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                    <h5 style="color: red;" class="card-title"><?php echo $cars[10]["price"] . ' zł'; ?></h5>
-                                </div>
-                            </a>
-                        </div>
+                            <?php } ?>
                     </div>
                 </div>
             </div>
