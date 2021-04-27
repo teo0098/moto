@@ -54,7 +54,7 @@ session_start();
             </div>
 
             <div class="col-md-6 col-12" style="background-color: white; ">
-                <h3 class="card-title">Oferty wyróżnione</h3>
+                <h3 class="card-title">Najnowsze oferty</h3>
                 <div class="row2" style="width: auto; ">
                     <div class="row row-cols-4 row-cols-md-2 g-4">
                         <?php

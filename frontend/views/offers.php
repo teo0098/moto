@@ -72,20 +72,40 @@ error_reporting(0);
 
     </div>
 
-    <div class="container" style="text-align: center;">
-        <nav aria-label="Page navigation example" style="margin-top: 100px;">
+    <div class="container d-flex justify-content-center">
+        <nav aria-label="Page navigation example" style="margin-top:10px;">
             <ul class="pagination">
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                    <a class="page-link" href="./offers.php?page=<?php 
+                      if($_GET['page']==1){ 
+                        echo $_GET['page'];
+                    } else{ 
+                        echo $_GET['page']-1;
+                    }  ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
                     </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="./offers.php?page=1">1</a></li>
-                <li class="page-item"><a class="page-link" href="./offers.php?page=2">2</a></li>
-                <li class="page-item"><a class="page-link" href="./offers.php?page=3">3</a></li>
+
+                <?php
+                $offersAmount = Offers::getOffersAmount($db->getConnection());
+                $offersAmount = mysqli_fetch_assoc($offersAmount);               
+                $count =  $offersAmount['offersAmount'];
+                $count = ceil(intval($count)/5);                
+                for($i=0; $i<$count; $i++){
+                    echo ' <li class="page-item"><a class="page-link" href="./offers.php?page='.($i+1).'">'.($i+1).'</a></li>';
+                }
+                
+                ?>
+               
                 <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                    <a class="page-link" href="./offers.php?page=<?php 
+                    if($_GET['page']==$count){ 
+                        echo $_GET['page'];
+                    } else{ 
+                        echo $_GET['page']+1;
+                    } 
+                     ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -93,6 +113,10 @@ error_reporting(0);
             </ul>
         </nav>
     </div>
+
+
+    <?php include "../templates/footer.php" ?>
+
 
 
 
