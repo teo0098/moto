@@ -150,27 +150,36 @@
                     break;
                     default: {
                         if (!Cars::validate($_POST)) {
-                            throw new Exception('Bad data entered');
+                            $_SESSION['offerPostError'] = 'Wprowadzono niepoprawne dane';
+                            header('Location: ../../frontend/views/postOffer.php');
                         }
                         $file = $_FILES["mainImage"];
-                        if ($file) {
+                        if ($file["size"] > 0) {
                             $fileName = time().'_'.$_SESSION['userID'].'_'.$file["name"];
                             $uploadDir = __DIR__.$FILE_UPLOAD_DESTINATION;
                             $uploadFile = $uploadDir.$fileName;
                             if (!move_uploaded_file($file['tmp_name'], $uploadFile)) {
-                                throw new Exception("Unable to upload image");
+                                $_SESSION['offerPostError'] = 'Chwilowo nie można wgrać zdjęcia';
+                                header('Location: ../../frontend/views/postOffer.php');
+                                break;
                             }
                             $mainImageURL = $IMAGE_PATH.$fileName;
                             if (!Cars::insertCar($_POST, $mainImageURL, $db->getConnection())) {
-                                throw new Exception('Unable to insert offer');
+                                $_SESSION['offerPostError'] = 'Chwilowo nie można dodać oferty';
+                                header('Location: ../../frontend/views/postOffer.php');
+                                break;
                             }
                             $car = Cars::getCarByVIN($_POST['VIN'], $db->getConnection());
                             if (!$car) {
-                                throw new Exception('Unable to retrieve car');
+                                $_SESSION['offerPostError'] = 'Chwilowo nie można pobrać oferty';
+                                header('Location: ../../frontend/views/postOffer.php');
+                                break;
                             }
                             $car = mysqli_fetch_assoc($car);
                             if (!Offers::insertOffer($_POST, $car['id'], $_SESSION['userID'], $db->getConnection())) {
-                                throw new Exception('Unable to insert offer');
+                                $_SESSION['offerPostError'] = 'Chwilowo nie można dodać oferty';
+                                header('Location: ../../frontend/views/postOffer.php');
+                                break;
                             }
                             for ($i = 0; $i < count($_FILES['image']['name']); $i++) {
                                 $imageFileName = time().'_'.$_SESSION['userID'].'_'.$_FILES['image']['name'][$i];
@@ -180,10 +189,12 @@
                                     CarImages::insertCarImage($car['id'], $imageURL, $db->getConnection());
                                 }
                             }
-                            echo json_encode('Offer has been uploaded successfully');
+                            $_SESSION['offerPostSuccess'] = 'Oferta została dodana pomyślnie';
+                            header('Location: ../../frontend/views/postOffer.php');
                         }
                         else {
-                            throw new Exception("Unable to upload image");
+                            $_SESSION['offerPostError'] = 'Brak miniaturki zdjęcia';
+                            header('Location: ../../frontend/views/postOffer.php');
                         }
                     }
                 }
