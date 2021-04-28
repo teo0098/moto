@@ -43,7 +43,7 @@ session_start();
             <div class="col">
                 <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[0]['id'] ?>">
                     <div class="card">
-                        <img src="<?php echo $cars[0]["image_url"] ?>" alt="...">
+                        <img class='container__img' src="<?php echo $cars[0]["image_url"] ?>" alt="...">
                         <div class="card-body">
                             <h3 style="color: black;" class="card-title"><?php echo $cars[0]["brand"] . ' ' . $cars[0]["model"]; ?></h3>
                             <p style="color: black;" class="card-text"><?php echo $cars[0]["production_year"] . ' ' . $cars[0]["run"] . 'km ' . $cars[0]["fuel"] . ' ' . $cars[0]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
