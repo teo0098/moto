@@ -17,100 +17,146 @@ session_start();
 
 <body>
   <header class="sticky-top">
-    <?php include "../templates/navigation.php" ?>
+    <?php 
+      include "../templates/navigation.php";
+      include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarFuels.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/Gearboxes.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarDrives.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/Provinces.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarTypes.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarStates.php');
+
+      $db = new DB($host, $user, $password, $database);
+      if (!$db->connect()) {
+          echo '<div class="alert alert-danger" role="alert">
+                              Nie udało się nawiązać połączenia z bazą
+                          </div>';
+      } else {
+          $carFuels = CarFuels::getFuels($db->getConnection());
+          $carFuels = mysqli_fetch_all($carFuels, MYSQLI_ASSOC);  
+          $gearboxes = Gearboxes::getGearboxes($db->getConnection());
+          $gearboxes = mysqli_fetch_all($gearboxes, MYSQLI_ASSOC);  
+          $carDrives = CarDrives::getDrives($db->getConnection());
+          $carDrives = mysqli_fetch_all($carDrives, MYSQLI_ASSOC);  
+          $provinces = Provinces::getProvinces($db->getConnection());
+          $provinces = mysqli_fetch_all($provinces, MYSQLI_ASSOC);  
+          $carTypes = CarTypes::getTypes($db->getConnection());
+          $carTypes = mysqli_fetch_all($carTypes, MYSQLI_ASSOC);  
+          $carStates = CarStates::getStates($db->getConnection());
+          $carStates = mysqli_fetch_all($carStates, MYSQLI_ASSOC);
+      }
+    ?>
   </header>
   <div class="container">
     <div class="row">
       <div class="card" style="width:1000px">
+      <?php
+        if (isset($_SESSION['offerPostError'])) {
+            echo '<div class="alert alert-danger" role="alert">
+                                ' . $_SESSION['offerPostError'] . '
+                            </div>';
+        } else if (isset($_SESSION['offerPostSuccess'])) {
+            echo '<div class="alert alert-success" role="alert">
+                                ' . $_SESSION['offerPostSuccess'] . '
+                            </div>';
+        }
+        $_SESSION['offerPostError'] = null;
+        $_SESSION['offerPostSuccess'] = null;
+        ?>
         <article class="card-body" style="max-width: 1200px;">
           <h4 class="card-title mt-3 text-center">Dodaj swoją ofertę</h4>
-          <form class="form-postOffer" method='POST' action="../../backend/server/offers.php">           
+          <form class="form-postOffer" method='POST' action="../../backend/server/offers.php" enctype="multipart/form-data">           
             <div class="row" style="margin-top: 20px;">
               <div class="col-md-6 col-12">
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Marka samochodu </span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                  <input name="brand" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Model samochodu </span>
                   </div>
-                  <input name="carModel" class="form-control" type="text">
+                  <input name="model" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Rok produkcji</span>
                   </div>
-                  <input name="productionYear" class="form-control" type="text">
+                  <input name="production_year" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Przebieg</span>
                   </div>
-                  <input name="mileage" class="form-control" type="text">
+                  <input name="run" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Rodzaj paliwa</span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name="fuel" class="form-select" aria-label="Default select example">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <?php
+                      for ($i = 0; $i < count($carFuels); $i++) {
+                        echo '<option value="'.$carFuels[$i]['id'].'">'.$carFuels[$i]['fuel'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Moc</span>
                   </div>
-                  <input name="enginePower" class="form-control" type="text">
+                  <input name="power" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Skrzynia biegów</span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name="gearbox" class="form-select" aria-label="Default select example">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <?php
+                      for ($i = 0; $i < count($gearboxes); $i++) {
+                        echo '<option value="'.$gearboxes[$i]['id'].'">'.$gearboxes[$i]['type'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Napęd</span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name="drive" class="form-select" aria-label="Default select example">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <?php
+                      for ($i = 0; $i < count($carDrives); $i++) {
+                        echo '<option value="'.$carDrives[$i]['id'].'">'.$carDrives[$i]['drive'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Województwo</span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name="province" class="form-select" aria-label="Default select example">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                   <?php
+                      for ($i = 0; $i < count($provinces); $i++) {
+                        echo '<option value="'.$provinces[$i]['id'].'">'.$provinces[$i]['name'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Powiat</span>
                   </div>
-                  <input name="county" class="form-control" type="text">
+                  <input name="district" class="form-control" type="text">
                 </div>
               </div>
               <div class="col-md-6 col-12">
@@ -118,76 +164,75 @@ session_start();
                   <div class="input-group-prepend">
                     <span class="input-group-text">Pojemność skokowa</span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                  <input name="engine_capacity" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Typ samochodu</span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name="type" class="form-select" aria-label="Default select example">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <?php
+                      for ($i = 0; $i < count($carTypes); $i++) {
+                        echo '<option value="'.$carTypes[$i]['id'].'">'.$carTypes[$i]['type'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Kolor samochodu</span>
                   </div>
-                  <input name="productionYear" class="form-control" type="text">
+                  <input name="color" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Liczba drzwi</span>
                   </div>
-                  <input name="mileage" class="form-control" type="text">
+                  <input name="door" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Liczba siedzeń</span>
                   </div>
-                  <input name="fuelType" class="form-control" type="text">
+                  <input name="seats" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Pochodzenie</span>
                   </div>
-                  <input name="enginePower" class="form-control" type="text">
+                  <input name="origin" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Stan</span>
                   </div>
-                  <select class="form-select" aria-label="Default select example">
+                  <select name="state" class="form-select" aria-label="Default select example">
                     <option selected></option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <?php
+                      for ($i = 0; $i < count($carStates); $i++) {
+                        echo '<option value="'.$carStates[$i]['id'].'">'.$carStates[$i]['state'].'</option>';
+                      }
+                    ?>
                   </select>
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Vin</span>
                   </div>
-                  <input name="drivingGear" class="form-control" type="text">
+                  <input name="VIN" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Miasto</span>
                   </div>
-                  <input name="province" class="form-control" type="text">
+                  <input name="city" class="form-control" type="text">
                 </div>
                 <div class="form-group input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Cena</span>
                   </div>
-                  <input name="county" class="form-control" type="text">
+                  <input name="price" class="form-control" type="text">
                 </div>
               </div>
 
@@ -199,7 +244,7 @@ session_start();
                   <label for="Textarea1">
                     <h4>Opis</h4>
                   </label>
-                  <textarea class="form-control" id="Textarea1" rows="7"></textarea>
+                  <textarea name="description" class="form-control" id="Textarea1" rows="7"></textarea>
                 </div>
               </div>
             </div>
@@ -210,7 +255,7 @@ session_start();
                     <h4>Dodaj miniaturkę oferty <i class="fas fa-paperclip"></i></h4>
                   </label>
                   <div id='singleImage'>
-                    <input type="file">
+                    <input type="file" name="mainImage">
                   </div>
                 </div>
               </div>
@@ -223,7 +268,7 @@ session_start();
                     <h4>Dodaj zdjęcia <i class="fas fa-paperclip"></i></h4>
                   </label>
                   <div id='multipleImages'>                    
-                    <input type="file" multiple>                                        
+                    <input name="image[]" type="file" multiple>                                        
                   </div>
                 </div>
               </div>
