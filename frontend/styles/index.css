@@ -25,16 +25,29 @@
 }
 
 @media (max-width: 800px) {
-  .row2 {
-    width: 100%;
+  .row2 
+  {
     overflow-x: auto;
   }
 
-  .card1 {
-    display: block;
-    border: 2px solid red;
-    width: 300px;
+  .klat3
+  {
+    overflow-x: auto;
   }
+
+  .monill
+  {
+    display: block;
+    width: 1200px;
+  }
+
+  .mobill
+  {
+    display: block;
+    width: 1000px;
+  }
+
+
 }
 
 /* The heart of the matter */
