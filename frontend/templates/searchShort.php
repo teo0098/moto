@@ -14,31 +14,20 @@
                                 <div class="col-md-6 col-12">
                                     <span>Marka samochodu</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        <div class="input-group-append">
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <input name='brand' type="text" class="form-control">
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <span>Cena od:</span>
                                             <div class="input-group">
-                                                <input type="text" class="form-control">
+                                                <input name='priceFrom' type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <span>Cena do:</span>
                                             <div class="input-group">
-                                                <input type="text" class="form-control">
+                                                <input name='priceTo' type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -46,13 +35,13 @@
                                         <div class="col-md-6 col-12">
                                             <span>Przebieg od:</span>
                                             <div class="input-group">
-                                                <input type="text" class="form-control">
+                                                <input name='runFrom' type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <span>Przebieg do:</span>
                                             <div class="input-group">
-                                                <input type="text" class="form-control">
+                                                <input name='runTo' type="text" class="form-control">
                                             </div>
                                         </div>
                                     </div>
@@ -60,26 +49,39 @@
                                 <div class="col-md-6 col-12">
                                     <span>Model samochodu</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control">
+                                        <input name='model' type="text" class="form-control">
                                     </div>
                                     <span>Rok produkcji</span>
                                     <div class="input-group">
-                                        <input type="text" class="form-control">
+                                        <input name='production_year' type="text" class="form-control">
                                     </div>
-                                    <span>Rodzaj paliwa</span>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                                        <div class="input-group-append">
-                                            <div class="dropdown">
-                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton8" data-bs-toggle="dropdown" aria-expanded="false">
-                                                </button>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton8">
-                                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                </ul>
-                                            </div>
+                                    <div class="form-group input-group mt-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Rodzaj paliwa</span>
                                         </div>
+                                        <?php
+                                            include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+                                            include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+                                            include_once realpath(dirname(__FILE__) . '/../../backend/db/models/CarFuels.php');
+                                            $db = new DB($host, $user, $password, $database);
+                                            if (!$db->connect()) {
+                                                echo '<div class="alert alert-danger" role="alert">
+                                                                    Nie udało się nawiązać połączenia z bazą
+                                                                </div>';
+                                            } else {
+                                                $carFuels = CarFuels::getFuels($db->getConnection());
+                                                $carFuels = mysqli_fetch_all($carFuels, MYSQLI_ASSOC);  
+                                            }
+                                        ?>
+                                        <select name="fuel" class="form-select" aria-label="Default select example">
+                                            <option selected></option>
+                                             <?php
+                                                for ($i = 0; $i < count($carFuels); $i++) {
+                                                    echo '<option value="'.$carFuels[$i]['id'].'">'.$carFuels[$i]['fuel'].'</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                        <input type="text" value='1' name='page' hidden>
                                     </div>
                                     <div class="col-md-12 col12 d-flex justify-content-end" style="margin-top: 20px;">
                                         <button class="btn btn-success" style="height: 50px; width:100px" type='submit'>Szukaj</button>

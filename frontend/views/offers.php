@@ -24,9 +24,9 @@ error_reporting(0);
     ?>
 
     <?php
-    include realpath(dirname(__FILE__) . '/../../backend/db/models/Offers.php');
-    include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
-    include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+    include_once realpath(dirname(__FILE__) . '/../../backend/db/models/Offers.php');
+    include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+    include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
 
     $db = new DB($host, $user, $password, $database);
     if (!$db->connect()) {
@@ -35,10 +35,10 @@ error_reporting(0);
                         </div>';
     } else {
         $page = $_GET['page'];
-        if(!isset($page)){
+        if(!isset($page) || $_GET['page'] == null){
             $page=1;
         }
-        $cars = Offers::getOffers(5, ($page*5)-5, $db->getConnection());
+        $cars = Offers::getSearchedOffers(5, ($page*5)-5, $_GET, $db->getConnection());
         $cars = mysqli_fetch_all($cars, MYSQLI_ASSOC);
     }
     ?>
@@ -88,7 +88,7 @@ error_reporting(0);
                 </li>
 
                 <?php
-                $offersAmount = Offers::getOffersAmount($db->getConnection());
+                $offersAmount = Offers::getOffersAmount($_GET, $db->getConnection());
                 $offersAmount = mysqli_fetch_assoc($offersAmount);               
                 $count =  $offersAmount['offersAmount'];
                 $count = ceil(intval($count)/5);                

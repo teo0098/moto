@@ -23,9 +23,9 @@ session_start();
     ?>
 
     <?php
-    include realpath(dirname(__FILE__) . '/../../backend/db/models/Offers.php');
-    include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
-    include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+    include_once realpath(dirname(__FILE__) . '/../../backend/db/models/Offers.php');
+    include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+    include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
 
     $db = new DB($host, $user, $password, $database);
     if (!$db->connect()) {
