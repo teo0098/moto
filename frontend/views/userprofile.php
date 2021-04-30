@@ -25,11 +25,11 @@ session_start();
 
         <?php
         if (isset($_SESSION['changeDataError'])) {
-            echo '<div class="alert alert-danger" role="alert">
+            echo '<div data-test-id="changeDataError" class="alert alert-danger" role="alert">
                                 ' . $_SESSION['changeDataError'] . '
                             </div>';
         } else if (isset($_SESSION['changeDataSuccess'])) {
-            echo '<div class="alert alert-success" role="alert">
+            echo '<div data-test-id="changeDataSuccess" class="alert alert-success" role="alert">
                                 ' . $_SESSION['changeDataSuccess'] . '
                             </div>';
         }
@@ -97,7 +97,7 @@ session_start();
                 ?>
                 <div class="container">
                     <h7> E-mail: </h7>
-                    <input type="text" value="<?php echo $_SESSION['userEmail'] ?>" class="d-block w-100" name="newEmail">
+                    <input type="text" value="<?php echo $_SESSION['userEmail']; ?>" class="d-block w-100" name="newEmail" />
                     <div class="form-group row d-flex justify-content-center mt-3">
                         <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień e-maila</button>
                     </div>
