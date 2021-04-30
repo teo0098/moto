@@ -152,6 +152,7 @@
                         if (!Cars::validate($_POST)) {
                             $_SESSION['offerPostError'] = 'Wprowadzono niepoprawne dane';
                             header('Location: ../../frontend/views/postOffer.php');
+                            break;
                         }
                         $file = $_FILES["mainImage"];
                         if ($file["size"] > 0) {

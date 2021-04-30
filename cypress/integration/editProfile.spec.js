@@ -14,6 +14,15 @@ describe("Edit personal data", () => {
       .type("teodor.tkaczyk98@gmail.com");
     cy.get("input[name=password]").clear({ force: true }).type("haslo123");
     cy.get('button[type="submit"]').click({ force: true });
-    cy.url().should("include", "/index.php");
+    cy.url().should("include", "/userprofile.php");
+  });
+
+  it("Change user password", () => {
+    cy.visit("/userprofile.php");
+    cy.get("input[name=oldPass]").clear({ force: true }).type("haslo123");
+    cy.get("input[name=newPass]").clear({ force: true }).type("haslo1234");
+    cy.get("input[name=repeatnewpass]")
+      .clear({ force: true })
+      .type("haslo1234");
   });
 });

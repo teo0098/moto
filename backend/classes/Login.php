@@ -48,7 +48,7 @@
                             $_SESSION['userEmail'] = $user["email"];
                             $_SESSION['userPhone'] = $user["phone"];
                             $_SESSION['userSurname'] = $user['surname'];
-                            header('Location: ../../frontend/views/index.php');
+                            header('Location: ../../frontend/views/userprofile.php');
                         }
                     }
                 }

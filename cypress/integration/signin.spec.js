@@ -23,6 +23,6 @@ describe("Login user into a service", () => {
       .type("teodor.tkaczyk98@gmail.com");
     cy.get("input[name=password]").clear({ force: true }).type("haslo123");
     cy.get('button[type="submit"]').click({ force: true });
-    cy.url().should("include", "/index.php");
+    cy.url().should("include", "/userprofile.php");
   });
 });
