@@ -56,7 +56,7 @@ session_start();
             <div class="col-md-6 col-12" style="background-color: white; ">
                 <h3 class="card-title">Najnowsze oferty</h3>
                 <div class="row2" style="width: auto; ">
-                    <div class="row row-cols-4 row-cols-md-2 g-4">
+                    <div class="row row-cols-4 row-cols-md-2 g-4 monill">
                         <?php
                             for ($i = 1; $i < 5; $i++) {?>
                                 <div class="col">
@@ -77,24 +77,23 @@ session_start();
             </div>
         </div>
 
-        <div class="container" style="margin-top:10px">
-            <div class="row">
-                <div class="col-md-12 col-12">
-                    <div class="card-group">
-                        <?php
-                            for ($i = 5; $i < 11; $i++) {?>
-                                <div class="card">
-                                    <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
-                                        <img src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top--" alt="...">
-                                        <div class="card-body">
-                                            <h3 style="color: black;" class="card-title"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h3>
-                                            <p style="color: black;" class="card-text"><?php echo $cars[$i]["production_year"] . ' ' . $cars[$i]["run"] . 'km ' . $cars[$i]["fuel"] . ' ' . $cars[$i]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                                            <h5 style="color: red;" class="card-title"><?php echo $cars[$i]["price"] . ' zł'; ?></h5>
-                                        </div>
-                                    </a>
-                                </div>
-                            <?php } ?>
-                    </div>
+            
+        <div class="col-md-12 col-12">
+            <div class="row2">
+                <div class="row row-cols-6 row-cols-md-6 g-2 monill">
+                    <?php
+                        for ($i = 5; $i < 11; $i++) {?>
+                            <div class="card">
+                                <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
+                                <img src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top--" alt="...">
+                                    <div class="card-body">
+                                        <h3 style="color: black;" class="card-title"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h3>
+                                        <p style="color: black;" class="card-text"><?php echo $cars[$i]["production_year"] . ' ' . $cars[$i]["run"] . 'km ' . $cars[$i]["fuel"] . ' ' . $cars[$i]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
+                                        <h5 style="color: red;" class="card-title"><?php echo $cars[$i]["price"] . ' zł'; ?></h5>
+                                    </div>
+                                </a>
+                            </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
