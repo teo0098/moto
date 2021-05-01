@@ -12,20 +12,20 @@
                                         <div class="col-md-6 col-12">
                                             <span>Marka samochodu</span>
                                             <div class="input-group">
-                                                <input name='brand' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['brand']; ?>" name='brand' type="text" class="form-control">
                                             </div>
 
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <span>Cena od:</span>
                                                     <div class="input-group">
-                                                        <input name='priceFrom' type="text" class="form-control">
+                                                        <input value="<?php echo $_GET['priceFrom']; ?>" name='priceFrom' type="text" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <span>Cena do:</span>
                                                     <div class="input-group">
-                                                        <input name='priceTo' type="text" class="form-control">
+                                                        <input value="<?php echo $_GET['priceTo']; ?>" name='priceTo' type="text" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -33,13 +33,13 @@
                                                 <div class="col-md-6 col-12">
                                                     <span>Przebieg od:</span>
                                                     <div class="input-group">
-                                                        <input name='runFrom' type="text" class="form-control">
+                                                        <input value="<?php echo $_GET['runFrom']; ?>" name='runFrom' type="text" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <span>Przebieg do:</span>
                                                     <div class="input-group">
-                                                        <input name='runTo' type="text" class="form-control">
+                                                        <input value="<?php echo $_GET['runTo']; ?>" name='runTo' type="text" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -47,11 +47,11 @@
                                         <div class="col-md-6 col-12">
                                             <span>Model samochodu</span>
                                             <div class="input-group">
-                                                <input name='model' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['model']; ?>" name='model' type="text" class="form-control">
                                             </div>
                                             <span>Rok produkcji</span>
                                             <div class="input-group">
-                                                <input name='production_year' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['production_year']; ?>" name='production_year' type="text" class="form-control">
                                             </div>
                                             <span>Rodzaj paliwa</span>
                                             <div class="input-group">
@@ -73,7 +73,12 @@
                                             <option selected></option>
                                              <?php
                                                 for ($i = 0; $i < count($carFuels); $i++) {
-                                                    echo '<option value="'.$carFuels[$i]['id'].'">'.$carFuels[$i]['fuel'].'</option>';
+                                                    if ($carFuels[$i]['id'] == $_GET['fuel']) {
+                                                        echo '<option selected value="'.$carFuels[$i]['id'].'">'.$carFuels[$i]['fuel'].'</option>';
+                                                    }
+                                                    else {
+                                                        echo '<option value="'.$carFuels[$i]['id'].'">'.$carFuels[$i]['fuel'].'</option>';
+                                                    }
                                                 }
                                             ?>
                                         </select>
@@ -86,7 +91,7 @@
                                         <div class="col-md-6 col-12">
                                             <span>Moc</span>
                                             <div class="input-group">
-                                                <input name='power' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['power']; ?>" name='power' type="text" class="form-control">
                                             </div>
 
                                             <span>Skrzynia biegów</span>
@@ -109,7 +114,12 @@
                                             <option selected></option>
                                              <?php
                                                 for ($i = 0; $i < count($gearboxes); $i++) {
-                                                    echo '<option value="'.$gearboxes[$i]['id'].'">'.$gearboxes[$i]['type'].'</option>';
+                                                    if ($gearboxes[$i]['id'] == $_GET['gearbox']) {
+                                                        echo '<option selected value="'.$gearboxes[$i]['id'].'">'.$gearboxes[$i]['type'].'</option>';
+                                                    }
+                                                    else {
+                                                        echo '<option value="'.$gearboxes[$i]['id'].'">'.$gearboxes[$i]['type'].'</option>'; 
+                                                    }
                                                 }
                                             ?>
                                         </select>
@@ -125,7 +135,8 @@
                                                 echo '<div class="alert alert-danger" role="alert">
                                                                     Nie udało się nawiązać połączenia z bazą
                                                                 </div>';
-                                            } else {
+                                            } 
+                                            else {
                                                 $carDrives = CarDrives::getDrives($db->getConnection());
                                                 $carDrives = mysqli_fetch_all($carDrives, MYSQLI_ASSOC);  
                                             }
@@ -134,7 +145,12 @@
                                             <option selected></option>
                                              <?php
                                                 for ($i = 0; $i < count($carDrives); $i++) {
-                                                    echo '<option value="'.$carDrives[$i]['id'].'">'.$carDrives[$i]['drive'].'</option>';
+                                                    if ($carDrives[$i]['id'] == $_GET['drive']) {
+                                                        echo '<option selected value="'.$carDrives[$i]['id'].'">'.$carDrives[$i]['drive'].'</option>';
+                                                    } 
+                                                    else {
+                                                        echo '<option value="'.$carDrives[$i]['id'].'">'.$carDrives[$i]['drive'].'</option>';
+                                                    }
                                                 }
                                             ?>
                                         </select>
@@ -147,19 +163,19 @@
                                                 <div class="col-md-6 col-12">
                                                     <span>Liczba drzwi:</span>
                                                     <div class="input-group">
-                                                        <input name='door' type="text" class="form-control">
+                                                        <input value="<?php echo $_GET['door']; ?>" name='door' type="text" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <span>Liczba siedzeń:</span>
                                                     <div class="input-group">
-                                                        <input name='seats' type="text" class="form-control">
+                                                        <input value="<?php echo $_GET['seats']; ?>" name='seats' type="text" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                             <span>Pochodzenie</span>
                                             <div class="input-group">
-                                                <input name='origin' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['origin']; ?>" name='origin' type="text" class="form-control">
                                             </div>
                                             <span>Stan</span>
                                              <div class="input-group">
@@ -181,7 +197,12 @@
                                             <option selected></option>
                                              <?php
                                                 for ($i = 0; $i < count($carStates); $i++) {
-                                                    echo '<option value="'.$carStates[$i]['id'].'">'.$carStates[$i]['state'].'</option>';
+                                                    if ($carStates[$i]['id'] == $_GET['state']) {
+                                                        echo '<option selected value="'.$carStates[$i]['id'].'">'.$carStates[$i]['state'].'</option>';
+                                                    }
+                                                    else {
+                                                        echo '<option value="'.$carStates[$i]['id'].'">'.$carStates[$i]['state'].'</option>';
+                                                    }
                                                 }
                                             ?>
                                         </select>
@@ -194,7 +215,7 @@
                                         <div class="col-md-6 col-12">
                                             <span>Pojemność skokowa</span>
                                             <div class="input-group">
-                                                <input name='engine_capacity' type="text" class="form-control" aria-label="Text input with dropdown button">
+                                                <input value="<?php echo $_GET['engine_capacity']; ?>" name='engine_capacity' type="text" class="form-control" aria-label="Text input with dropdown button">
                                             </div>
 
                                             <span>Typ samochodu</span>
@@ -217,14 +238,19 @@
                                             <option selected></option>
                                              <?php
                                                 for ($i = 0; $i < count($CarTypes); $i++) {
-                                                    echo '<option value="'.$CarTypes[$i]['id'].'">'.$CarTypes[$i]['type'].'</option>';
+                                                    if ($CarTypes[$i]['id'] == $_GET['type']) {
+                                                        echo '<option selected value="'.$CarTypes[$i]['id'].'">'.$CarTypes[$i]['type'].'</option>';
+                                                    }
+                                                    else {
+                                                        echo '<option value="'.$CarTypes[$i]['id'].'">'.$CarTypes[$i]['type'].'</option>';
+                                                    }
                                                 }
                                             ?>
                                         </select>
                                             </div>
                                             <span>Kolor samochodu</span>
                                             <div class="input-group">
-                                                <input name='color' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['color']; ?>" name='color' type="text" class="form-control">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -248,18 +274,23 @@
                                             <option selected></option>
                                              <?php
                                                 for ($i = 0; $i < count($provinces); $i++) {
-                                                    echo '<option value="'.$provinces[$i]['id'].'">'.$provinces[$i]['name'].'</option>';
+                                                    if ($provinces[$i]['id'] == $_GET['province']) {
+                                                        echo '<option selected value="'.$provinces[$i]['id'].'">'.$provinces[$i]['name'].'</option>';
+                                                    }
+                                                    else {
+                                                        echo '<option value="'.$provinces[$i]['id'].'">'.$provinces[$i]['name'].'</option>';
+                                                    }
                                                 }
                                             ?>
                                         </select>
                                             </div>
                                             <span>Powiat</span>
                                             <div class="input-group">
-                                                <input name='district' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['district']; ?>" name='district' type="text" class="form-control">
                                             </div>
                                             <span>Miasto</span>
                                             <div class="input-group">
-                                                <input name='city' type="text" class="form-control">
+                                                <input value="<?php echo $_GET['city']; ?>" name='city' type="text" class="form-control">
                                             </div>
                                             <input type="text" value='1' name='page' hidden>
                                             <div class="col-md-12 col12 d-flex justify-content-end" style="margin-top: 20px;">

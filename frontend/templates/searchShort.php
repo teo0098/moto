@@ -81,6 +81,19 @@
                                                 }
                                             ?>
                                         </select>
+                                        <input type="text" value='' name='power' hidden>
+                                        <input type="text" value='' name='gearbox' hidden>
+                                        <input type="text" value='' name='drive' hidden>
+                                        <input type="text" value='' name='door' hidden>
+                                        <input type="text" value='' name='seats' hidden>
+                                        <input type="text" value='' name='origin' hidden>
+                                        <input type="text" value='' name='state' hidden>
+                                        <input type="text" value='' name='engine_capacity' hidden>
+                                        <input type="text" value='' name='type' hidden>
+                                        <input type="text" value='' name='color' hidden>
+                                        <input type="text" value='' name='province' hidden>
+                                        <input type="text" value='' name='district' hidden>
+                                        <input type="text" value='' name='city' hidden>
                                         <input type="text" value='1' name='page' hidden>
                                     </div>
                                     <div class="col-md-12 col12 d-flex justify-content-end" style="margin-top: 20px;">
