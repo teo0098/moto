@@ -85,22 +85,31 @@
                 switch ($_GET['method']) {
                     case 'PUT': {
                         if (!Cars::validate($_POST)) {
-                            throw new Exception('Bad data entered');
+                            $_SESSION['offerEditError'] = 'Wprowadzono niepoprawne dane';
+                            header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                            break;
                         }
                         $validID = validateID($_GET['id']);
                         if ($validID != null) {
-                            throw new Exception($validID);
+                            $_SESSION['offerEditError'] = $validID;
+                            header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                            break;
                         }
                         $offer = Offers::getOfferById($_GET['id'], $db->getConnection());
                         if (!$offer) {
-                            throw new Exception('Unable to retrieve offer');
+                            $_SESSION['offerEditError'] = 'Chwilowo nie można pobrać oferty';
+                            header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                            break;
                         }
                         $offer = mysqli_fetch_assoc($offer);
                         if (!Offers::updateOffer($_POST, $_GET['id'], $db->getConnection())
                             || !Cars::updateCar($_POST, $offer['car_id'], $db->getConnection())) {
-                                throw new Exception('Unable to update offer');
+                                $_SESSION['offerEditError'] = 'Chwilowo nie można zaktualizować oferty';
+                                header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                                break;
                         }
-                        echo json_encode('Offer has been updated successfully');
+                        $_SESSION['offerEditSuccess'] = 'Oferta została zaktualizowana pomyślnie';
+                        header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
                     }
                     break;
                     case 'PATCH': {
