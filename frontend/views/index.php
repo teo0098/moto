@@ -76,8 +76,7 @@ session_start();
                 </div>
             </div>
         </div>
-
-            
+   
         <div class="col-md-12 col-12">
             <div class="row2">
                 <div class="row row-cols-6 row-cols-md-6 g-2 monill">

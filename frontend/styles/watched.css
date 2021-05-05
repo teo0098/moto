@@ -33,6 +33,20 @@
     height: 50px;    
     padding: 15px 0 0 0;
 }
+#ads .card-notify-edit 
+{
+    position: absolute;
+    left:-10px;
+    top: -20px;
+    background: #777777;
+    border-radius: 50%;
+    text-align: center;
+    color: white;      
+    font-size: 22px;      
+    width: 50px;
+    height: 50px;    
+    padding: 15px 0 0 0;
+}
 
 
 #ads .card-detail-badge 
@@ -171,4 +185,12 @@ a:hover > .ico
 {
     color:#F7F7F7;
     font-size: 150px;
+}
+
+.img-fluid
+{
+    width: 100%;
+    max-height: 300px;
+    min-height: 300px;
+    object-fit: cover;
 }
