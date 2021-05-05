@@ -130,21 +130,29 @@
                     case 'DELETE': {
                         $validID = validateID($_GET['id']);
                         if ($validID != null) {
-                            throw new Exception($validID);
+                            $_SESSION['offerDeleteError'] = $validID;
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
+                            break;
                         }
                         $offer = Offers::getOfferById($_GET['id'], $db->getConnection());
                         if (!$offer) {
-                            throw new Exception('Unable to retrieve offer');
+                            $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
+                            break;
                         }
                         $offer = mysqli_fetch_assoc($offer);
                         $car = Cars::getCarById($offer['car_id'], $db->getConnection());
                         if (!$car) {
-                            throw new Exception('Unable to retrieve offer');
+                            $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
+                            break;
                         }
                         $car = mysqli_fetch_assoc($car);
                         $carImages = CarImages::getCarImages($offer['car_id'], $db->getConnection());
                         if (!$carImages) {
-                            throw new Exception('Unable to retrieve car images');
+                            $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
+                            break;
                         }
                         $carImages = mysqli_fetch_all($carImages, MYSQLI_ASSOC);
                         unlink(__DIR__.$FILE_UPLOAD_DESTINATION.getFileName($car['image_url']));
@@ -152,9 +160,11 @@
                             unlink(__DIR__.$FILE_UPLOAD_DESTINATION.getFileName($carImages[$i]['url']));
                         }
                         if (!Cars::deleteCar($offer['car_id'], $db->getConnection())) {
-                            throw new Exception('Unable to delete offer');
+                            $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
+                            break;
                         }
-                        echo json_encode('Offer has been deleted successfully');
+                        header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
                     }
                     break;
                     default: {

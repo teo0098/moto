@@ -62,6 +62,15 @@ session_start();
         }
     }
     ?>
+
+    <?php
+        if (isset($_SESSION['offerDeleteError'])) {
+            echo '<div class="alert alert-danger" role="alert">
+                                ' . $_SESSION['offerDeleteError'] . '
+                            </div>';
+        }
+        $_SESSION['offerDeleteError'] = null;
+        ?>
             
             <div class="col-md-4">
                 <?php if ($cars != false && $carsAmount != false) { for ($i = 0; $i < count($cars); $i++) { ?>
@@ -69,7 +78,11 @@ session_start();
                         <div class="card rounded">
                             <div class="card-image">
                                 <object><a href="./myoffer.php?id=<?php echo $cars[$i]['id']; ?>"><span class="card-notify-edit fa fa-edit"></span></a></object>
-                                <object><a href="#"><span class="card-notify-trash fa fa-trash"></span></a></object>
+                                <object>
+                                    <form method='POST' action="../../backend/server/offers.php?method=DELETE&id=<?php echo $cars[$i]['id']; ?>&page=<?php echo $_GET['page']; ?>">
+                                        <button type="submit"><span class="card-notify-trash fa fa-trash"></span></button>
+                                    </form>
+                                </object>
                                 <img class="img-fluid" src="<?php echo $cars[$i]['image_url']; ?>" alt="offer" />
                             </div>
                             <div class="card-image-overlay m-auto mt-1 mb-2">
