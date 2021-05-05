@@ -1,4 +1,3 @@
-
 #ads 
 {
     margin: 30px 0 30px 0;  
@@ -33,6 +32,7 @@
     height: 50px;    
     padding: 15px 0 0 0;
 }
+
 #ads .card-notify-edit 
 {
     position: absolute;
@@ -48,7 +48,6 @@
     padding: 15px 0 0 0;
 }
 
-
 #ads .card-detail-badge 
 {      
     background: #F7F7F7;
@@ -59,13 +58,10 @@
     font-size: 14px;     
     border: 1px solid #D3D3D3;
     box-shadow: 1px 3px 3px grey;   
-}
-
-   
+}  
 
 #ads .card:hover 
 {
-    background: #858585;
     box-shadow: 15px 15px 15px 15px rgba(46,61,73,0.15);
     border-radius: 4px;
     transition: all 0.3s ease;
@@ -76,40 +72,9 @@
     font-size: 20px;   
 }
 
-
 #ads .card-image-overlay span 
 {
     display: inline-block;              
-}
-
-
-#ads .ad-btn 
-{
-    text-transform: uppercase;
-    width: 150px;
-    height: 40px;
-    border-radius: 80px;
-    font-size: 16px;
-    line-height: 35px;
-    text-align: center;
-    border: 3px solid #e6de08;
-    display: block;
-    text-decoration: none;
-    margin: 20px auto 1px auto;
-    color: #000;
-    overflow: hidden;        
-    position: relative;
-    background-color: #e6de08;
-}
-
-#ads .ad-btn:hover 
-{
-    background-color: #e6de08;
-    color: #1e1717;
-    border: 2px solid #e6de08;
-    background: transparent;
-    transition: all 0.3s ease;
-    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
 }
 
 #ads .ad-title h5 
@@ -130,6 +95,7 @@
     left: 0;
     color: #3d3d3d;
 }
+
 .card .carousel-caption h3 
 {
     color: #3d3d3d;
@@ -150,8 +116,6 @@
 {
     text-align: left;
 }
-
-
 
 .card_container
 {
@@ -179,4 +143,9 @@
     max-height: 300px;
     min-height: 300px;
     object-fit: cover;
+}
+
+a 
+{
+    text-decoration: none!important;
 }
