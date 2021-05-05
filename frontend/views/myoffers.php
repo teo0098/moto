@@ -28,64 +28,74 @@ session_start();
             </div>
             <h1 class="text-center mt-3">Moje ogłoszenia</h1>
         </div>
-        <div class="row" id="ads">
         <?php
-    include_once realpath(dirname(__FILE__) . '/../../backend/db/models/Users.php');
-    include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
-    include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+            include_once realpath(dirname(__FILE__) . '/../../backend/db/models/Users.php');
+            include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+            include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
 
-    $db = new DB($host, $user, $password, $database);
-    if (!$db->connect()) {
-        echo '<div class="alert alert-danger" role="alert">
-                            Nie udało się nawiązać połączenia z bazą
-                        </div>';
-    } else {
-        $page = $_GET['page'];
-        if(!isset($page) || $_GET['page'] == null){
-            $page=1;
-        }
-        $cars = Users::getOffers(5, ($page*5)-5, $db->getConnection());
-        $carsAmount = Users::getOffersAmount($db->getConnection());
-        if (!$cars || !$carsAmount) {
-            echo '<div data-test-id="error__box" class="alert alert-danger" role="alert">Brak wystawionych pojazdów</div>';
-        }
-        else {
-            $carsAmount = mysqli_fetch_assoc($carsAmount);
-            $count = $carsAmount['offersAmount'];
-            $count = intval($count);   
-            if ($count < 1) {
-                echo '<div data-test-id="error__box" class="alert alert-danger" role="alert">Brak wystawionych pojazdów</div>';
+            $db = new DB($host, $user, $password, $database);
+            if (!$db->connect()) 
+            {
+                echo '<div class="alert alert-danger" role="alert">
+                        Nie udało się nawiązać połączenia z bazą
+                    </div>';
+            } 
+            else 
+            {
+                $page = $_GET['page'];
+                if(!isset($page) || $_GET['page'] == null)
+                {
+                    $page=1;
+                }
+                $cars = Users::getOffers(9, ($page*9)-9, $db->getConnection());
+                $carsAmount = Users::getOffersAmount($db->getConnection());
+                if (!$cars || !$carsAmount) 
+                {
+                    echo '<div data-test-id="error__box" class="alert alert-danger" role="alert">Brak wystawionych pojazdów</div>';
+                }
+                else 
+                {
+                    $carsAmount = mysqli_fetch_assoc($carsAmount);
+                    $count = $carsAmount['offersAmount'];
+                    $count = intval($count);   
+                    if ($count < 1) 
+                    {
+                        echo '<div data-test-id="error__box" class="alert alert-danger" role="alert">Brak wystawionych pojazdów</div>';
+                    }
+                    else 
+                    {
+                        $cars = mysqli_fetch_all($cars, MYSQLI_ASSOC);
+                    }
+                }
             }
-            else {
-                $cars = mysqli_fetch_all($cars, MYSQLI_ASSOC);
-            }
-        }
-    }
-    ?>
-
-    <?php
-        if (isset($_SESSION['offerDeleteError'])) {
-            echo '<div class="alert alert-danger" role="alert">
-                                ' . $_SESSION['offerDeleteError'] . '
-                            </div>';
-        }
-        $_SESSION['offerDeleteError'] = null;
         ?>
-            
-            <div class="col-md-4">
-                <?php if ($cars != false && $carsAmount != false) { for ($i = 0; $i < count($cars); $i++) { ?>
+
+        <?php
+            if (isset($_SESSION['offerDeleteError'])) 
+            {
+                echo '<div class="alert alert-danger" role="alert">
+                                    ' . $_SESSION['offerDeleteError'] . '
+                                </div>';
+            }
+            $_SESSION['offerDeleteError'] = null;
+        ?>
+
+
+        <div class="row mt-2" id="ads">  
+            <?php if ($cars != false && $carsAmount != false) { for ($i = 0; $i < count($cars); $i++) { ?>
+                <div class="col-md-4 mt-4">          
                     <a href="./offer.php?id=<?php echo $cars[$i]['id']; ?>">
                         <div class="card rounded">
                             <div class="card-image">
                                 <object><a href="./myoffer.php?id=<?php echo $cars[$i]['id']; ?>"><span class="card-notify-edit fa fa-edit"></span></a></object>
                                 <object>
-                                    <form method='POST' action="../../backend/server/offers.php?method=DELETE&id=<?php echo $cars[$i]['id']; ?>&page=<?php echo $_GET['page']; ?>">
+                                    <form style=" height:0px;" method='POST' action="../../backend/server/offers.php?method=DELETE&id=<?php echo $cars[$i]['id']; ?>&page=<?php echo $_GET['page']; ?>">
                                         <button type="submit"><span class="card-notify-trash fa fa-trash"></span></button>
                                     </form>
                                 </object>
                                 <img class="img-fluid" src="<?php echo $cars[$i]['image_url']; ?>" alt="offer" />
                             </div>
-                            <div class="card-image-overlay m-auto mt-1 mb-2">
+                            <div class="card-image-overlay m-auto mt-2 mb-4">
                                 <span class="card-detail-badge"><?php echo $cars[$i]['fuel']; ?></span>
                                 <span class="card-detail-badge"><?php echo $cars[$i]['production_year']; ?></span>
                                 <span class="card-detail-badge"><?php echo $cars[$i]['run']; ?> km</span>
@@ -93,10 +103,8 @@ session_start();
                             </div>
                         </div>
                     </a>
-                <?php }} ?>
-            </div>
-            
-
+                </div>
+            <?php }} ?>
         </div>
         
     </div>
@@ -118,7 +126,7 @@ session_start();
 
                 <?php
                 if ($cars != false && $carsAmount != false) {
-                    $count = ceil(intval($count)/5);                
+                    $count = ceil(intval($count)/9);                
                     for($i=0; $i<$count; $i++){
                         echo ' <li class="page-item"><a class="page-link" href="./myoffers.php?page='.($i+1).'">'.($i+1).'</a></li>';
                     }
