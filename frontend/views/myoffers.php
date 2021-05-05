@@ -31,19 +31,21 @@ session_start();
         <div class="row" id="ads">
             
             <div class="col-md-4">
-                <div class="card rounded">
-                    <div class="card-image">
-                        <a href="../views/signin.php"><span class="card-notify-edit fa fa-edit"></span></a>
-                        <a href="../views/signin.php"><span class="card-notify-trash fa fa-trash"></span></a>
-                        <img class="img-fluid" src="../assets/insi.jpg" alt="" />
+                <a href="#">
+                    <div class="card rounded">
+                        <div class="card-image">
+                            <object><a href="#"><span class="card-notify-edit fa fa-edit"></span></a></object>
+                            <object><a href="#"><span class="card-notify-trash fa fa-trash"></span></a></object>
+                            <img class="img-fluid" src="../assets/insi.jpg" alt="" />
+                        </div>
+                        <div class="card-image-overlay m-auto mt-1 mb-2">
+                            <span class="card-detail-badge">Benzyna/Diesel</span>
+                            <span class="card-detail-badge">Rok</span>
+                            <span class="card-detail-badge">Kilometry</span>
+                            <span class="card-detail-badge">Silnik</span>
+                        </div>
                     </div>
-                    <div class="card-image-overlay m-auto mt-1 mb-2">
-                        <span class="card-detail-badge">Benzyna/Diesel</span>
-                        <span class="card-detail-badge">Rok</span>
-                        <span class="card-detail-badge">Kilometry</span>
-                        <span class="card-detail-badge">Silnik</span>
-                    </div>
-                </div>
+                </a>
                 <br>
             </div>
             

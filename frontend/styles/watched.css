@@ -151,21 +151,7 @@
     text-align: left;
 }
 
-.navi a 
-{
-    text-decoration:none;
-}
 
-a > .ico 
-{
-    background-color: grey;
-    padding: 10px;  
-}
-
-a:hover > .ico 
-{
-    background-color: #666;
-}
 
 .card_container
 {
