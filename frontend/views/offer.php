@@ -154,7 +154,7 @@ session_start();
         </div>
         <hr>
         <h4 class="d-flex justify-content-center" style="margin-top: 3%;">Opis</h4>
-        <div class="justify-content-center px-5">
+        <div class="justify-content-center px-5 text-break">
             <p><?php echo $car["description"] ?></p>
         </div>
 
