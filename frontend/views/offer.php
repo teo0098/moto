@@ -105,21 +105,20 @@ session_start();
             </div>
         </div>
 
-        <h4 class="d-flex justify-content-center" style="margin-top: 3%;">Szczegóły</h4>
-        <div class="container d-flex justify-content-center" style="display:flex">
+        <hr>
 
-            <div class="row" style="margin-left: 5%; margin-right: 5%">
-                <div class="col col-md-3 col-6 mt-3">
-                    <div class="col text-black-50">
-                        <p class="">Marka samochodu</p>
-                        <p class="">Model samochodu</p>
-                        <p class="">Rok produkcji</p>
-                        <p class="">Przebieg</sp>
-                        <p class="">Rodzaj paliwa</p>
-                        <p class="">Moc</p>
-                        <p class="">Skrzynia biegów</p>
-                        <p class="">Napęd</p>
-                    </div>
+        <h4 class="d-flex justify-content-center mt-5">Szczegóły</h4>
+        <div class="container d-flex justify-content-center">
+            <div class="row col-md-8" style="margin-left: 5%; margin-right: 5%">
+                <div class="col col-md-3 col-6 mt-3 text-black-50">
+                    <p class="">Marka samochodu</p>
+                    <p class="">Model samochodu</p>
+                    <p class="">Rok produkcji</p>
+                    <p class="">Przebieg</sp>
+                    <p class="">Rodzaj paliwa</p>
+                    <p class="">Moc</p>
+                    <p class="">Skrzynia biegów</p>
+                    <p class="">Napęd</p>
                 </div>
                 <div class="col col-md-3 col-6 mt-3">
                     <p class=""><?php echo $car["brand"] ?></p>
@@ -131,17 +130,15 @@ session_start();
                     <p class=""><?php echo $car["gearbox"] ?></p>
                     <p class=""><?php echo $car["drive"] ?></p>
                 </div>
-                <div class="col col-md-3 col-6 mt-3">
-                    <div class="col text-black-50">
-                        <p class="">Pojemnośc skokowa</p>
-                        <p class="">Typ samochodu</p>
-                        <p class="">Kolor samochodu</p>
-                        <p class="">Liczba drzwi</sp>
-                        <p class="">Liczba siedzeń</p>
-                        <p class="">Pochodzenie</p>
-                        <p class="">Stan</p>
-                        <p class="">VIN</p>
-                    </div>
+                <div class="col col-md-3 col-6 mt-3 text-black-50">
+                    <p class="">Pojemnośc skokowa</p>
+                    <p class="">Typ samochodu</p>
+                    <p class="">Kolor samochodu</p>
+                    <p class="">Liczba drzwi</sp>
+                    <p class="">Liczba siedzeń</p>
+                    <p class="">Pochodzenie</p>
+                    <p class="">Stan</p>
+                    <p class="">VIN</p>
                 </div>
                 <div class="col col-md-3 col-6 mt-3">
                     <p class=""><?php echo $car["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
@@ -155,7 +152,7 @@ session_start();
                 </div>
             </div>
         </div>
-
+        <hr>
         <h4 class="d-flex justify-content-center" style="margin-top: 3%;">Opis</h4>
         <div class="justify-content-center px-5">
             <p><?php echo $car["description"] ?></p>
