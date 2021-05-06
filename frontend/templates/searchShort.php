@@ -1,61 +1,42 @@
-<div class="container-fluid" style="background-image: url('../assets/cars-gora-prawa.jpg'); min-height: 400px; max-height: 750px; background-size: cover; background-position:center">
+<div class="container-fluid" style="background-image: url('../assets/Baner.jpg'); min-height: 400px; max-height: 750px; background-size: cover; background-position:center">
     <div class="row">
-        <div class="col-md-4 col-12" style="height:0px">
-
-        </div>
-
-        <div class="col-md-4 col-12" style="height:400px">
+        <div class="container" style="height:100px">
             <div class="d-flex justify-content-center" style="margin-top: 20px;">
-                <div class="card" style="width:100%;">
+                <div class="card w-75" style="background:none; border:none">
                     <article class="card-body" style="max-width: 100%;">
-                        <h4 class="card-title mt-3 text-center">Panel wyszukiwania</h4>
                         <form class="form-postOffer" method='GET' action="../views/offers.php?page=1">
-                            <div class="row" style="margin-top:20px;">
-                                <div class="col-md-6 col-12">
-                                    <span>Marka samochodu</span>
-                                    <div class="input-group">
-                                        <input name='brand' type="text" class="form-control">
-                                    </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <span>Cena od:</span>
-                                            <div class="input-group">
-                                                <input name='priceFrom' type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <span>Cena do:</span>
-                                            <div class="input-group">
-                                                <input name='priceTo' type="text" class="form-control">
-                                            </div>
+                            <div class="row" style="margin-top:20px;">
+
+                                <div class="col-md-4 col-12">
+                                    <div class="input-group mt-3">
+                                        <input name='brand' type="text" class="form-control" placeholder="Marka samochodu">
+                                    </div>
+                                    <div class="input-group mt-3">
+                                        <input name='model' type="text" class="form-control" placeholder="Model samochodu">
+                                    </div> 
+                                </div>
+
+                                <div class="col-md-4 col-12">
+                                    <div class="row mt-3">
+                                        <div class="input-group">
+                                            <input name='runFrom' type="text" class="form-control" placeholder="Przebieg do">
+                                            <input name='runTo' type="text" class="form-control" placeholder="Przebieg od">
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <span>Przebieg od:</span>
-                                            <div class="input-group">
-                                                <input name='runFrom' type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-12">
-                                            <span>Przebieg do:</span>
-                                            <div class="input-group">
-                                                <input name='runTo' type="text" class="form-control">
-                                            </div>
+                                    <div class="row mt-3">
+                                        <div class="input-group">
+                                            <input name='priceFrom' type="text" class="form-control" placeholder="Cena od">
+                                            <input name='priceTo' type="text" class="form-control" placeholder="Cena od">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 col-12">
-                                    <span>Model samochodu</span>
-                                    <div class="input-group">
-                                        <input name='model' type="text" class="form-control">
+
+                                <div class="col-md-4 col-12">   
+                                    <div class="input-group mt-3">
+                                        <input name='production_year' type="text" class="form-control" placeholder="Rok produkcji">
                                     </div>
-                                    <span>Rok produkcji</span>
-                                    <div class="input-group">
-                                        <input name='production_year' type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group input-group mt-4">
+                                    <div class="form-group input-group mt-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">Rodzaj paliwa</span>
                                         </div>
@@ -96,14 +77,14 @@
                                         <input type="text" value='' name='city' hidden>
                                         <input type="text" value='1' name='page' hidden>
                                     </div>
-                                    <div class="col-md-12 col12 d-flex justify-content-end" style="margin-top: 20px;">
-                                        <button class="btn btn-success" style="height: 50px; width:100px" type='submit'>Szukaj</button>
-                                    </div>
                                 </div>
                             </div>
+                            <div class="col-md-12 col12 d-flex justify-content-center" style="margin-top: 20px;">
+                                <button class="btn btn-danger" style="height: 50px; width:150px" type='submit'><i class="fa fa-search me-2"></i>Szukaj</button>
+                            </div>
+                        </form>
+                    </article>
                 </div>
-                </form>
-                </article>
             </div>
         </div>
         <div class="col-md-4 col-12" style="height:400px">
