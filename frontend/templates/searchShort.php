@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-image: url('../assets/Baner.jpg'); min-height: 400px; max-height: 750px; background-size: cover; background-position:center">
+<div class="container-fluid searchimage" style=" min-height: 400px; max-height: 750px; background-size: cover; background-position:center">
     <div class="row">
         <div class="container" style="height:100px">
             <div class="d-flex justify-content-center" style="margin-top: 20px;">
