@@ -55,7 +55,7 @@ session_start();
                 <div class="row" style="height: 250px; max-height:250px; margin-top:10px">
                     <div class="col col-md-4" style="display:flex; justify-content: flex-end">
                         <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
-                            <img style='height:250px; width:100%' src="<?php echo $cars[$i]["image_url"] ?> " alt="...">
+                            <img class="img-offers" src="<?php echo $cars[$i]["image_url"] ?> " alt="...">
                         </a>
                     </div>
 
