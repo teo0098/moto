@@ -1,60 +1,45 @@
-<div class="container-fluid" style="background-color:slategrey; min-height: 400px; max-height: 1600px">
+<div class="container-fluid searchimage" style="min-height: 400px; max-height: 750px; background-size: cover; background-position:center; min-height: 400px; max-height: 1600px">
     <div class="row">
         <div class="col-md-12 col-12">
             <div class="d-flex justify-content-center" style="margin-top: 20px;">
-                <div class="card" style="width:100%;">
-                    <article class="card-body" style="max-width: 100%;">
-                        <h4 class="card-title mt-3 text-center">Panel wyszukiwania</h4>
+                <div class="card" style="width:100%; background:none; border:none">
+                    <article class="card-body" style="max-width: 100%; ">
                         <form class="form-postOffer" method='GET' action="../views/offers.php?page=1">
                             <div class="row">
-                                <div class="col-md-4 col12">
+                                <div class="col-md-4 col-12">
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-6 col-12">
-                                            <span>Marka samochodu</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['brand']; ?>" name='brand' type="text" class="form-control">
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['brand']; ?>" name='brand' type="text" class="form-control" placeholder="Marka samochodu">
                                             </div>
 
-                                            <div class="row">
-                                                <div class="col-md-6 col-12">
-                                                    <span>Cena od:</span>
-                                                    <div class="input-group">
-                                                        <input value="<?php echo $_GET['priceFrom']; ?>" name='priceFrom' type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <span>Cena do:</span>
-                                                    <div class="input-group">
-                                                        <input value="<?php echo $_GET['priceTo']; ?>" name='priceTo' type="text" class="form-control">
+                                            
+                                            <div class="col-md-12 col-12">
+                                                <div class="row">
+                                                    <div class="input-group mt-3">
+                                                        <input value="<?php echo $_GET['priceFrom']; ?>" name='priceFrom' type="text" class="form-control" placeholder="Cena od">
+                                                        <input value="<?php echo $_GET['priceTo']; ?>" name='priceTo' type="text" class="form-control" placeholder="Cena do">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6 col-12">
-                                                    <span>Przebieg od:</span>
-                                                    <div class="input-group">
-                                                        <input value="<?php echo $_GET['runFrom']; ?>" name='runFrom' type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <span>Przebieg do:</span>
-                                                    <div class="input-group">
-                                                        <input value="<?php echo $_GET['runTo']; ?>" name='runTo' type="text" class="form-control">
+                                           
+                                            <div class="col-md-612 col-12">
+                                                <div class="row">
+                                                    <div class="input-group mt-3">
+                                                        <input value="<?php echo $_GET['runFrom']; ?>" name='runFrom' type="text" class="form-control" placeholder="Przebieg od">
+                                                        <input value="<?php echo $_GET['runTo']; ?>" name='runTo' type="text" class="form-control" placeholder="Przebieg do">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <span>Model samochodu</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['model']; ?>" name='model' type="text" class="form-control">
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['model']; ?>" name='model' type="text" class="form-control" placeholder="Model samochodu">
                                             </div>
-                                            <span>Rok produkcji</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['production_year']; ?>" name='production_year' type="text" class="form-control">
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['production_year']; ?>" name='production_year' type="text" class="form-control" placeholder="Rok produkcji">
                                             </div>
-                                            <span>Rodzaj paliwa</span>
-                                            <div class="input-group">
+                                            <div class="input-group mt-3">
                                                 <?php
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
@@ -70,7 +55,7 @@
                                             }
                                         ?>
                                         <select name="fuel" class="form-select" aria-label="Default select example">
-                                            <option selected></option>
+                                            <option value="" selected>Rodzaj paliwa</option>
                                              <?php
                                                 for ($i = 0; $i < count($carFuels); $i++) {
                                                     if ($carFuels[$i]['id'] == $_GET['fuel']) {
@@ -89,13 +74,12 @@
                                 <div class="col-md-4 col12">
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-6 col-12">
-                                            <span>Moc</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['power']; ?>" name='power' type="text" class="form-control">
+                                            
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['power']; ?>" name='power' type="text" class="form-control" placeholder="Moc">
                                             </div>
 
-                                            <span>Skrzynia biegów</span>
-                                            <div class="input-group">
+                                            <div class="input-group mt-3">
                                                 <?php
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
@@ -111,7 +95,7 @@
                                             }
                                         ?>
                                         <select name="gearbox" class="form-select" aria-label="Default select example">
-                                            <option selected></option>
+                                            <option value="" selected>Skrzynia biegów</option>
                                              <?php
                                                 for ($i = 0; $i < count($gearboxes); $i++) {
                                                     if ($gearboxes[$i]['id'] == $_GET['gearbox']) {
@@ -124,8 +108,7 @@
                                             ?>
                                         </select>
                                             </div>
-                                            <span>Napęd</span>
-                                            <div class="input-group">
+                                            <div class="input-group mt-3">
                                                 <?php
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
@@ -142,7 +125,7 @@
                                             }
                                         ?>
                                         <select name="drive" class="form-select" aria-label="Default select example">
-                                            <option selected></option>
+                                        <option value="" selected>Napęd</option>
                                              <?php
                                                 for ($i = 0; $i < count($carDrives); $i++) {
                                                     if ($carDrives[$i]['id'] == $_GET['drive']) {
@@ -159,26 +142,20 @@
 
                                         <div class="col-md-6 col-12">
 
-                                            <div class="row">
-                                                <div class="col-md-6 col-12">
-                                                    <span>Liczba drzwi:</span>
+                                            <div class="col-md-12 col-12 mt-3">
+                                                <div class="row">
                                                     <div class="input-group">
-                                                        <input value="<?php echo $_GET['door']; ?>" name='door' type="text" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <span>Liczba siedzeń:</span>
-                                                    <div class="input-group">
-                                                        <input value="<?php echo $_GET['seats']; ?>" name='seats' type="text" class="form-control">
+                                                        <input value="<?php echo $_GET['door']; ?>" name='door' type="text" class="form-control" placeholder="Liczba drzwi">
+                                                        <input value="<?php echo $_GET['seats']; ?>" name='seats' type="text" class="form-control" placeholder="Liczba siedzeń">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <span>Pochodzenie</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['origin']; ?>" name='origin' type="text" class="form-control">
+                                    
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['origin']; ?>" name='origin' type="text" class="form-control" placeholder="Pochodzenie">
                                             </div>
-                                            <span>Stan</span>
-                                             <div class="input-group">
+                                           
+                                             <div class="input-group mt-3">
                                                 <?php
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
@@ -194,7 +171,7 @@
                                             }
                                         ?>
                                         <select name="state" class="form-select" aria-label="Default select example">
-                                            <option selected></option>
+                                        <option value="" selected>Stan</option>
                                              <?php
                                                 for ($i = 0; $i < count($carStates); $i++) {
                                                     if ($carStates[$i]['id'] == $_GET['state']) {
@@ -210,16 +187,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col12">
+                                <div class="col-md-4 col-12 ">
                                     <div class="row" style="margin-top:20px;">
                                         <div class="col-md-6 col-12">
-                                            <span>Pojemność skokowa</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['engine_capacity']; ?>" name='engine_capacity' type="text" class="form-control" aria-label="Text input with dropdown button">
+                                          
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['engine_capacity']; ?>" name='engine_capacity' type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Pojemność skokowa">
                                             </div>
 
-                                            <span>Typ samochodu</span>
-                                             <div class="input-group">
+                                            
+                                             <div class="input-group mt-3">
                                                 <?php
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
@@ -235,7 +212,7 @@
                                             }
                                         ?>
                                         <select name="type" class="form-select" aria-label="Default select example">
-                                            <option selected></option>
+                                        <option value="" selected>Typ samochodu</option>
                                              <?php
                                                 for ($i = 0; $i < count($CarTypes); $i++) {
                                                     if ($CarTypes[$i]['id'] == $_GET['type']) {
@@ -248,14 +225,14 @@
                                             ?>
                                         </select>
                                             </div>
-                                            <span>Kolor samochodu</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['color']; ?>" name='color' type="text" class="form-control">
+                                            
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['color']; ?>" name='color' type="text" class="form-control" placeholder="Kolor samochodu">
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
-                                            <span>Województwo</span>
-                                            <div class="input-group">
+                                            
+                                            <div class="input-group mt-3">
                                                 <?php
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
                                             include_once realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
@@ -271,7 +248,7 @@
                                             }
                                         ?>
                                         <select name="province" class="form-select" aria-label="Default select example">
-                                            <option selected></option>
+                                        <option value="" selected>Województwo</option>
                                              <?php
                                                 for ($i = 0; $i < count($provinces); $i++) {
                                                     if ($provinces[$i]['id'] == $_GET['province']) {
@@ -284,17 +261,17 @@
                                             ?>
                                         </select>
                                             </div>
-                                            <span>Powiat</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['district']; ?>" name='district' type="text" class="form-control">
+                                            
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['district']; ?>" name='district' type="text" class="form-control" placeholder="Powiat">
                                             </div>
-                                            <span>Miasto</span>
-                                            <div class="input-group">
-                                                <input value="<?php echo $_GET['city']; ?>" name='city' type="text" class="form-control">
+                                            
+                                            <div class="input-group mt-3">
+                                                <input value="<?php echo $_GET['city']; ?>" name='city' type="text" class="form-control" placeholder="Miasto">
                                             </div>
                                             <input type="text" value='1' name='page' hidden>
                                             <div class="col-md-12 col12 d-flex justify-content-end" style="margin-top: 20px;">
-                                                <button class="btn btn-success" style="height: 50px; width:100px" type='submit'>Szukaj</button>
+                                                <button class="btn btn-danger" style="height: 50px; width:150px" type='submit'><i class="fa fa-search me-2"></i>Szukaj</button>
                                             </div>
                                         </div>
                                     </div>
