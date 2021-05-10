@@ -20,7 +20,7 @@
                             <a href="#">Reklama</a>
                         </div>
                         <div class="col-md-3 col-12" style="text-align:right">
-                            <a href="#">Kontakt z nami</a>
+                            <a href="../views/contactHelp.php">Kontakt z nami</a>
                         </div>
                     </div>
                 </div>
