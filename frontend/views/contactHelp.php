@@ -24,8 +24,9 @@ session_start();
             <h2 class="heading">Formularz zgłoszeniowy</h2>
         </center>
         <?php
-                if (isset($_SESSION["Submission"])) {
+                if (isset($_SESSION["Submission"])) {                    
                     echo "<h3 class='text-center' style='color: green'>" . $_SESSION['Submission'] . "</h3>";
+                    $_SESSION["Submission"]=null;
                 }
                 ?>
         <br>
