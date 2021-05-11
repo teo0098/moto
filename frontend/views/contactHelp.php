@@ -58,7 +58,7 @@ session_start();
                     <textarea class="form-control" name="problemDesc" id="" rows="6" placeholder="Nie dostaje e-maila potwierdzającego rejestracje"></textarea>
                     <br>
                     <center>
-                        <input type="submit" class="btn btn-success text-center" value="Wyślij Zgłoszenie">
+                        <input data-test-id='sendMessage' type="submit" class="btn btn-success text-center" value="Wyślij Zgłoszenie">
                     </center>
                 </form>
             </div>
