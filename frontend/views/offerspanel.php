@@ -22,6 +22,7 @@
     </header> 
 
     <?php
+        include realpath(dirname(__FILE__) . '/../../backend/db/models/Users.php');
         include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
         include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
 
@@ -41,6 +42,14 @@
 
     ?>
 
+    <?php
+        if (isset($_SESSION['offerDeleteError'])) 
+        {
+            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['offerDeleteError'] . '</div>';
+        }
+        $_SESSION['offerDeleteError'] = null;
+    ?>
+
     <div class="container d-flex justify-content-center">
         <div class="row col-md-6 col-md-offset-2 custyle">
             <div class="col d-flex justify-content-center mt-3">
@@ -57,10 +66,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>ID Użytkownika</th>
+                            <th>ID oferty</th>
+                            <th>Imię</th>
                             <th>ID Samochodu</th>
                             <th>Status oferty</th>
+                            <th>Przeglądaj</th>
                             <th>Edytuj</th>
                             <th>Usuń</th>
                         </tr>
@@ -72,8 +82,9 @@
                                 <td><?php echo $row['user_id']; ?></td>
                                 <td><?php echo $row['car_id']; ?></td>
                                 <td><?php echo $row['visible']; ?></td>
-                                <td><a href="" class="btn btn-primary">Edytuj</a> </td>
-                                <td><a href="" class="btn btn-danger">Usuń</a> </td>
+                                <td><a href="./offer.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Przejdź</a> </td>
+                                <td><a href="./myoffer.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edytuj</a> </td>
+                                <td><a href="../../backend/server/offers.php?method=DELETE&id=<?php echo $row['id']; ?>" class="btn btn-danger">Usuń</a> </td>
                             </tr>
                         <?php $i++; } ?>
                     </tbody>
@@ -83,6 +94,7 @@
                             <th>ID Użytkownika</th>
                             <th>ID Samochodu</th>
                             <th>Status oferty</th>
+                            <th>Przeglądaj</th>
                             <th>Edytuj</th>
                             <th>Usuń</th>
                         </tr>
@@ -92,15 +104,11 @@
         </div>
     </form>
 
+    <?php include "../templates/footer.php" ?>
 
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-    <script>
-        $(document).ready(function() { $('#dataTable').DataTable(); });
-    </script>
-
-    <?php include "../templates/footer.php" ?>
-
+    <script> $(document).ready(function() { $('#dataTable').DataTable(); });</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/3810206ae2.js" crossorigin="anonymous"></script>
 </body>

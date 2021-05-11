@@ -39,7 +39,7 @@ session_start();
 
         <div class="row d-flex justify-content-center">
             <div class="col col-md-4 col-12">
-                <form class="form-inline row d-flex justify-content-center mt-3" action="../views/userpanel.php">
+                <form class="form-inline row d-flex justify-content-center mt-3" action="../views/adminpanel.php">
                     <button class="btn shadow border-dark" style="width: 90%;" type='submit'><i class="fas fa-users me-3 butmy"></i>Zarządzaj użytkownikami</button>
                 </form>
             </div>
@@ -97,7 +97,7 @@ session_start();
                     ?>
                     <div class="container">
                         <h7> E-mail: </h7>
-                        <input type="text" value="<?php echo $_SESSION['userEmail']; ?>" class="d-block w-100" name="newEmail" />
+                        <input type="text" value="<?php echo $_SESSION['adminEmail']; ?>" class="d-block w-100" name="newEmail" />
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień e-maila</button>
                         </div>
@@ -116,7 +116,7 @@ session_start();
                 <form method="POST" action="../../backend/server/changePhone.php">
                     <div class="container">
                         <h7> Numer telefonu: </h7>
-                        <input type="text" value="<?php echo $_SESSION['userPhone'] ?>" class="d-block w-100" name="newPhone">
+                        <input type="text" value="<?php echo $_SESSION['adminPhone'] ?>" class="d-block w-100" name="newPhone">
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień numer telefonu</button>
                         </div>
@@ -135,9 +135,9 @@ session_start();
                 <form method="POST" action="../../backend/server/changePersonalData.php">
                     <div class="container">
                         <h7> Imię: </h7>
-                        <input type="text" value="<?php echo $_SESSION['userName'] ?>" class="d-block w-100" name="newName">
+                        <input type="text" value="<?php echo $_SESSION['adminName'] ?>" class="d-block w-100" name="newName">
                         <h7> Nazwisko: </h7>
-                        <input type="text" value="<?php echo $_SESSION['userSurname'] ?>" class="d-block w-100" name="newSurname">
+                        <input type="text" value="<?php echo $_SESSION['adminSurname'] ?>" class="d-block w-100" name="newSurname">
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień dane</button>
                         </div>
@@ -147,24 +147,7 @@ session_start();
             </div>
         </div>
 
-        <div class="container d-flex justify-content-center">
-            <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
-                <div class="rounded-circle text-center mt-2 bg-danger ms-auto me-auto circ2">
-                    <span class="fa fa-minus-circle mt-3"> </span>
-                </div>
-                <h4 class="text-center mt-3">Usuń konto</h4>
-                <form method="POST" action="../../backend/server/deleteAccount.php">
-                    <div class="container">
-                        <h7> Aktualne hasło: </h7>
-                        <input type="password" class="d-block w-100" name="password">
-                        <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-danger w-25 d-block center" type='submit'>Usuń konto</button>
-                        </div>
-                        <br>
-                    </div>
-                </form>
-            </div>
-        </div>
+
     </div>
 
     <?php include "../templates/footer.php" ?>

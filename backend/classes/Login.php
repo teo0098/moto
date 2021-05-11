@@ -2,6 +2,7 @@
     session_start();
 
     include realpath(dirname(__FILE__) . '/../db/models/Users.php');
+    include realpath(dirname(__FILE__) . '/../db/models/Admins.php');
 
     class Login {
 
@@ -26,35 +27,49 @@
                 header('Location: ../../frontend/views/signin.php');
             }
             else {
-                if (!Users::findUserByEmail($this->email, $connection)) {
-                    $_SESSION['loginError'] = 'Złe dane logowania';
+                if (!Users::findUserByEmail($this->email, $connection) && !Admins::findAdminByEmail($this->email, $connection)) {
+                    $_SESSION['loginError'] = 'Złe dane logowania1';
                     header('Location: ../../frontend/views/signin.php');
                 }
                 else {
                     $user = Users::getUserByEmail($this->email, $connection);
-                    if (!$user) {
-                        $_SESSION['loginError'] = 'Złe dane logowania';
+                    $admin = Admins::getAdminByEmail($this->email, $connection);
+                    if (!$user && !$admin) {
+                        $_SESSION['loginError'] = 'Złe dane logowania2';
                         header('Location: ../../frontend/views/signin.php');
                     }
                     else {
                         $user = mysqli_fetch_assoc($user);
-                        if (!password_verify($this->password, $user["password"])) {
+                        $admin = mysqli_fetch_assoc($admin);
+                        if (!password_verify($this->password, $user["password"]) && !password_verify($this->password, $admin["password"])) {
                             $_SESSION['loginError'] = 'Złe dane logowania';
                             header('Location: ../../frontend/views/signin.php');
                         }
                         else {
-                            $_SESSION['userID'] = $user["id"];
-                            $_SESSION['userName'] = $user["name"];
-                            $_SESSION['userEmail'] = $user["email"];
-                            $_SESSION['userPhone'] = $user["phone"];
-                            $_SESSION['userSurname'] = $user['surname'];
-                            header('Location: ../../frontend/views/userprofile.php');
+                            if($user)
+                            {
+                                $_SESSION['userID'] = $user["id"];
+                                $_SESSION['userName'] = $user["name"];
+                                $_SESSION['userEmail'] = $user["email"];
+                                $_SESSION['userPhone'] = $user["phone"];
+                                $_SESSION['userSurname'] = $user['surname'];
+                                $_SESSION['mode'] = 'user';
+                                header('Location: ../../frontend/views/userprofile.php');
+                            }
+                            else
+                            {
+                                $_SESSION['adminID'] = $admin["id"];
+                                $_SESSION['adminName'] = $admin["name"];
+                                $_SESSION['adminEmail'] = $admin["email"];
+                                $_SESSION['adminPhone'] = $admin["phone"];
+                                $_SESSION['adminSurname'] = $admin['surname'];
+                                $_SESSION['mode'] = 'admin';
+                                header('Location: ../../frontend/views/adminprofile.php');
+                            }
                         }
                     }
                 }
             }
         }
-
-
     }
 ?>

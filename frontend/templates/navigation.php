@@ -13,6 +13,11 @@
                             echo '<li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/userprofile.php"><i style="margin-right: 5px" class="fas fa-user"></i>'.$_SESSION['userName'].'</a></li>
                             <li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../../backend/server/logout.php"><i style="margin-right: 5px" class="fas fa-user-plus"></i>Wyloguj się</a></li>';
                         }
+                        else if(isset($_SESSION['adminName']))
+                        {
+                            echo '<li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/adminprofile.php"><i style="margin-right: 5px" class="fas fa-user"></i>'.$_SESSION['adminName'].'</a></li>
+                            <li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../../backend/server/logout.php"><i style="margin-right: 5px" class="fas fa-user-plus"></i>Wyloguj się</a></li>';
+                        }
                         else {
                             echo '<li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/signin.php"><i style="margin-right: 5px" class="fas fa-user"></i> Zaloguj się</a></li>
                             <li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/signup.php"><i style="margin-right: 5px" class="fas fa-user-plus"></i> Zarejestruj się</a></li>';
