@@ -25,7 +25,7 @@ session_start();
         </center>
         <?php
                 if (isset($_SESSION["Submission"])) {                    
-                    echo "<h3 class='text-center' style='color: green'>" . $_SESSION['Submission'] . "</h3>";
+                    echo "<h3 data-test-id='messageStatus' class='text-center' style='color: green'>" . $_SESSION['Submission'] . "</h3>";
                     $_SESSION["Submission"]=null;
                 }
                 ?>
@@ -46,7 +46,7 @@ session_start();
                     <textarea class="form-control" name="problemDesc" id="" rows="6" placeholder="Nie dostaje e-maila potwierdzającego rejestracje"></textarea>
                     <br>
                     <center>
-                        <input type="submit" class="btn btn-success text-center" value="Wyślij Zgłoszenie">
+                        <input data-test-id='sendMessage' type="submit" class="btn btn-success text-center" value="Wyślij Zgłoszenie">
                     </center>
                 </form>
             </div>
