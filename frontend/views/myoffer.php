@@ -28,6 +28,7 @@ session_start();
       include realpath(dirname(__FILE__) . '/../../backend/db/models/CarTypes.php');
       include realpath(dirname(__FILE__) . '/../../backend/db/models/CarStates.php');
       include realpath(dirname(__FILE__) . '/../../backend/db/models/Users.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/Admins.php');
 
       $db = new DB($host, $user, $password, $database);
       if (!$db->connect()) {
