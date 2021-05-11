@@ -19,6 +19,7 @@
             return false;
         }
 
+
         public static function insertUser($name, $surname, $email, $phone, $password, $connection) {
             $sqlQuery = "INSERT INTO users (`id`, `name`, `surname`, `email`, `phone`, `password`) VALUES (NULL, '$name', '$surname', '$email', '$phone', '$password')";
             $result = mysqli_query($connection, $sqlQuery);
@@ -36,6 +37,7 @@
             }
             return false;
         }
+
 
         public static function updatePassword($oldPassword, $newPassword, $connection) {
             if (!preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $oldPassword)
@@ -190,5 +192,9 @@
             }
             return false;
         }
+
+       
     }
+
+  
 ?>
