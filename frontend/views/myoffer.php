@@ -48,7 +48,14 @@ session_start();
           $carTypes = mysqli_fetch_all($carTypes, MYSQLI_ASSOC);  
           $carStates = CarStates::getStates($db->getConnection());
           $carStates = mysqli_fetch_all($carStates, MYSQLI_ASSOC);
-          $offer = Users::getOfferById($_GET['id'], $db->getConnection());
+          if(!$user)
+          {
+            $offer = Users::getOfferById($_GET['id'], $db->getConnection());
+          }
+          else
+          {
+            $offer = Admins::getOfferById($_GET['id'], $db->getConnection());
+          }
           if (!$offer) exit(0);
           $offer = mysqli_fetch_assoc($offer);
       }
@@ -303,6 +310,7 @@ session_start();
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/3810206ae2.js" crossorigin="anonymous"></script>
+  
 
   <script src="../js/displayImage.js"></script>
 
