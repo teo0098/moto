@@ -39,7 +39,7 @@ session_start();
 
         <div class="row d-flex justify-content-center">
             <div class="col col-md-4 col-12">
-                <form class="form-inline row d-flex justify-content-center mt-3" action="../views/adminpanel.php">
+                <form class="form-inline row d-flex justify-content-center mt-3" action="../views/userpanel.php">
                     <button class="btn shadow border-dark" style="width: 90%;" type='submit'><i class="fas fa-users me-3 butmy"></i>Zarządzaj użytkownikami</button>
                 </form>
             </div>
