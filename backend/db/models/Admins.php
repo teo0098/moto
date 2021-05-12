@@ -236,5 +236,83 @@
             return false;
         }
 
+        public static function updateUserPersonalData($newName, $newSurname, $id ,$connection) {
+            if (!preg_match('/^[A-Za-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ\s]{2,20}$/', $newName)
+            || !preg_match('/^[A-Za-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ\s]{2,30}$/', $newSurname)) {
+                return 'Wprowadzono niepoprawne dane';
+            }
+            $sqlQuery = "UPDATE users SET `name`='$newName', surname='$newSurname' WHERE id=$id";
+            $result = mysqli_query($connection, $sqlQuery);
+            if (!$result) {
+                return false;
+            }
+            return true;
+        }
+
+        public static function updateUserEmail($newEmail, $id, $connection) 
+        {
+            if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) 
+            {
+                return 'Wprowadzono niepoprawne dane';
+            }
+            $sqlQuery = "SELECT * FROM users WHERE id<>$id AND email='$newEmail'";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result->num_rows > 0) 
+            {
+                return 'Adres e-mail jest już w użyciu';
+            }
+            $sqlQuery2 = "UPDATE users SET email='$newEmail' WHERE id=$id";
+            $result2 = mysqli_query($connection, $sqlQuery2);
+            if (!$result2) 
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static function updateUserPhone($newPhone, $id, $connection) 
+        {
+            if (!preg_match('/^[\d]{4,15}$/', $newPhone)) 
+            {
+                return 'Wprowadzono niepoprawne dane';
+            }
+            $sqlQuery = "SELECT * FROM users WHERE id<>$id AND phone='$newPhone'";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result->num_rows > 0) 
+            {
+                return 'Numer telefonu jest już w użyciu';
+            }
+            $sqlQuery2 = "UPDATE users SET phone='$newPhone' WHERE id=$id";
+            $result2 = mysqli_query($connection, $sqlQuery2);
+            if (!$result2) 
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static function updateUserPassword($newPassword, $id, $connection) {
+            if (!preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $newPassword)) {
+                    return 'Wprowadzono niepoprawne dane';
+            }
+            $sqlQuery = "SELECT * FROM users WHERE id=$id";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result->num_rows < 1) {
+                return false;
+            }
+            $user = mysqli_fetch_assoc($result);
+            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            if (!$hashedPassword) {
+                return false;
+            }
+            $sqlQuery2 = "UPDATE users SET `password`='$hashedPassword'";
+            $result2 = mysqli_query($connection, $sqlQuery2);
+            if (!$result2) {
+                return false;
+            }
+            return true;
+        }
+
+
     }
 ?>

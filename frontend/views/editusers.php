@@ -73,29 +73,31 @@
     <div class="container d-flex justify-content-center">
         <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
             <h4 class="text-center mt-3">Zmień dane użytkownika</h4>
-            <form method="POST" action="../../backend/server/changePersonalData.php">
+            <form method="POST" action="../../backend/server/changePersonalDataAdmin.php">
                 <div class="container">
                     <h7> Imię użytkownika: </h7>
                     <input type="text" value="<?php echo $user['name'] ?>" class="d-block w-100" name="newName">
                     <h7> Nazwisko użytkownika: </h7>
-                    <input type="text" value="<?php echo $user['surname'] ?>" class="d-block w-100" name="newPhone">
+                    <input type="text" value="<?php echo $user['surname'] ?>" class="d-block w-100" name="newSurname">
                     <div class="form-group row d-flex justify-content-center mt-3">
                         <button class="btn btn-outline-secondary w-50 d-block center" type='submit'>Zmień dane użytkownika</button>
                     </div>
                     <br>
                 </div>
+                <input type="text" hidden name="id" value="<?php echo $_GET['id'];?>" />
                 </form>
-                <form method="POST" action="../../backend/server/changeEmail.php">
+                <form method="POST" action="../../backend/server/changeEmailAdmin.php">
                     <div class="container">
                         <h7> Email użytkownika: </h7>
-                        <input type="text" value="<?php echo $user['email'] ?>" class="d-block w-100" name="newPhone">
+                        <input type="text" value="<?php echo $user['email'] ?>" class="d-block w-100" name="newEmail">
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-secondary w-50 d-block center" type='submit'>Zmień email użytkownika</button>
                         </div>
                         <br>
                     </div>
+                    <input type="text" hidden name="id" value="<?php echo $_GET['id'];?>" />
                 </form>
-                <form method="POST" action="../../backend/server/changePhone.php">
+                <form method="POST" action="../../backend/server/changePhoneAdmin.php">
                     <div class="container">
                         <h7> Numer telefonu: </h7>
                         <input type="text" value="<?php echo $user['phone'] ?>" class="d-block w-100" name="newPhone">
@@ -104,16 +106,18 @@
                         </div>
                         <br>
                     </div>
+                    <input type="text" hidden name="id" value="<?php echo $_GET['id'];?>" />
                 </form>
-                <form method="POST" action="../../backend/server/changePassword.php">
+                <form method="POST" action="../../backend/server/changePasswordAdmin.php">
                     <div class="container">
                         <h7> Hasło użytkownika: </h7>
-                        <input type="text" value="" class="d-block w-100" name="newPhone">
+                        <input type="text" value="" class="d-block w-100" name="newPass">
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-secondary w-50 d-block center" type='submit'>Zmień hasło użytkownika</button>
                         </div>
                         <br>
                     </div>
+                    <input type="text" hidden name="id" value="<?php echo $_GET['id'];?>" />
                 </form>
                 
             </div>
