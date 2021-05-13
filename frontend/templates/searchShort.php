@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="col-md-12 col12 d-flex justify-content-center" style="margin-top: 20px;">
-                                <button class="btn btn-danger" style="height: 50px; width:150px" type='submit'><i class="fa fa-search me-2"></i>Szukaj</button>
+                                <button data-test-id='searchShort' class="btn btn-danger" style="height: 50px; width:150px" type='submit'><i class="fa fa-search me-2"></i>Szukaj</button>
                             </div>
                         </form>
                     </article>

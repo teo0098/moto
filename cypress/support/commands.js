@@ -1,3 +1,11 @@
+Cypress.Commands.add("login", () => {
+  cy.get("input[name=email]")
+    .clear({ force: true })
+    .type("teodor.tkaczyk98@gmail.com");
+  cy.get("input[name=password]").clear({ force: true }).type("haslo1234");
+  cy.get('button[type="submit"]').click({ force: true });
+  cy.url().should("include", "/userprofile.php");
+});
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite

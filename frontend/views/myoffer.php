@@ -66,11 +66,11 @@ session_start();
       <div class="card" style="width:1000px">
       <?php
         if (isset($_SESSION['offerEditError'])) {
-            echo '<div class="alert alert-danger" role="alert">
+            echo '<div data-test-id="offerEditError" class="alert alert-danger" role="alert">
                                 ' . $_SESSION['offerEditError'] . '
                             </div>';
         } else if (isset($_SESSION['offerEditSuccess'])) {
-            echo '<div class="alert alert-success" role="alert">
+            echo '<div data-test-id="offerEditSuccess" class="alert alert-success" role="alert">
                                 ' . $_SESSION['offerEditSuccess'] . '
                             </div>';
         }
@@ -293,7 +293,7 @@ session_start();
 
             <div class="col-12">
               <div class="row justify-content-center" style="margin-top: 50px;">
-                <input type="submit" value="Edytuj aukcje" style="width: 300px; font-size: 33px; background-color: red; color:white; border: none; text-align:center">
+                <input data-test-id='editOffer' type="submit" value="Edytuj aukcje" style="width: 300px; font-size: 33px; background-color: red; color:white; border: none; text-align:center">
               </div>
             </div>
 

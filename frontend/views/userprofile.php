@@ -46,7 +46,7 @@ session_start();
             <div class="col col-md-4 col-12">
                 <form class="form-inline row d-flex justify-content-center mt-3" action="../views/myoffers.php">
                     <input type='text' hidden name='page' value='1' />
-                    <button class="btn shadow border-dark" style="width: 90%;" type='submit'><i class="fa fa-car me-3 butmy"></i>Moje ogłoszenia</button>
+                    <button data-test-id='myOffers' class="btn shadow border-dark" style="width: 90%;" type='submit'><i class="fa fa-car me-3 butmy"></i>Moje ogłoszenia</button>
                 </form>
             </div>
             <div class="col col-md-4 col-12">
@@ -71,7 +71,7 @@ session_start();
                         <h7> Powtórz nowe hasło: </h7>
                         <input type="password" class="d-block w-100" name="repeatnewpass">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień hasło</button>
+                            <button data-test-id="passwordChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień hasło</button>
                         </div>
                         <br>
                     </div>
@@ -87,24 +87,11 @@ session_start();
                 </div>
                 <h4 class="text-center mt-3">Zmiana e-maila</h4>
                 <form method="POST" action="../../backend/server/changeEmail.php">
-                    <?php
-                    if (isset($_SESSION['changeEmailError'])) {
-                        echo '<div class="alert alert-danger" role="alert">
-                                            ' . $_SESSION['changeEmailError'] . '
-                                        </div>';
-                    } else if (isset($_SESSION['changeEmailSuccess'])) {
-                        echo '<div class="alert alert-success" role="alert">
-                                            ' . $_SESSION['changeEmailSuccess'] . '
-                                        </div>';
-                    }
-                    $_SESSION['changeEmailError'] = null;
-                    $_SESSION['changeEmailSuccess'] = null;
-                    ?>
                     <div class="container">
                         <h7> E-mail: </h7>
                         <input type="text" value="<?php echo $_SESSION['userEmail']; ?>" class="d-block w-100" name="newEmail" />
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień e-maila</button>
+                            <button data-test-id="emailChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień e-maila</button>
                         </div>
                         <br>
                     </div>
@@ -123,7 +110,7 @@ session_start();
                         <h7> Numer telefonu: </h7>
                         <input type="text" value="<?php echo $_SESSION['userPhone'] ?>" class="d-block w-100" name="newPhone">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień numer telefonu</button>
+                            <button data-test-id="phoneChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień numer telefonu</button>
                         </div>
                         <br>
                     </div>
@@ -144,7 +131,7 @@ session_start();
                         <h7> Nazwisko: </h7>
                         <input type="text" value="<?php echo $_SESSION['userSurname'] ?>" class="d-block w-100" name="newSurname">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień dane</button>
+                            <button data-test-id="dataChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień dane</button>
                         </div>
                         <br>
                     </div>
@@ -163,7 +150,7 @@ session_start();
                         <h7> Aktualne hasło: </h7>
                         <input type="password" class="d-block w-100" name="password">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-danger w-25 d-block center" type='submit'>Usuń konto</button>
+                            <button data-test-id="deleteAccount" class="btn btn-outline-danger w-25 d-block center" type='submit'>Usuń konto</button>
                         </div>
                         <br>
                     </div>

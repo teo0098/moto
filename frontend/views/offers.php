@@ -54,7 +54,7 @@ session_start();
             <?php if ($cars != false) { for ($i = 0; $i < count($cars); $i++) { ?>
                 <div class="row" style="height: 250px; max-height:250px; margin-top:10px">
                     <div class="col col-md-4" style="display:flex; justify-content: flex-end">
-                        <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
+                        <a data-test-id='offerNr<?php echo $i; ?>' style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
                             <img class="img-offers" src="<?php echo $cars[$i]["image_url"] ?> " alt="...">
                         </a>
                     </div>
@@ -97,7 +97,7 @@ session_start();
                 $count =  $offersAmount['offersAmount'];
                 $count = ceil(intval($count)/5);                
                 for($i=0; $i<$count; $i++){
-                    echo ' <li class="page-item"><a class="page-link" href="./offers.php?brand='.$_GET['brand'].'&priceFrom='.$_GET['priceFrom'].'&priceTo='.$_GET['priceTo'].'&runFrom='.$_GET['runFrom'].'&runTo='.$_GET['runTo'].'&model='.$_GET['model'].'&production_year='.$_GET['production_year'].'&fuel='.$_GET['fuel'].'&power='.$_GET['power'].'&gearbox='.$_GET['gearbox'].'&drive='.$_GET['drive'].'&door='.$_GET['door'].'&seats='.$_GET['seats'].'&origin='.$_GET['origin'].'&state='.$_GET['state'].'&engine_capacity='.$_GET['engine_capacity'].'&type='.$_GET['type'].'&color='.$_GET['color'].'&province='.$_GET['province'].'&district='.$_GET['district'].'&city='.$_GET['city'].'&page='.($i+1).'">'.($i+1).'</a></li>';
+                    echo ' <li class="page-item"><a data-test-id="page'.($i + 1).'" class="page-link" href="./offers.php?brand='.$_GET['brand'].'&priceFrom='.$_GET['priceFrom'].'&priceTo='.$_GET['priceTo'].'&runFrom='.$_GET['runFrom'].'&runTo='.$_GET['runTo'].'&model='.$_GET['model'].'&production_year='.$_GET['production_year'].'&fuel='.$_GET['fuel'].'&power='.$_GET['power'].'&gearbox='.$_GET['gearbox'].'&drive='.$_GET['drive'].'&door='.$_GET['door'].'&seats='.$_GET['seats'].'&origin='.$_GET['origin'].'&state='.$_GET['state'].'&engine_capacity='.$_GET['engine_capacity'].'&type='.$_GET['type'].'&color='.$_GET['color'].'&province='.$_GET['province'].'&district='.$_GET['district'].'&city='.$_GET['city'].'&page='.($i+1).'">'.($i+1).'</a></li>';
                 }
                 
                 ?>
