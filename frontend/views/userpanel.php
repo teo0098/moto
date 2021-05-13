@@ -51,7 +51,6 @@
         </div>
     </div>
 
-    <form class="form-userpanel" method="GET" action="../../backend/server/Users.php">
         <div class="container d-flex justify-content-center">
             <div class="table-responsive p-3">
                 <table class="table table-bordered" id="dataTable" width="100%">
@@ -74,9 +73,23 @@
                                 <td><?php echo $row['name']; ?></td>
                                 <td><?php echo $row['surname']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
-                                <td><?php echo $row['active']; ?></td>
+                                <td><?php if($row['active']==1){echo "Aktywny";} else{echo "Zablokowany";} ?></td>
                                 <td><a href="./editusers.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edytuj</a> </td>
-                                <td><a href="" class="btn btn-warning">Blokuj</a> </td>
+                                <td>                                
+                                <?php 
+                                if($row['active']==1)
+                                {
+                                    echo '<form method="POST" action="../../backend/server/users.php?method=PATCH&id='.$row["id"].'">
+                                    <input type="text" hidden name="active" value="0"/><button class="btn btn-warning">Blokuj</button></form>';
+                                } 
+                                else
+                                {
+                                    echo '<form method="POST" action="../../backend/server/users.php?method=PATCH&id='.$row["id"].'">
+                                    <input type="text" hidden name="active" value="1"/><button class="btn btn-warning">Odblokuj</button>
+                                    </form>';
+                                }
+                                ?>
+                                </td>
                                 <td><a href="" class="btn btn-danger">Usuń</a> </td>
                             </tr>
                         <?php $i++; } ?>
@@ -96,7 +109,6 @@
                 </table>
             </div>
         </div>
-    </form>
 
 
     <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>

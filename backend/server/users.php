@@ -54,31 +54,9 @@
         if (!$result) {
             throw new Exception("Unable to create table offers");
         }
-        switch ($_SERVER['REQUEST_METHOD']) {
-            case 'GET': {
-                if (isset($_GET['id']) && $_GET['id'] != null) {
-                    if (!preg_match('/^[0-9]+$/', $_GET['id'])) {
-                        throw new Exception('Invalid parameter - id must be unsigned integer');
-                    }
-                    $offer = Offers::getOfferById($_GET['id'], $db->getConnection());
-                    if (!$offer) {
-                        throw new Exception('Unable to retrieve offer');
-                    }
-                    echo json_encode(mysqli_fetch_assoc($offer));
-                }
-                else {
-                    if (!preg_match('/^[0-9]+$/', $_GET['limit'])
-                        || !preg_match('/^[0-9]+$/', $_GET['offset'])) {
-                            throw new Exception('Invalid parameters - limit and offset must be unsigned integers');
-                    }
-                    $offers = Offers::getOffers($_GET['limit'], $_GET['offset'], $db->getConnection());
-                    if (!$offers) {
-                        throw new Exception('Unable to retrieve offers');
-                    }
-                    echo json_encode(mysqli_fetch_assoc($offers));
-                }
-            }
-            break;
+
+        switch ($_SERVER['REQUEST_METHOD']) 
+        {
             case 'POST': {
                 if (!isset($_SESSION['userID']) && !isset($_SESSION['adminID'])) {
                     throw new Exception('Unauthorized access');
@@ -141,53 +119,41 @@
                         if ($validID != null) {
                             throw new Exception($validID);
                         }
-                        $visible = $_POST['visible'];
-                        if (!preg_match('/^[0-1]{1}$/', $visible)) {
+                        $active = $_POST['active'];
+                        if (!preg_match('/^[0-1]{1}$/', $active)) {
                             throw new Exception('Bad data entered');
                         }
-                        if (!Offers::updateVisibility($_GET['id'], $visible, $db->getConnection())) {
+                        if (!Admins::updateActivity($_GET['id'], $active, $db->getConnection())) {
                             throw new Exception('Unable to update offer');
                         }
-                        header("Location: ../../frontend/views/offerspanel.php?");
+                        header("Location: ../../frontend/views/userpanel.php?");
                     }
                     break;
                     case 'DELETE': {
                         $validID = validateID($_GET['id']);
                         if ($validID != null) {
                             $_SESSION['offerDeleteError'] = $validID;
-                            if(isset($_SESSION['userID']))
-                                header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
-                            else if(isset($_SESSION['adminID']))
-                                header("Location: ../../frontend/views/offerspanel.php?");
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
                             break;
                         }
                         $offer = Offers::getOfferById($_GET['id'], $db->getConnection());
                         if (!$offer) {
                             $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
-                            if(isset($_SESSION['userID']))
-                                header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
-                            else if(isset($_SESSION['adminID']))
-                                header("Location: ../../frontend/views/offerspanel.php?");
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
                             break;
                         }
                         $offer = mysqli_fetch_assoc($offer);
                         $car = Cars::getCarById($offer['car_id'], $db->getConnection());
                         if (!$car) {
                             $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
-                            if(isset($_SESSION['userID']))
-                                header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
-                            else if(isset($_SESSION['adminID']))
-                                header("Location: ../../frontend/views/offerspanel.php?");
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
                             break;
                         }
                         $car = mysqli_fetch_assoc($car);
                         $carImages = CarImages::getCarImages($offer['car_id'], $db->getConnection());
                         if (!$carImages) {
                             $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
-                            if(isset($_SESSION['userID']))
-                                header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
-                            else if(isset($_SESSION['adminID']))
-                                header("Location: ../../frontend/views/offerspanel.php?");
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
                             break;
                         }
                         $carImages = mysqli_fetch_all($carImages, MYSQLI_ASSOC);
@@ -197,16 +163,10 @@
                         }
                         if (!Cars::deleteCar($offer['car_id'], $db->getConnection())) {
                             $_SESSION['offerDeleteError'] = 'Chwilowo nie można usunąć oferty';
-                            if(isset($_SESSION['userID']))
-                                header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
-                            else if(isset($_SESSION['adminID']))
-                                header("Location: ../../frontend/views/offerspanel.php?");
+                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
                             break;
                         }
-                        if(isset($_SESSION['userID']))
-                            header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
-                        else if(isset($_SESSION['adminID']))
-                            header("Location: ../../frontend/views/offerspanel.php?");
+                        header("Location: ../../frontend/views/myoffers.php?page=".$_GET['page']."");
                     }
                     break;
                     default: {

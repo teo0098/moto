@@ -27,7 +27,7 @@ session_start();
       include realpath(dirname(__FILE__) . '/../../backend/db/models/Provinces.php');
       include realpath(dirname(__FILE__) . '/../../backend/db/models/CarTypes.php');
       include realpath(dirname(__FILE__) . '/../../backend/db/models/CarStates.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/models/Users.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/Admins.php');
 
       $db = new DB($host, $user, $password, $database);
       if (!$db->connect()) {
@@ -47,7 +47,7 @@ session_start();
           $carTypes = mysqli_fetch_all($carTypes, MYSQLI_ASSOC);  
           $carStates = CarStates::getStates($db->getConnection());
           $carStates = mysqli_fetch_all($carStates, MYSQLI_ASSOC);
-          $offer = Users::getOfferById($_GET['id'], $db->getConnection());
+          $offer = Admins::getOfferByIdAdmin($_GET['id'], $db->getConnection());
           if (!$offer) exit(0);
           $offer = mysqli_fetch_assoc($offer);
       }
@@ -58,11 +58,11 @@ session_start();
       <div class="card" style="width:1000px">
       <?php
         if (isset($_SESSION['offerEditError'])) {
-            echo '<div data-test-id="offerEditError" class="alert alert-danger" role="alert">
+            echo '<div class="alert alert-danger" role="alert">
                                 ' . $_SESSION['offerEditError'] . '
                             </div>';
         } else if (isset($_SESSION['offerEditSuccess'])) {
-            echo '<div data-test-id="offerEditSuccess" class="alert alert-success" role="alert">
+            echo '<div class="alert alert-success" role="alert">
                                 ' . $_SESSION['offerEditSuccess'] . '
                             </div>';
         }
@@ -70,7 +70,7 @@ session_start();
         $_SESSION['offerEditSuccess'] = null;
         ?>
         <article class="card-body" style="max-width: 1200px;">
-          <h4 class="card-title mt-3 text-center">Edytuj swoją ofertę</h4>
+          <h4 class="card-title mt-3 text-center">Edytuj ofertę</h4>
           <form class="form-postOffer" method='POST' action="../../backend/server/offers.php?method=PUT&id=<?php echo $offer['id']; ?>">           
             <div class="row" style="margin-top: 20px;">
               <div class="col-md-6 col-12">
@@ -285,7 +285,7 @@ session_start();
 
             <div class="col-12">
               <div class="row justify-content-center" style="margin-top: 50px;">
-                <input data-test-id='editOffer' type="submit" value="Edytuj aukcje" style="width: 300px; font-size: 33px; background-color: red; color:white; border: none; text-align:center">
+                <input type="submit" value="Edytuj aukcje" style="width: 300px; font-size: 33px; background-color: red; color:white; border: none; text-align:center">
               </div>
             </div>
 
