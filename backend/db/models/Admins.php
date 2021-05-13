@@ -136,26 +136,11 @@
             return true;
         }
 
-        public static function deleteAccount($password, $connection) 
+        public static function deleteAccount($id, $connection) 
         {
-            if (!preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $password)) 
-            {
-                return 'Wprowadzono niepoprawne dane';
-            }
-            $sqlQuery = "SELECT * FROM admins WHERE id=".$_SESSION['adminID']."";
+            $sqlQuery = "DELETE FROM users WHERE id=$id";
             $result = mysqli_query($connection, $sqlQuery);
-            if ($result->num_rows < 1) 
-            {
-                return false;
-            }
-            $admin = mysqli_fetch_assoc($result);
-            if (!password_verify($password, $admin["password"])) 
-            {
-                return 'Wprowadzono niepoprawne hasło';
-            }
-            $sqlQuery2 = "DELETE FROM admins WHERE id=".$_SESSION['adminID']."";
-            $result2 = mysqli_query($connection, $sqlQuery2);
-            if (!$result2) 
+            if (!$result) 
             {
                 return false;
             }
@@ -321,6 +306,8 @@
             }
             return false;
         }
+
+        
 
     }
 ?>
