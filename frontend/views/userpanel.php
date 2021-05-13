@@ -67,7 +67,7 @@
                         </tr>
                     </thead>
                     <tbody>  
-                        <?php $i=0; while($row = mysqli_fetch_array($result)) { ?>
+                        <?php while($row = mysqli_fetch_array($result)) { ?>
                             <tr>
                                 <td><?php echo $row['id']; ?></td>
                                 <td><?php echo $row['name']; ?></td>
@@ -90,9 +90,14 @@
                                 }
                                 ?>
                                 </td>
-                                <td><a href="" class="btn btn-danger">Usuń</a> </td>
+                                <td>
+                                    <form method='POST' action="../../backend/server/deleteUserAccount.php">
+                                        <input type="text" hidden name="id" value="<?php echo $row['id']; ?>"/>
+                                        <button class="btn btn-danger">Usuń</button>
+                                    </form>
+                                </td>
                             </tr>
-                        <?php $i++; } ?>
+                        <?php } ?>
                     </tbody>
                     <tfoot>
                         <tr>
