@@ -28,14 +28,14 @@
             }
             else {
                 if (!Users::findUserByEmail($this->email, $connection) && !Admins::findAdminByEmail($this->email, $connection)) {
-                    $_SESSION['loginError'] = 'Złe dane logowania1';
+                    $_SESSION['loginError'] = 'Złe dane logowania';
                     header('Location: ../../frontend/views/signin.php');
                 }
                 else {
                     $user = Users::getUserByEmail($this->email, $connection);
                     $admin = Admins::getAdminByEmail($this->email, $connection);
                     if (!$user && !$admin) {
-                        $_SESSION['loginError'] = 'Złe dane logowania2';
+                        $_SESSION['loginError'] = 'Złe dane logowania';
                         header('Location: ../../frontend/views/signin.php');
                     }
                     else {

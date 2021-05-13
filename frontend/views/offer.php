@@ -36,6 +36,13 @@ session_start();
                         </div>';
     } else {
         $car = Offers::getOfferById($_GET['id'], $db->getConnection());
+        if(!$car)
+        {
+            echo '<div class="alert alert-danger" role="alert">
+                            Oferta została zablokowana
+                        </div>';
+            exit(0);
+        }
         $car = mysqli_fetch_assoc($car);
         $carImages = CarImages::getCarImages($car["car_id"], $db->getConnection());
         $carImages = mysqli_fetch_all($carImages, MYSQLI_ASSOC);       
