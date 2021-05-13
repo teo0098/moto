@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/userprofile.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <title>Moto.pl</title>
 </head>
@@ -74,7 +75,7 @@
                                 <td><?php echo $row['surname']; ?></td>
                                 <td><?php echo $row['email']; ?></td>
                                 <td><?php echo $row['active']; ?></td>
-                                <td><a href="" class="btn btn-primary">Edytuj</a> </td>
+                                <td><a href="./editusers.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edytuj</a> </td>
                                 <td><a href="" class="btn btn-warning">Blokuj</a> </td>
                                 <td><a href="" class="btn btn-danger">Usuń</a> </td>
                             </tr>
@@ -106,8 +107,11 @@
 
     <?php include "../templates/footer.php" ?>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/3810206ae2.js" crossorigin="anonymous"></script>
+    <script>$(document).ready( function () { $('#dataTable').DataTable(); } )</script>
 </body>
 
 </html>
