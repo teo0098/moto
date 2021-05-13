@@ -13,6 +13,7 @@ session_start();
     <title>Moto.pl</title>
 </head>
 
+
 <body>
     <header class="sticky-top">
         <?php include "../templates/navigation.php" ?>
@@ -24,11 +25,14 @@ session_start();
             <h2 class="heading">Formularz zgłoszeniowy</h2>
         </center>
         <?php
-                if (isset($_SESSION["Submission"])) {                    
-                    echo "<h3 class='text-center' style='color: green'>" . $_SESSION['Submission'] . "</h3>";
-                    $_SESSION["Submission"]=null;
-                }
-                ?>
+        if (isset($_SESSION["Submission"]) && $_SESSION["Submission"] =="Zgłoszenie zostało wysłane poprawnie") {
+            echo "<h3 class='text-center' style='color: green'>" . $_SESSION['Submission'] . "</h3>";
+            $_SESSION["Submission"] = null;
+        }else if (isset($_SESSION["Submission"]) && $_SESSION["Submission"]=="Wystąpił błąd przy wysyłaniu zgłoszenia" || $_SESSION["Submission"]=="Wypełnij wszystkie pola tekstowe") {
+            echo "<h3 class='text-center' style='color: red'>" . $_SESSION['Submission'] . "</h3>";
+            $_SESSION["Submission"] = null;
+        }
+        ?>
         <br>
         <div class="row">
             <div class="col-md-6">
@@ -36,8 +40,16 @@ session_start();
                     <h4 class="">Podaj temat zgłoszenia</h4>
                     <input class="form-control" type="Text" name="subject" id="" placeholder="np. Problem z logowaniem się">
                     <br>
-                    <h4 class="">Podaj nazwę użytkownika</h4>
-                    <input class="form-control" type="Text" name="username" id="" placeholder="Jarek45">
+                    <h4 class="">Podaj imię oraz nazwisko</h4>
+                    <div class="row">
+                        <div class="col col-md-6">
+                            <input class="form-control" type="Text" name="name" id="" placeholder="Jan">
+                        </div>
+                        <div class="col col-md-6">
+                            <input class="form-control" type="Text" name="surname" id="" placeholder="Kowalski">
+                        </div>
+                    </div>
+
                     <br>
                     <h4 class="">Podaj adres e-mail</h4>
                     <input class="form-control" type="Email" name="email" id="" placeholder="serwismoto@gmail.com">
@@ -57,7 +69,7 @@ session_start();
                 <br>
                 <h4 class="text-center">Obsługa klienta</h4>
                 <p class="text-center mt-4">Numer kontaktowy: 123456789</p>
-                <p class="text-center">Adres zgłoszeniowy: serwismoto@gmail.com</p>              
+                <p class="text-center">Adres zgłoszeniowy: serwismoto@gmail.com</p>
             </div>
         </div>
 
