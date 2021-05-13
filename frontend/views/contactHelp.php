@@ -26,10 +26,10 @@ session_start();
         </center>
         <?php
         if (isset($_SESSION["Submission"]) && $_SESSION["Submission"] =="Zgłoszenie zostało wysłane poprawnie") {
-            echo "<h3 class='text-center' style='color: green'>" . $_SESSION['Submission'] . "</h3>";
+            echo "<h3 data-test-id='messageStatusSuccess' class='text-center' style='color: green'>" . $_SESSION['Submission'] . "</h3>";
             $_SESSION["Submission"] = null;
         }else if (isset($_SESSION["Submission"]) && $_SESSION["Submission"]=="Wystąpił błąd przy wysyłaniu zgłoszenia" || $_SESSION["Submission"]=="Wypełnij wszystkie pola tekstowe") {
-            echo "<h3 class='text-center' style='color: red'>" . $_SESSION['Submission'] . "</h3>";
+            echo "<h3 data-test-id='messageStatusError' class='text-center' style='color: red'>" . $_SESSION['Submission'] . "</h3>";
             $_SESSION["Submission"] = null;
         }
         ?>
