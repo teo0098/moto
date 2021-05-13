@@ -12,7 +12,7 @@
             return false;
         }
 
-        public static function findaAdminByPhone($phone, $connection) 
+        public static function findAdminByPhone($phone, $connection) 
         {
             $sqlQuery = "SELECT * FROM admins WHERE phone='$phone'";
             $result = mysqli_query($connection, $sqlQuery);
@@ -202,12 +202,12 @@
             return false;
         }
 
-        public static function getOfferById($id, $connection) 
+        public static function getOfferByIdAdmin($id, $connection) 
         {
             $sqlQuery = "SELECT offers.id, offers.price, provinces.name AS province, offers.district, offers.city, offers.description, 
             offers.date, offers.car_id, cars.brand, cars.model, cars.production_year, cars.run, car_fuels.fuel, cars.power, gearbox.type AS gearbox,
             car_drives.drive, car_types.type, cars.door, cars.seats, cars.color, cars.origin, car_states.state, cars.VIN, cars.engine_capacity, cars.image_url, users.name, users.surname, users.phone
-            FROM offers 
+            FROM offers
             JOIN cars ON offers.car_id=cars.id 
             JOIN provinces ON offers.province=provinces.id
             JOIN car_fuels ON cars.fuel=car_fuels.id
@@ -224,6 +224,7 @@
             }
             return false;
         }
+        
 
         public static function getUserById($id, $connection)
         {
@@ -312,7 +313,14 @@
             }
             return true;
         }
-
+        public static function updateActivity($id, $active, $connection) {
+            $sqlQuery = "UPDATE users SET active=$active WHERE id=$id";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result) {
+                return true;
+            }
+            return false;
+        }
 
     }
 ?>

@@ -22,7 +22,7 @@
     </header> 
 
     <?php
-        include realpath(dirname(__FILE__) . '/../../backend/db/models/Users.php');
+        include realpath(dirname(__FILE__) . '/../../backend/db/models/Admins.php');
         include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
         include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
 
@@ -35,11 +35,11 @@
             } 
             else 
             {
-                $sqlQuery = "SELECT * FROM offers";
+                $sqlQuery = "SELECT offers.id, offers.user_id, offers.car_id, offers.visible, cars.brand, cars.model, users.name, users.surname FROM offers
+                INNER JOIN users ON offers.user_id = users.id
+                INNER JOIN cars ON offers.car_id = cars.id";
                 $result = mysqli_query($db->getConnection(), $sqlQuery);
             }
-
-
     ?>
 
     <?php
@@ -60,7 +60,6 @@
         </div>
     </div>
 
-    <form class="form-userpanel" method="GET" action="../../backend/server/Users.php">
         <div class="container d-flex justify-content-center">
             <div class="table-responsive p-3">
                 <table class="table table-bordered" id="dataTable" width="100%">
@@ -68,32 +67,59 @@
                         <tr>
                             <th>ID oferty</th>
                             <th>Imię</th>
-                            <th>ID Samochodu</th>
+                            <th>Nazwisko</th>
+                            <th>ID samochodu</th>
+                            <th>Pojazd</th>
                             <th>Status oferty</th>
+                            <th>Blokuj</th>
                             <th>Przeglądaj</th>
                             <th>Edytuj</th>
                             <th>Usuń</th>
                         </tr>
                     </thead>
                     <tbody>  
-                        <?php $i=0; while($row = mysqli_fetch_array($result)) { ?>
+                        <?php while($row = mysqli_fetch_array($result)) { ?>
                             <tr>
                                 <td><?php echo $row['id']; ?></td>
-                                <td><?php echo $row['user_id']; ?></td>
+                                <td><?php echo $row['name']; ?></td>
+                                <td><?php echo $row['surname']; ?></td>
                                 <td><?php echo $row['car_id']; ?></td>
-                                <td><?php echo $row['visible']; ?></td>
-                                <td><a href="./offer.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Przejdź</a> </td>
-                                <td><a href="./myoffer.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edytuj</a> </td>
-                                <td><a href="../../backend/server/offers.php?method=DELETE&id=<?php echo $row['id']; ?>" class="btn btn-danger">Usuń</a> </td>
+                                <td><?php echo $row['brand']. ' ' .$row['model']; ?></td>
+                                <td><?php if($row['visible']==1){echo "Aktywny";} else{echo "Zablokowany";} ?></td>
+                                <td>
+                                <?php 
+                                if($row['visible']==1)
+                                {
+                                    echo '<form method="POST" action="../../backend/server/offers.php?method=PATCH&id='.$row["id"].'">
+                                    <input type="text" hidden name="visible" value="0"/><button class="btn btn-warning">Blokuj</button></form>';
+                                } 
+                                else
+                                {
+                                    echo '<form method="POST" action="../../backend/server/offers.php?method=PATCH&id='.$row["id"].'">
+                                    <input type="text" hidden name="visible" value="1"/><button class="btn btn-warning">Odblokuj</button>
+                                    </form>';
+                                }
+                                ?>
+                                </td>
+                                <td><a href="./offer.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Przejdź</a></td>
+                                <td><a href="./userofferAdmin.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Edytuj</a></td>
+                                <td>
+                                    <form style=" height:0px;" method='POST' action="../../backend/server/offers.php?method=DELETE&id=<?php echo $row['id']; ?>">
+                                        <button class="btn btn-danger">Usuń</button>
+                                    </form>
+                                </td>
                             </tr>
-                        <?php $i++; } ?>
+                        <?php } ?>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>ID</th>
-                            <th>ID Użytkownika</th>
-                            <th>ID Samochodu</th>
+                            <th>ID oferty</th>
+                            <th>Imię</th>
+                            <th>Nazwisko</th>
+                            <th>ID samochodu</th>
+                            <th>Pojazd</th>
                             <th>Status oferty</th>
+                            <th>Blokuj</th>
                             <th>Przeglądaj</th>
                             <th>Edytuj</th>
                             <th>Usuń</th>
@@ -102,7 +128,7 @@
                 </table>
             </div>
         </div>
-    </form>
+
 
     <?php include "../templates/footer.php" ?>
 

@@ -65,7 +65,7 @@
     <div class="container d-flex justify-content-center">
         <div class="row col-md-6 col-md-offset-2 custyle">
             <div class="col d-flex justify-content-center mt-3">
-                <h1>xD</h1>
+                <h1><?php echo $user['name']. ' ' . $user["surname"];?></h1>
             </div>
         </div>
     </div>

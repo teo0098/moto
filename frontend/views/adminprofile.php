@@ -45,7 +45,6 @@ session_start();
             </div>
             <div class="col col-md-4 col-12">
                 <form class="form-inline row d-flex justify-content-center mt-3" action="../views/offerspanel.php">
-                    <input type='text' hidden name='page' value='1' />
                     <button class="btn shadow border-dark" style="width: 90%;" type='submit'><i class="fa fa-car me-3 butmy"></i>Zarządzaj ofertami</button>
                 </form>
             </div>
