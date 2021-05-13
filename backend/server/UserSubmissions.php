@@ -21,7 +21,7 @@ if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL) || !preg_match('/^[A-Za-zęó
 $email = new \SendGrid\Mail\Mail();
 $email->setFrom("agnachel0098@gmail.com", "Moto.pl");
 $email->setSubject($subject);
-$email->addTo("agnachel0098@gmail.com", $username);
+$email->addTo("agnachel0098@gmail.com", $name);
 $email->addContent(
     "text/html",
     "<p>Użytkownik: $name $surname<br><br> E-mail użytkownika: $userEmail <br><br>$problemDesc</p>"
