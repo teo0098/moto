@@ -27,8 +27,10 @@
                 header('Location: ../../frontend/views/signin.php');
             }
             else {
-                if (!Users::findUserByEmail($this->email, $connection) && !Admins::findAdminByEmail($this->email, $connection)) {
-                    $_SESSION['loginError'] = 'Złe dane logowania';
+                $user = Users::findUserByEmail($this->email, $connection);
+                $admin = Admins::findAdminByEmail($this->email, $connection);
+                if (!$user && !$admin) {
+                    $_SESSION['loginError'] = 'Złe dane logowania2';
                     header('Location: ../../frontend/views/signin.php');
                 }
                 else {
@@ -39,9 +41,13 @@
                         header('Location: ../../frontend/views/signin.php');
                     }
                     else {
-                        $user = mysqli_fetch_assoc($user);
-                        $admin = mysqli_fetch_assoc($admin);
-                        if (!password_verify($this->password, $user["password"]) && !password_verify($this->password, $admin["password"])) {
+                        if ($user !== false) $user = mysqli_fetch_assoc($user);
+                        if ($admin !== false) $admin = mysqli_fetch_assoc($admin);
+                        if ($user !== false && !password_verify($this->password, $user["password"])) {
+                            $_SESSION['loginError'] = 'Złe dane logowania';
+                            header('Location: ../../frontend/views/signin.php');
+                        }
+                        else if ($admin !== false && !password_verify($this->password, $admin["password"])) {
                             $_SESSION['loginError'] = 'Złe dane logowania';
                             header('Location: ../../frontend/views/signin.php');
                         }
