@@ -57,7 +57,7 @@ session_start();
         </div>
 
         <div class="container d-flex justify-content-center">
-            <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
+            <div class="card_container h-auto mt-5">
                 <div class="rounded-circle text-center mt-2 ms-auto me-auto circ1">
                     <span class="fa fa-lock mt-2"> </span>
                 </div>
@@ -71,7 +71,7 @@ session_start();
                         <h7> Powtórz nowe hasło: </h7>
                         <input type="password" class="d-block w-100" name="repeatnewpass">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button data-test-id="passwordChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień hasło</button>
+                            <button data-test-id="passwordChange" class="btn btn-outline-success w-auto d-block center" type='submit'>Zmień hasło</button>
                         </div>
                         <br>
                     </div>
@@ -81,7 +81,7 @@ session_start();
 
 
         <div class="container d-flex justify-content-center">
-            <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
+            <div class="card_container h-auto mt-5">
                 <div class="rounded-circle text-center mt-2 ms-auto me-auto circ1">
                     <span class="fa fa-at mt-3"> </span>
                 </div>
@@ -91,7 +91,7 @@ session_start();
                         <h7> E-mail: </h7>
                         <input type="text" value="<?php echo $_SESSION['userEmail']; ?>" class="d-block w-100" name="newEmail" />
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button data-test-id="emailChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień e-maila</button>
+                            <button data-test-id="emailChange" class="btn btn-outline-success w-auto d-block center" type='submit'>Zmień e-maila</button>
                         </div>
                         <br>
                     </div>
@@ -100,7 +100,7 @@ session_start();
         </div>
 
         <div class="container d-flex justify-content-center">
-            <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
+            <div class="card_container h-auto mt-5">
                 <div class="rounded-circle text-center mt-2 ms-auto me-auto circ1">
                     <span class="fa fa-phone mt-3"> </span>
                 </div>
@@ -110,7 +110,7 @@ session_start();
                         <h7> Numer telefonu: </h7>
                         <input type="text" value="<?php echo $_SESSION['userPhone'] ?>" class="d-block w-100" name="newPhone">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button data-test-id="phoneChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień numer telefonu</button>
+                            <button data-test-id="phoneChange" class="btn btn-outline-success w-auto d-block center" type='submit'>Zmień numer telefonu</button>
                         </div>
                         <br>
                     </div>
@@ -119,7 +119,7 @@ session_start();
         </div>
 
         <div class="container d-flex justify-content-center">
-            <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
+            <div class="card_container h-auto mt-5">
                 <div class="rounded-circle text-center mt-2 ms-auto me-auto circ1">
                     <span class="fa fa-user-secret mt-2"> </span>
                 </div>
@@ -131,7 +131,7 @@ session_start();
                         <h7> Nazwisko: </h7>
                         <input type="text" value="<?php echo $_SESSION['userSurname'] ?>" class="d-block w-100" name="newSurname">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button data-test-id="dataChange" class="btn btn-outline-success w-25 d-block center" type='submit'>Zmień dane</button>
+                            <button data-test-id="dataChange" class="btn btn-outline-success w-auto d-block center" type='submit'>Zmień dane</button>
                         </div>
                         <br>
                     </div>
@@ -140,7 +140,7 @@ session_start();
         </div>
 
         <div class="container d-flex justify-content-center">
-            <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
+            <div class="card_container h-auto mt-5">
                 <div class="rounded-circle text-center mt-2 bg-danger ms-auto me-auto circ2">
                     <span class="fa fa-minus-circle mt-3"> </span>
                 </div>
@@ -150,7 +150,7 @@ session_start();
                         <h7> Aktualne hasło: </h7>
                         <input type="password" class="d-block w-100" name="password">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button data-test-id="deleteAccount" class="btn btn-outline-danger w-25 d-block center" type='submit'>Usuń konto</button>
+                            <button data-test-id="deleteAccount" class="btn btn-outline-danger w-auto d-block center" type='submit'>Usuń konto</button>
                         </div>
                         <br>
                     </div>

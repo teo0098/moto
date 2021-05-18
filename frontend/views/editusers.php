@@ -71,7 +71,7 @@
     </div>
 
     <div class="container d-flex justify-content-center">
-        <div class="card_container w-50 h-auto mt-5" style="min-width: 500px;">
+        <div class="card_container h-auto mt-5">
             <h4 class="text-center mt-3">Zmień dane użytkownika</h4>
             <form method="POST" action="../../backend/server/changePersonalDataAdmin.php">
                 <div class="container">
@@ -80,7 +80,7 @@
                     <h7> Nazwisko użytkownika: </h7>
                     <input type="text" value="<?php echo $user['surname'] ?>" class="d-block w-100" name="newSurname">
                     <div class="form-group row d-flex justify-content-center mt-3">
-                        <button class="btn btn-outline-secondary w-50 d-block center" type='submit'>Zmień dane użytkownika</button>
+                        <button class="btn btn-outline-secondary w-auto d-block center" type='submit'>Zmień dane użytkownika</button>
                     </div>
                     <br>
                 </div>
@@ -91,7 +91,7 @@
                         <h7> Email użytkownika: </h7>
                         <input type="text" value="<?php echo $user['email'] ?>" class="d-block w-100" name="newEmail">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-secondary w-50 d-block center" type='submit'>Zmień email użytkownika</button>
+                            <button class="btn btn-outline-secondary w-auto d-block center" type='submit'>Zmień email użytkownika</button>
                         </div>
                         <br>
                     </div>
@@ -102,7 +102,7 @@
                         <h7> Numer telefonu: </h7>
                         <input type="text" value="<?php echo $user['phone'] ?>" class="d-block w-100" name="newPhone">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-secondary w-50 d-block center" type='submit'>Zmień numer telefonu</button>
+                            <button class="btn btn-outline-secondary w-auto d-block center" type='submit'>Zmień numer telefonu</button>
                         </div>
                         <br>
                     </div>
@@ -113,7 +113,7 @@
                         <h7> Hasło użytkownika: </h7>
                         <input type="text" value="" class="d-block w-100" name="newPass">
                         <div class="form-group row d-flex justify-content-center mt-3">
-                            <button class="btn btn-outline-secondary w-50 d-block center" type='submit'>Zmień hasło użytkownika</button>
+                            <button class="btn btn-outline-secondary w-auto d-block center" type='submit'>Zmień hasło użytkownika</button>
                         </div>
                         <br>
                     </div>

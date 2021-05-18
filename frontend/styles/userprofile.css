@@ -28,3 +28,16 @@
     color:black;
     font-size: 25px;
 }
+
+.card_container
+{
+    width:50%;
+}
+
+@media (max-width: 750px)
+{
+.card_container
+{
+    width:100%;
+}
+}
