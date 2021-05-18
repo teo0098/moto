@@ -15,50 +15,57 @@ session_start();
   <title>Moto.pl</title>
 </head>
 
+<style>
+  .padding-0 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+</style>
+
 <body>
   <header class="sticky-top">
-    <?php 
-      include "../templates/navigation.php";
-      include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarFuels.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/models/Gearboxes.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarDrives.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/models/Provinces.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarTypes.php');
-      include realpath(dirname(__FILE__) . '/../../backend/db/models/CarStates.php');
+    <?php
+    include "../templates/navigation.php";
+    include realpath(dirname(__FILE__) . '/../../backend/db/dbConnect.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/CarFuels.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/Gearboxes.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/CarDrives.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/Provinces.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/CarTypes.php');
+    include realpath(dirname(__FILE__) . '/../../backend/db/models/CarStates.php');
 
-      $db = new DB($host, $user, $password, $database);
-      if (!$db->connect()) {
-          echo '<div class="alert alert-danger" role="alert">
+    $db = new DB($host, $user, $password, $database);
+    if (!$db->connect()) {
+      echo '<div class="alert alert-danger" role="alert">
                               Nie udało się nawiązać połączenia z bazą
                           </div>';
-      } else {
-          $carFuels = CarFuels::getFuels($db->getConnection());
-          $carFuels = mysqli_fetch_all($carFuels, MYSQLI_ASSOC);  
-          $gearboxes = Gearboxes::getGearboxes($db->getConnection());
-          $gearboxes = mysqli_fetch_all($gearboxes, MYSQLI_ASSOC);  
-          $carDrives = CarDrives::getDrives($db->getConnection());
-          $carDrives = mysqli_fetch_all($carDrives, MYSQLI_ASSOC);  
-          $provinces = Provinces::getProvinces($db->getConnection());
-          $provinces = mysqli_fetch_all($provinces, MYSQLI_ASSOC);  
-          $carTypes = CarTypes::getTypes($db->getConnection());
-          $carTypes = mysqli_fetch_all($carTypes, MYSQLI_ASSOC);  
-          $carStates = CarStates::getStates($db->getConnection());
-          $carStates = mysqli_fetch_all($carStates, MYSQLI_ASSOC);
-      }
+    } else {
+      $carFuels = CarFuels::getFuels($db->getConnection());
+      $carFuels = mysqli_fetch_all($carFuels, MYSQLI_ASSOC);
+      $gearboxes = Gearboxes::getGearboxes($db->getConnection());
+      $gearboxes = mysqli_fetch_all($gearboxes, MYSQLI_ASSOC);
+      $carDrives = CarDrives::getDrives($db->getConnection());
+      $carDrives = mysqli_fetch_all($carDrives, MYSQLI_ASSOC);
+      $provinces = Provinces::getProvinces($db->getConnection());
+      $provinces = mysqli_fetch_all($provinces, MYSQLI_ASSOC);
+      $carTypes = CarTypes::getTypes($db->getConnection());
+      $carTypes = mysqli_fetch_all($carTypes, MYSQLI_ASSOC);
+      $carStates = CarStates::getStates($db->getConnection());
+      $carStates = mysqli_fetch_all($carStates, MYSQLI_ASSOC);
+    }
     ?>
   </header>
-  <div class="container">
+  <div class="container spanMaster">
     <div class="row">
-      <div class="card" style="width:1000px">
-      <?php
+      <div class="card" style="max-width:1000px">
+        <?php
         if (isset($_SESSION['offerPostError'])) {
-            echo '<div class="alert alert-danger" role="alert">
+          echo '<div class="alert alert-danger" role="alert">
                                 ' . $_SESSION['offerPostError'] . '
                             </div>';
         } else if (isset($_SESSION['offerPostSuccess'])) {
-            echo '<div class="alert alert-success" role="alert">
+          echo '<div class="alert alert-success" role="alert">
                                 ' . $_SESSION['offerPostSuccess'] . '
                             </div>';
         }
@@ -67,172 +74,293 @@ session_start();
         ?>
         <article class="card-body" style="max-width: 1200px;">
           <h4 class="card-title mt-3 text-center">Dodaj swoją ofertę</h4>
-          <form class="form-postOffer" method='POST' action="../../backend/server/offers.php" enctype="multipart/form-data">           
+          <form class="form-postOffer" method='POST' action="../../backend/server/offers.php" enctype="multipart/form-data">
             <div class="row" style="margin-top: 20px;">
               <div class="col-md-6 col-12">
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Marka samochodu </span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Marka samochodu</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="brand" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="brand" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Model samochodu </span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Model samochodu</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="model" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="model" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Rok produkcji</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rok produkcji</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="production_year" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="production_year" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Przebieg</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Przebieg</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="run" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="run" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Rodzaj paliwa</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Rodzaj paliwa</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-12 padding-0">
+                      <select name="fuel" class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <?php
+                        for ($i = 0; $i < count($carFuels); $i++) {
+                          echo '<option value="' . $carFuels[$i]['id'] . '">' . $carFuels[$i]['fuel'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
-                  <select name="fuel" class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <?php
-                      for ($i = 0; $i < count($carFuels); $i++) {
-                        echo '<option value="'.$carFuels[$i]['id'].'">'.$carFuels[$i]['fuel'].'</option>';
-                      }
-                    ?>
-                  </select>
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Moc</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Moc</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="power" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="power" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Skrzynia biegów</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Skrzynia biegów</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <select name="gearbox" class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <?php
+                        for ($i = 0; $i < count($gearboxes); $i++) {
+                          echo '<option value="' . $gearboxes[$i]['id'] . '">' . $gearboxes[$i]['type'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
-                  <select name="gearbox" class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <?php
-                      for ($i = 0; $i < count($gearboxes); $i++) {
-                        echo '<option value="'.$gearboxes[$i]['id'].'">'.$gearboxes[$i]['type'].'</option>';
-                      }
-                    ?>
-                  </select>
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Napęd</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Napęd</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <select name="drive" class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <?php
+                        for ($i = 0; $i < count($carDrives); $i++) {
+                          echo '<option value="' . $carDrives[$i]['id'] . '">' . $carDrives[$i]['drive'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
-                  <select name="drive" class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <?php
-                      for ($i = 0; $i < count($carDrives); $i++) {
-                        echo '<option value="'.$carDrives[$i]['id'].'">'.$carDrives[$i]['drive'].'</option>';
-                      }
-                    ?>
-                  </select>
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Województwo</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Województwo</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <select name="province" class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <?php
+                        for ($i = 0; $i < count($provinces); $i++) {
+                          echo '<option value="' . $provinces[$i]['id'] . '">' . $provinces[$i]['name'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
-                  <select name="province" class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                   <?php
-                      for ($i = 0; $i < count($provinces); $i++) {
-                        echo '<option value="'.$provinces[$i]['id'].'">'.$provinces[$i]['name'].'</option>';
-                      }
-                    ?>
-                  </select>
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Powiat</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Powiat</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="district" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="district" class="form-control" type="text">
                 </div>
               </div>
               <div class="col-md-6 col-12">
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Pojemność skokowa</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Pojemność skokowa</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="engine_capacity" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="engine_capacity" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Typ samochodu</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Typ samochodu</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <select name="type" class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <?php
+                        for ($i = 0; $i < count($carTypes); $i++) {
+                          echo '<option value="' . $carTypes[$i]['id'] . '">' . $carTypes[$i]['type'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
-                  <select name="type" class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <?php
-                      for ($i = 0; $i < count($carTypes); $i++) {
-                        echo '<option value="'.$carTypes[$i]['id'].'">'.$carTypes[$i]['type'].'</option>';
-                      }
-                    ?>
-                  </select>
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Kolor samochodu</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Kolor samochodu</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="color" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="color" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Liczba drzwi</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Liczba drzwi</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="door" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="door" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Liczba siedzeń</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Liczba siedzeń</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="seats" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="seats" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Pochodzenie</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Pochodzenie</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="origin" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="origin" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Stan</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Stan</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <select name="state" class="form-select" aria-label="Default select example">
+                        <option selected></option>
+                        <?php
+                        for ($i = 0; $i < count($carStates); $i++) {
+                          echo '<option value="' . $carStates[$i]['id'] . '">' . $carStates[$i]['state'] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
                   </div>
-                  <select name="state" class="form-select" aria-label="Default select example">
-                    <option selected></option>
-                    <?php
-                      for ($i = 0; $i < count($carStates); $i++) {
-                        echo '<option value="'.$carStates[$i]['id'].'">'.$carStates[$i]['state'].'</option>';
-                      }
-                    ?>
-                  </select>
+
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Vin</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Vin</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="VIN" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="VIN" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Miasto</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Miasto</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="city" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="city" class="form-control" type="text">
                 </div>
-                <div class="form-group input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">Cena</span>
+                <div class="form-group input-group d-flex justify-content-center">
+                  <div class="row">
+                    <div class="col-md-6 padding-0">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Cena</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6 padding-0">
+                      <input name="price" class="form-control" type="text">
+                    </div>
                   </div>
-                  <input name="price" class="form-control" type="text">
                 </div>
               </div>
 
@@ -267,8 +395,8 @@ session_start();
                   <label for="addedPhotos">
                     <h4>Dodaj zdjęcia <i class="fas fa-paperclip"></i></h4>
                   </label>
-                  <div id='multipleImages'>                    
-                    <input name="image[]" type="file" multiple>                                        
+                  <div id='multipleImages'>
+                    <input name="image[]" type="file" multiple>
                   </div>
                 </div>
               </div>

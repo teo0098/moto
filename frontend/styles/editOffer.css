@@ -1,7 +1,7 @@
 @media (min-width: 700px) 
 { 
     
-.spanMaster span{
+.spanMasterEdit span{
     width: 200px;
 }
 
@@ -21,7 +21,7 @@ input[type=text] {
 
 
 @media (max-width: 450px){
-    .spanMaster span{
+    .spanMasterEdit span{
         width:100% !important;
         display: block !important;
     }
