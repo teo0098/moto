@@ -86,7 +86,7 @@ session_start();
                 </div>
             </div>
             
-            <div class="col mt-5 ms-5">
+            <div class="col mt-5">
                 <h2 class="d-flex justify-content-center mt-5"><?php echo $car["brand"] . ' ' . $car["model"] ?></h2>
                 <div class="d-flex justify-content-center mt-2">
                     <span class=""><?php echo $car["fuel"] ?></span>
@@ -114,48 +114,32 @@ session_start();
 
         <hr>
 
-        <h4 class="d-flex justify-content-center mt-5">Szczegóły</h4>
+        <h4 class="d-flex justify-content-center mt-3 mb-5">Szczegóły</h4>
         <div class="container d-flex justify-content-center">
-            <div class="row col-md-8" style="margin-left: 5%; margin-right: 5%">
-                <div class="col col-md-3 col-6 mt-3 text-black-50">
-                    <p class="">Marka samochodu</p>
-                    <p class="">Model samochodu</p>
-                    <p class="">Rok produkcji</p>
-                    <p class="">Przebieg</sp>
-                    <p class="">Rodzaj paliwa</p>
-                    <p class="">Moc</p>
-                    <p class="">Skrzynia biegów</p>
-                    <p class="">Napęd</p>
+            <div class="row col-md-8" style="margin-left: 1%; margin-right: 1%">
+                <div class="col">
+                    <dl class="row col-md-12">
+                        <dd class="col col-md-6 col-6">Marka samochodu</dd><dt class="col col-md-6 col-6"><?php echo $car["brand"] ?></dt>
+                        <dd class="col col-md-6 col-6">Model samochodu</dd><dt class="col col-md-6 col-6"><?php echo $car["model"] ?></dt>
+                        <dd class="col col-md-6 col-6">Rok produkcji</dd><dt class="col col-md-6 col-6"><?php echo $car["production_year"] ?></dt>
+                        <dd class="col col-md-6 col-6">Przebieg</dd><dt class="col col-md-6 col-6"><?php echo $car["run"] ?></dt>
+                        <dd class="col col-md-6 col-6">Rodzaj paliwa</dd><dt class="col col-md-6 col-6"><?php echo $car["fuel"] ?></dt>
+                        <dd class="col col-md-6 col-6">Moc</dd><dt class="col col-md-6 col-6"><?php echo $car["power"] ?></dt>
+                        <dd class="col col-md-6 col-6">Skrzynia biegów</dd><dt class="col col-md-6 col-6"><?php echo $car["gearbox"] ?></dt>
+                        <dd class="col col-md-6 col-6">Napęd</dd><dt class="col col-md-6 col-6"><?php echo $car["drive"] ?></dt>
+                    </dl>       
                 </div>
-                <div class="col col-md-3 col-6 mt-3">
-                    <p class=""><?php echo $car["brand"] ?></p>
-                    <p class=""><?php echo $car["model"] ?></p>
-                    <p class=""><?php echo $car["production_year"] ?></p>
-                    <p class=""><?php echo $car["run"] ?></sp>
-                    <p class=""><?php echo $car["fuel"] ?></p>
-                    <p class=""><?php echo $car["power"] ?></p>
-                    <p class=""><?php echo $car["gearbox"] ?></p>
-                    <p class=""><?php echo $car["drive"] ?></p>
-                </div>
-                <div class="col col-md-3 col-6 mt-3 text-black-50">
-                    <p class="">Pojemnośc skokowa</p>
-                    <p class="">Typ samochodu</p>
-                    <p class="">Kolor samochodu</p>
-                    <p class="">Liczba drzwi</sp>
-                    <p class="">Liczba siedzeń</p>
-                    <p class="">Pochodzenie</p>
-                    <p class="">Stan</p>
-                    <p class="">VIN</p>
-                </div>
-                <div class="col col-md-3 col-6 mt-3">
-                    <p class=""><?php echo $car["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
-                    <p class=""><?php echo $car["type"] ?></p>
-                    <p class=""><?php echo $car["color"] ?></p>
-                    <p class=""><?php echo $car["door"] ?></sp>
-                    <p class=""><?php echo $car["seats"] ?></p>
-                    <p class=""><?php echo $car["origin"] ?></p>
-                    <p class=""><?php echo $car["state"] ?></p>
-                    <p class=""><?php echo $car["VIN"] ?></p>
+                <div class="col">
+					<dl class="row col-md-12">
+                        <dd class="col col-md-6 col-6">Pojemnośc skokowa</dd><dt class="col col-md-6 col-6"><?php echo $car["engine_capacity"] . 'cm<sup>3</sup>'; ?></dt>
+                        <dd class="col col-md-6 col-6">Typ samochodu</dd><dt class="col col-md-6 col-6"><?php echo $car["type"] ?></dt>
+                        <dd class="col col-md-6 col-6">Kolor samochodu</dd><dt class="col col-md-6 col-6"><?php echo $car["color"] ?></dt>
+                        <dd class="col col-md-6 col-6">Liczba drzwi</dd><dt class="col col-md-6 col-6"><?php echo $car["door"] ?></dt>
+                        <dd class="col col-md-6 col-6">Liczba siedzeń</dd><dt class="col col-md-6 col-6"><?php echo $car["seats"] ?></dt>
+                        <dd class="col col-md-6 col-6">Pochodzenie</dd><dt class="col col-md-6 col-6"><?php echo $car["origin"] ?></dt>
+                        <dd class="col col-md-6 col-6">Stan</dd><dt class="col col-md-6 col-6"><?php echo $car["state"] ?></dt>
+                        <dd class="col col-md-6 col-6">VIN</dd><dt class="col col-md-6 col-6"><?php echo $car["VIN"] ?></dt>  
+                    </dl>  
                 </div>
             </div>
         </div>
