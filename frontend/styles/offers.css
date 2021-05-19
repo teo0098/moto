@@ -1,6 +1,7 @@
 @media (min-width: 700px) {
     .watch{
-        text-align:end
+        text-align:end;
+        margin-top: 8px;
     }
 
     .offerText{
@@ -15,11 +16,20 @@
         color: red;
         font-size:25px;
     }
+
+    #firstOfferText{
+        margin-top:0px;
+    }
 }
 
 @media (max-width: 450px){
     .watch{
-        text-align:start
+        text-align:start;
+        margin-top: 0px;
+    }
+
+    #firstOfferText{
+        margin-top:5px;
     }
 
     .offerText{
@@ -35,4 +45,5 @@
         font-size: 20px;
     }
 }
+
 

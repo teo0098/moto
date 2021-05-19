@@ -66,12 +66,15 @@ session_start();
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h1 style="color: black;" class="card-title carTitle"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h1>
+                                    <div class="row">
+                                        <div class="col"><h1 style="color: black;" class="card-title carTitle"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h1></div>
+                                        <div class="col"><p class="card-text watch offerText"><i class="fas fa-star"></i> Obserwuj</p></div>
+                                    </div>    
                                     </div>
                                     <div class="col-12">
                                         <div class="row">
                                             <div class="col md-3 col-12">
-                                                <p class="card-text offerText"><?php echo $cars[$i]["production_year"] . ' ' . '' ?> </p>
+                                                <p class="card-text offerText" id="firstOfferText"><?php echo $cars[$i]["production_year"] . ' ' . '' ?> </p>
                                             </div>
                                             <div class="col md-3 col-12">
                                                 <p class="card-text offerText"><?php echo $cars[$i]["run"] . 'km ' . '' ?></p>
@@ -88,7 +91,6 @@ session_start();
                                         <h4 class="card-title offerPrice"><?php echo $cars[$i]["price"] . ' zł'; ?></h4>
                                     </div>
                                 </div>
-                                <p class="card-text watch offerText"><i class="fas fa-star"></i> Obserwuj</p>
                             </div>
                         </div>
 
