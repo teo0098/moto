@@ -1,0 +1,38 @@
+@media (min-width: 700px) {
+    .watch{
+        text-align:end
+    }
+
+    .offerText{
+        color: black; font-size: 20px;
+    }
+
+    .carTitle{
+        font-size:35px;
+    }
+
+    .offerPrice{
+        color: red;
+        font-size:25px;
+    }
+}
+
+@media (max-width: 450px){
+    .watch{
+        text-align:start
+    }
+
+    .offerText{
+        color: black; font-size: 17px;
+    }
+
+    .carTitle{
+        font-size:23px;
+    }
+
+    .offerPrice{
+        color: red;
+        font-size: 20px;
+    }
+}
+
