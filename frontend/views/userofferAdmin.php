@@ -53,7 +53,7 @@ session_start();
       }
     ?>
   </header>
-  <div class="container">
+  <div class="container spanMaster">
     <div class="row">
       <div class="card" style="width:1000px">
       <?php
