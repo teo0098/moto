@@ -105,7 +105,7 @@
                         $offer;
                         if(isset($_SESSION['userID']))
                         {
-                            $offer = Offers::getOfferById($_GET['id'], $db->getConnection());
+                            $offer = Offers::getEditOfferById($_GET['id'], $db->getConnection());
                         }
                         else
                         {
@@ -139,16 +139,34 @@
                     case 'PATCH': {
                         $validID = validateID($_GET['id']);
                         if ($validID != null) {
-                            throw new Exception($validID);
+                            $_SESSION['offerEditError'] = $validID;
+                            if(isset($_SESSION['userID']))
+                                header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                            else if(isset($_SESSION['adminID']))
+                                header("Location: ../../frontend/views/offerspanel.php?");
+                            break;
                         }
                         $visible = $_POST['visible'];
                         if (!preg_match('/^[0-1]{1}$/', $visible)) {
-                            throw new Exception('Bad data entered');
+                            $_SESSION['offerEditError'] = 'Wprowadzono niepoprawne dane';
+                            if(isset($_SESSION['userID']))
+                                header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                            else if(isset($_SESSION['adminID']))
+                                header("Location: ../../frontend/views/offerspanel.php?");
+                            break;
                         }
                         if (!Offers::updateVisibility($_GET['id'], $visible, $db->getConnection())) {
-                            throw new Exception('Unable to update offer');
+                            $_SESSION['offerEditError'] = 'Chwilowo nie można zmienić widoczności oferty';
+                            if(isset($_SESSION['userID']))
+                                header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                            else if(isset($_SESSION['adminID']))
+                                header("Location: ../../frontend/views/offerspanel.php?");
+                            break;
                         }
-                        header("Location: ../../frontend/views/offerspanel.php?");
+                        if(isset($_SESSION['userID']))
+                            header("Location: ../../frontend/views/myoffer.php?id=".$_GET['id']."");
+                        else if(isset($_SESSION['adminID']))
+                            header("Location: ../../frontend/views/offerspanel.php?");
                     }
                     break;
                     case 'DELETE': {
