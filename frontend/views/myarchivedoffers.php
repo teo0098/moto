@@ -89,7 +89,7 @@ session_start();
                             <div class="card-image">
                                 <object><a data-test-id="offer<?php echo $i; ?>" href="./myoffer.php?id=<?php echo $cars[$i]['id']; ?>"><span class="card-notify-edit fa fa-edit"></span></a></object>
                                 <object>
-                                    <form style=" height:0px;" method='POST' action="../../backend/server/offers.php?method=DELETE&id=<?php echo $cars[$i]['id']; ?>&page=<?php echo $_GET['page']; ?>">
+                                    <form style=" height:0px;" method='POST' action="../../backend/server/offers.php?type=archived&method=DELETE&id=<?php echo $cars[$i]['id']; ?>&page=<?php echo $_GET['page']; ?>">
                                         <button type="submit"><span class="card-notify-trash fa fa-trash"></span></button>
                                     </form>
                                 </object>
