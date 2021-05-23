@@ -50,7 +50,8 @@ session_start();
                 </form>
             </div>
             <div class="col col-md-4 col-12">
-                <form class="form-inline row d-flex justify-content-center mt-3" action="#">
+                <form class="form-inline row d-flex justify-content-center mt-3" action="../views/myarchivedoffers.php">
+                    <input type='text' hidden name='page' value='1' />
                     <button class="btn shadow border-dark" style="width: 90%;" type='submit'><i class="fa fa-paperclip me-3 butmy"></i>Moje zarchiwizowane</button>
                 </form>
             </div>

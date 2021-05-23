@@ -28,6 +28,7 @@ session_start();
       include realpath(dirname(__FILE__) . '/../../backend/db/models/CarTypes.php');
       include realpath(dirname(__FILE__) . '/../../backend/db/models/CarStates.php');
       include realpath(dirname(__FILE__) . '/../../backend/db/models/Users.php');
+      include realpath(dirname(__FILE__) . '/../../backend/db/models/Transactions.php');
 
       $db = new DB($host, $user, $password, $database);
       if (!$db->connect()) {
@@ -290,6 +291,38 @@ session_start();
             </div>
 
           </form>
+          <div style="margin-top: 50px;">
+            <?php 
+              $transaction = Transactions::getTransactions($_GET['id'], $db->getConnection());
+              if (!$transaction) {
+                if($offer['visible']==1)
+                {
+                    echo '<form method="POST" action="../../backend/server/offers.php?method=PATCH&id='.$offer["id"].'">
+                    <input type="text" hidden name="visible" value="0"/><button class="btn btn-warning">Zablokuj widoczność oferty w serwisie</button></form>';
+                } 
+                else
+                {
+                    echo '<form method="POST" action="../../backend/server/offers.php?method=PATCH&id='.$offer["id"].'">
+                    <input type="text" hidden name="visible" value="1"/><button class="btn btn-warning">Odblokuj widoczność oferty w serwisie</button>
+                    </form>';
+                }
+              }
+            ?>
+          </div>
+          <div style="margin-top: 10px;">
+            <?php 
+              if (!$transaction) {
+                echo '<form method="POST" action="../../backend/server/sellCar.php">
+                  <input type="text" hidden name="offerID" value="'.$offer["id"].'"/><button class="btn btn-success">Oznacz tę ofertę jako sprzedaną</button></form>';
+              }
+              else {
+                $transaction = mysqli_fetch_assoc($transaction);
+                echo '<form method="POST" action="../../backend/server/sellCar.php?method=DELETE">
+                <p>Oferta została sprzedana w dniu: '.$transaction['date'].'</p>
+                  <input type="text" hidden name="offerID" value="'.$offer["id"].'"/><button class="btn btn-success">Anuluj sprzedaż tej oferty</button></form>';
+              }
+            ?>
+          </div>
         </article>
       </div>
     </div>
