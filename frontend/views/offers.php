@@ -68,7 +68,14 @@ session_start();
                                     <div class="col-12">
                                     <div class="row">
                                         <div class="col"><h1 style="color: black;" class="card-title carTitle"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h1></div>
-                                        <div class="col"><p class="card-text watch offerText"><i class="fas fa-star"></i> Obserwuj</p></div>
+                                        <div class="col" style="display: flex; justify-content: flex-end;">
+                                            <form method="POST" action="../../backend/server/watchOffer.php">
+                                                <input type="text" name="offerID" value="<?php echo $cars[$i]['id'] ?>" hidden />
+                                                <button class="card-text watch offerText" style="background-color: transparent; border: none; outline: none;">
+                                                <i class="fas fa-star"></i> 
+                                                Obserwuj</button>
+                                            </form>
+                                        </div>
                                     </div>    
                                     </div>
                                     <div class="col-12">
