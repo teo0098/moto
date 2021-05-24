@@ -15,8 +15,10 @@
             header('Location: ../../frontend/views/signin.php');
         }
         else {
-            if (!WatchedOffers::insertOffer($_POST['offerID'], $_SESSION['userID'], $db->getConnection())) {
-                $_SESSION['watchOfferError'] = 'Chwilowo nie można wykonać żądanej operacji';
+            if (!WatchedOffers::findOfferById($_POST['offerID'], $_SESSION['userID'], $db->getConnection())) {
+                if (!WatchedOffers::insertOffer($_POST['offerID'], $_SESSION['userID'], $db->getConnection())) {
+                    $_SESSION['watchOfferError'] = 'Chwilowo nie można wykonać żądanej operacji';
+                }
             }
             header('Location: ../../frontend/views/watched.php?page=1');
         }

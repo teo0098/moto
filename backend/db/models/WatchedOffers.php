@@ -1,6 +1,15 @@
 <?php
     class WatchedOffers {
 
+        public static function findOfferById($offerID, $userID, $connection) {
+            $sqlQuery = "SELECT * FROM watched_offers WHERE `offer_id` = $offerID AND `user_id` = $userID";
+            $result = mysqli_query($connection, $sqlQuery);
+            if ($result->num_rows > 0) {
+                return true;
+            }
+            return false;
+        }
+
         public static function insertOffer($offerID, $userID, $connection) {
             $sqlQuery = "INSERT INTO watched_offers VALUES (NULL, $offerID, $userID)";
             $result = mysqli_query($connection, $sqlQuery);
