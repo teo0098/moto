@@ -7,7 +7,7 @@
             </button>
             <div class="collapse collapse justify-content-end navbar-collapse" id="onDisplayResolutionChange">
                 <ul class="navbar-nav">
-                    <li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/watched.php"><i style="margin-right: 5px" class="far fa-star"></i> Obserwowane</a></li>
+                    <li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/watched.php?page=1"><i style="margin-right: 5px" class="far fa-star"></i> Obserwowane</a></li>
                     <?php
                         if (isset($_SESSION['userName'])) {
                             echo '<li class="nav-item" style="margin-right: 20px"><a class="nav-link" href="../views/userprofile.php"><i style="margin-right: 5px" class="fas fa-user"></i>'.$_SESSION['userName'].'</a></li>
