@@ -43,7 +43,7 @@ session_start();
             <div class="col">
                 <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[0]['id'] ?>">
                     <div class="card">
-                        <img class='container__img' srcset="<?php echo $cars[0]["image_url"] ?>" sizes="50vw">
+                        <img loading="lazy" class='container__img' srcset="<?php echo $cars[0]["image_url"] ?>" sizes="50vw">
                         <div class="card-body">
                             <h3 style="color: black;" class="card-title"><?php echo $cars[0]["brand"] . ' ' . $cars[0]["model"]; ?></h3>
                             <p style="color: black;" class="card-text"><?php echo $cars[0]["production_year"] . ' ' . $cars[0]["run"] . 'km ' . $cars[0]["fuel"] . ' ' . $cars[0]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
@@ -62,7 +62,7 @@ session_start();
                                 <div class="col">
                                     <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
                                         <div class="card">
-                                            <img src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top-" alt="...">
+                                            <img loading="lazy" src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top-" alt="...">
                                             <div class="card-body">
                                                 <h3 style="color: black;" class="card-title"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h3>
                                                 <p style="color: black;" class="card-text"><?php echo $cars[$i]["production_year"] . ' ' . $cars[$i]["run"] . 'km ' . $cars[$i]["fuel"] . ' ' . $cars[$i]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
@@ -84,7 +84,7 @@ session_start();
                         for ($i = 5; $i < 11; $i++) {?>
                             <div class="card">
                                 <a style="text-decoration: none;" href="./offer.php?id=<?php echo $cars[$i]['id'] ?>">
-                                <img src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top--" alt="...">
+                                <img loading="lazy" src="<?php echo $cars[$i]["image_url"] ?>" class="card-img-top--" alt="...">
                                     <div class="card-body">
                                         <h3 style="color: black;" class="card-title"><?php echo $cars[$i]["brand"] . ' ' . $cars[$i]["model"]; ?></h3>
                                         <p style="color: black;" class="card-text"><?php echo $cars[$i]["production_year"] . ' ' . $cars[$i]["run"] . 'km ' . $cars[$i]["fuel"] . ' ' . $cars[$i]["engine_capacity"] . 'cm<sup>3</sup>'; ?></p>
@@ -100,7 +100,7 @@ session_start();
         <div class="container" style="margin-top:10px; height: auto">
             <div class="row align-items-center content" style="height:100%;">
                 <div class="col-12">
-                    <img src="../assets/1.jpg" class="img-thumbnail" style="height: auto; max-width: 100%">
+                    <img loading="lazy" src="../assets/1.webp" class="img-thumbnail" style="height: auto; max-width: 100%">
                 </div>
             </div>
         </div>
