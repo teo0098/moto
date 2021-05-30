@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -20,9 +20,10 @@ session_start();
     </header>
     <div class="container">
         <div class="card card-container-">
-            <article class="card-body mx-auto" style="max-width: 400px;">
+            <article class="card-body mx-auto">
                 <h4 class="card-title mt-3 text-center">Załóż konta</h4>
                 <br>
+                
                 <form class="form-signup" method='POST' action="../../backend/server/registration.php">
                     <?php
                     if (isset($_SESSION['registerError'])) {
@@ -39,34 +40,34 @@ session_start();
                     ?>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-user"></i> </span>
+                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-user mt-1"></i> </span>
                         </div>
-                        <input name="name" class="form-control" pattern="^[A-Za-z]{2,20}$" required placeholder="Imię" type="text">
-                        <input name="surname" class="form-control" pattern="^[A-Za-z]{2,30}$" required placeholder="Nazwisko" type="text">
+                        <input name="name" class="form-control" pattern="^[A-Za-z]{2,20}$" required placeholder="Imię" type="text"/>
+                        <input name="surname" class="form-control" pattern="^[A-Za-z]{2,30}$" required placeholder="Nazwisko" type="text"/>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend" style="width:40px">
+                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-envelope mt-1"></i> </span>
+                        </div>
+                        <input name="email" class="form-control" required placeholder="Adres Email" type="email"/>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend" style="width:40px">
+                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-phone mt-1"></i> </span>
+                        </div>
+                        <input name="phone" class="form-control" pattern="^[0-9]{9}$" required placeholder="Numer Telefonu" type="text"/>
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-envelope"></i> </span>
+                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-lock mt-1"></i> </span>
                         </div>
-                        <input name="email" class="form-control" required placeholder="Adres Email" type="email">
+                        <input name='password' pattern="^[A-Z0-9a-z!@#$_]{8,20}$" required class="form-control" placeholder="Hasło" type="password"/>
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-phone"></i> </span>
+                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-lock mt-1"></i> </span>
                         </div>
-                        <input name="phone" class="form-control" pattern="^[0-9]{9}$" required placeholder="Numer Telefonu" type="text">
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-lock"></i> </span>
-                        </div>
-                        <input name='password' pattern="^[A-Z0-9a-z!@#$_]{8,20}$" required class="form-control" placeholder="Hasło" type="password">
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i style="height:24px;" class="fa fa-lock"></i> </span>
-                        </div>
-                        <input required class="form-control" placeholder="Powtórz hasło" type="password">
+                        <input required class="form-control" placeholder="Powtórz hasło" type="password"/>
                     </div>
                     <br>
                     <div id="remember" class="checkbox">
@@ -75,8 +76,8 @@ session_start();
                     </label>
                     </div>
                     <br>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block btn-signup"> Załóż konto </button>
+                    <div class="form-group d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary btn-block btn-signup w-75"> Załóż konto </button>
                     </div>
                     <div class="formFooter">
                         <p class="divider-text">

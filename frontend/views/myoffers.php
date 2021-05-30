@@ -95,7 +95,7 @@ session_start();
                                 </object>
                                 <img class="img-fluid" src="<?php echo $cars[$i]['image_url']; ?>" alt="offer" />
                             </div>
-                            <div class="card-image-overlay m-auto mt-2 mb-4">
+                            <div class="card-image-overlay m-auto mt-2 mb-4 d-flex justify-content-center">
                                 <span class="card-detail-badge"><?php echo $cars[$i]['fuel']; ?></span>
                                 <span class="card-detail-badge"><?php echo $cars[$i]['production_year']; ?></span>
                                 <span class="card-detail-badge"><?php echo $cars[$i]['run']; ?> km</span>
@@ -105,8 +105,7 @@ session_start();
                     </a>
                 </div>
             <?php }} ?>
-        </div>
-        
+        </div>   
     </div>
 
     <div class="container d-flex justify-content-center">
