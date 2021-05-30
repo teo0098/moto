@@ -5,10 +5,6 @@
     object-fit:cover;
 }
 
-.imgbutton
-{
-    height: 520px;
-}
 
 
 @media (max-width: 800px)
@@ -19,8 +15,4 @@
         height: 430px;
     }
 
-    .imgbutton
-    {
-        height: 320px;
-    }
 }
