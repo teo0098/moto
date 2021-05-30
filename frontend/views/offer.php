@@ -27,8 +27,6 @@ session_start();
     include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
     include realpath(dirname(__FILE__) . '/../../backend/db/models/CarImages.php');
 
-
-
     $db = new DB($host, $user, $password, $database);
     if (!$db->connect()) {
         echo '<div class="alert alert-danger" role="alert">
@@ -49,12 +47,11 @@ session_start();
     }
     ?>
 
-
     <div class="container">
         <div class="row">
             <div class="col mt-2 col-md-6 col-12 d-flex justify-content-center">
                 <div id="carouselExampleControls" class="carousel slide imgslid h-auto" data-bs-ride="carousel">
-                    <div class="carousel-inner" style="max-height: 400px; height:400px">
+                    <div class="carousel-inner">
                         <?php 
                             for($i=0; $i<count($carImages); $i++){
                                 $image=$carImages[$i]['url'];
@@ -70,12 +67,7 @@ session_start();
                                   
                             }
                         ?>                                                                                                    
-                            
-                        
-                        
                     </div>
-
-                 
                     <button class="carousel-control-prev imgbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </button>
