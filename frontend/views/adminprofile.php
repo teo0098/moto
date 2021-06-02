@@ -56,12 +56,12 @@ session_start();
                     <span class="fa fa-lock mt-2"> </span>
                 </div>
                 <h4 class="text-center mt-3">Zmiana hasła</h4>
-                <form method="POST" action="../../backend/server/changePassword.php">
+                <form method="POST" action="../../backend/server/changePasswordAdmin.php">
                     <div class="container">
                         <h7> Stare hasło: </h7>
-                        <input type="password" class="d-block w-100" name="oldPass">
+                        <input type="password" class="d-block w-100" name="oldAdminPass">
                         <h7> Nowe hasło: </h7>
-                        <input type="password" class="d-block w-100" name="newPass">
+                        <input type="password" class="d-block w-100" name="newAdminPass">
                         <h7> Powtórz nowe hasło: </h7>
                         <input type="password" class="d-block w-100" name="repeatnewpass">
                         <div class="form-group row d-flex justify-content-center mt-3">
@@ -80,7 +80,7 @@ session_start();
                     <span class="fa fa-at mt-3"> </span>
                 </div>
                 <h4 class="text-center mt-3">Zmiana e-maila</h4>
-                <form method="POST" action="../../backend/server/changeEmail.php">
+                <form method="POST" action="../../backend/server/changeEmailAdmin.php">
                     <?php
                     if (isset($_SESSION['changeEmailError'])) {
                         echo '<div class="alert alert-danger" role="alert">
@@ -96,7 +96,7 @@ session_start();
                     ?>
                     <div class="container">
                         <h7> E-mail: </h7>
-                        <input type="text" value="<?php echo $_SESSION['adminEmail']; ?>" class="d-block w-100" name="newEmail" />
+                        <input type="text" value="<?php echo $_SESSION['adminEmail']; ?>" class="d-block w-100" name="newEmailAdmin" />
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-success w-auto d-block center" type='submit'>Zmień e-maila</button>
                         </div>
@@ -112,10 +112,10 @@ session_start();
                     <span class="fa fa-phone mt-3"> </span>
                 </div>
                 <h4 class="text-center mt-3">Zmień numer telefonu</h4>
-                <form method="POST" action="../../backend/server/changePhone.php">
+                <form method="POST" action="../../backend/server/changePhoneAdmin.php">
                     <div class="container">
                         <h7> Numer telefonu: </h7>
-                        <input type="text" value="<?php echo $_SESSION['adminPhone'] ?>" class="d-block w-100" name="newPhone">
+                        <input type="text" value="<?php echo $_SESSION['adminPhone'] ?>" class="d-block w-100" name="newPhoneAdmin">
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-success w-auto d-block center" type='submit'>Zmień numer telefonu</button>
                         </div>
@@ -131,12 +131,12 @@ session_start();
                     <span class="fa fa-user-secret mt-2"> </span>
                 </div>
                 <h4 class="text-center mt-3">Zmień dane osobowe</h4>
-                <form method="POST" action="../../backend/server/changePersonalData.php">
+                <form method="POST" action="../../backend/server/changePersonalDataAdmin.php">
                     <div class="container">
                         <h7> Imię: </h7>
-                        <input type="text" value="<?php echo $_SESSION['adminName'] ?>" class="d-block w-100" name="newName">
+                        <input type="text" value="<?php echo $_SESSION['adminName'] ?>" class="d-block w-100" name="newAdminName">
                         <h7> Nazwisko: </h7>
-                        <input type="text" value="<?php echo $_SESSION['adminSurname'] ?>" class="d-block w-100" name="newSurname">
+                        <input type="text" value="<?php echo $_SESSION['adminSurname'] ?>" class="d-block w-100" name="newAdminSurname">
                         <div class="form-group row d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-success w-auto d-block center" type='submit'>Zmień dane</button>
                         </div>

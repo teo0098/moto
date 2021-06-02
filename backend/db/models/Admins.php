@@ -47,9 +47,9 @@
         }
 
 
-        public static function updatePassword($oldPassword, $newPassword, $connection) 
+        public static function updatePassword($oldAdminPassword, $newAdminPassword, $connection) 
         {
-            if (!preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $oldPassword) || !preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $newPassword)) 
+            if (!preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $oldAdminPassword) || !preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $newAdminPassword)) 
             {
                 return 'Wprowadzono niepoprawne dane';
             }
@@ -60,11 +60,11 @@
                 return false;
             }
             $admin = mysqli_fetch_assoc($result);
-            if (!password_verify($oldPassword, $admin["password"])) 
+            if (!password_verify($oldAdminPassword, $admin["password"])) 
             {
                 return 'Wprowadzono niepoprawne stare hasło';
             }
-            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            $hashedPassword = password_hash($newAdminPassword, PASSWORD_DEFAULT);
             if (!$hashedPassword) 
             {
                 return false;
@@ -78,19 +78,19 @@
             return true;
         }
 
-        public static function updateEmail($newEmail, $connection) 
+        public static function updateEmail($newEmailAdmin, $connection) 
         {
-            if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) 
+            if (!filter_var($newEmailAdmin, FILTER_VALIDATE_EMAIL)) 
             {
                 return 'Wprowadzono niepoprawne dane';
             }
-            $sqlQuery = "SELECT * FROM admins WHERE id<>".$_SESSION['adminID']." AND email='$newEmail'";
+            $sqlQuery = "SELECT * FROM admins WHERE id<>".$_SESSION['adminID']." AND email='$newEmailAdmin'";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result->num_rows > 0) 
             {
                 return 'Adres e-mail jest już w użyciu';
             }
-            $sqlQuery2 = "UPDATE admins SET email='$newEmail' WHERE id=".$_SESSION['adminID']."";
+            $sqlQuery2 = "UPDATE admins SET email='$newEmailAdmin' WHERE id=".$_SESSION['adminID']."";
             $result2 = mysqli_query($connection, $sqlQuery2);
             if (!$result2) 
             {
@@ -99,19 +99,19 @@
             return true;
         }
 
-        public static function updatePhone($newPhone, $connection) 
+        public static function updatePhone($newPhoneAdmin, $connection) 
         {
-            if (!preg_match('/^[\d]{4,15}$/', $newPhone)) 
+            if (!preg_match('/^[\d]{4,15}$/', $newPhoneAdmin)) 
             {
                 return 'Wprowadzono niepoprawne dane';
             }
-            $sqlQuery = "SELECT * FROM admins WHERE id<>".$_SESSION['adminID']." AND phone='$newPhone'";
+            $sqlQuery = "SELECT * FROM admins WHERE id<>".$_SESSION['adminID']." AND phone='$newPhoneAdmin'";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result->num_rows > 0) 
             {
                 return 'Numer telefonu jest już w użyciu';
             }
-            $sqlQuery2 = "UPDATE admins SET phone='$newPhone' WHERE id=".$_SESSION['adminID']."";
+            $sqlQuery2 = "UPDATE admins SET phone='$newPhoneAdmin' WHERE id=".$_SESSION['adminID']."";
             $result2 = mysqli_query($connection, $sqlQuery2);
             if (!$result2) 
             {
@@ -120,14 +120,14 @@
             return true;
         }
 
-        public static function updatePersonalData($newName, $newSurname, $connection) 
+        public static function updatePersonalData($newAdminName, $newAdminSurname, $connection) 
         {
-            if (!preg_match('/^[A-Za-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ\s]{2,20}$/', $newName)
-            || !preg_match('/^[A-Za-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ\s]{2,30}$/', $newSurname)) 
+            if (!preg_match('/^[A-Za-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ\s]{2,20}$/', $newAdminName)
+            || !preg_match('/^[A-Za-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ\s]{2,30}$/', $newAdminSurname)) 
             {
                 return 'Wprowadzono niepoprawne dane';
             }
-            $sqlQuery = "UPDATE admins SET `name`='$newName', surname='$newSurname' WHERE id=".$_SESSION['adminID']."";
+            $sqlQuery = "UPDATE admins SET `name`='$newAdminName', surname='$newAdminSurname' WHERE id=".$_SESSION['adminID']."";
             $result = mysqli_query($connection, $sqlQuery);
             if (!$result) 
             {
