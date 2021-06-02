@@ -73,7 +73,7 @@
     <div class="container d-flex justify-content-center">
         <div class="card_container h-auto mt-5">
             <h4 class="text-center mt-3">Zmień dane użytkownika</h4>
-            <form method="POST" action="../../backend/server/changePersonalDataAdmin.php">
+            <form method="POST" action="../../backend/server/changeUserPersonalDataAdmin.php">
                 <div class="container">
                     <h7> Imię użytkownika: </h7>
                     <input type="text" value="<?php echo $user['name'] ?>" class="d-block w-100" name="newName">
@@ -86,7 +86,7 @@
                 </div>
                 <input type="text" hidden name="id" value="<?php echo $_GET['id'];?>" />
                 </form>
-                <form method="POST" action="../../backend/server/changeEmailAdmin.php">
+                <form method="POST" action="../../backend/server/changeUserEmailAdmin.php">
                     <div class="container">
                         <h7> Email użytkownika: </h7>
                         <input type="text" value="<?php echo $user['email'] ?>" class="d-block w-100" name="newEmail">
@@ -97,7 +97,7 @@
                     </div>
                     <input type="text" hidden name="id" value="<?php echo $_GET['id'];?>" />
                 </form>
-                <form method="POST" action="../../backend/server/changePhoneAdmin.php">
+                <form method="POST" action="../../backend/server/changeUserPhoneAdmin.php">
                     <div class="container">
                         <h7> Numer telefonu: </h7>
                         <input type="text" value="<?php echo $user['phone'] ?>" class="d-block w-100" name="newPhone">
@@ -108,7 +108,7 @@
                     </div>
                     <input type="text" hidden name="id" value="<?php echo $_GET['id'];?>" />
                 </form>
-                <form method="POST" action="../../backend/server/changePasswordAdmin.php">
+                <form method="POST" action="../../backend/server/changeUserPasswordAdmin.php">
                     <div class="container">
                         <h7> Hasło użytkownika: </h7>
                         <input type="text" value="" class="d-block w-100" name="newPass">
