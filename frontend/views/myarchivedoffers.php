@@ -43,7 +43,7 @@ session_start();
             else 
             {
                 $page = $_GET['page'];
-                if(!isset($page) || $_GET['page'] == null)
+                if(!isset($page) || $_GET['page'] == null || !preg_match('/^[0-9]+$/', $_GET['page']))
                 {
                     $page=1;
                 }
@@ -89,7 +89,7 @@ session_start();
                             <div class="card-image">
                                 <object><a data-test-id="offer<?php echo $i; ?>" href="./myoffer.php?id=<?php echo $cars[$i]['id']; ?>"><span class="card-notify-edit fa fa-edit"></span></a></object>
                                 <object>
-                                    <form style=" height:0px;" method='POST' action="../../backend/server/offers.php?type=archived&method=DELETE&id=<?php echo $cars[$i]['id']; ?>&page=<?php echo $_GET['page']; ?>">
+                                    <form style=" height:0px;" method='POST' action="../../backend/server/offers.php?type=archived&method=DELETE&id=<?php echo $cars[$i]['id']; ?>&page=<?php echo $page; ?>">
                                         <button type="submit"><span class="card-notify-trash fa fa-trash"></span></button>
                                     </form>
                                 </object>
@@ -114,10 +114,10 @@ session_start();
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link" href="./myarchivedoffers.php?page=<?php
-                      if($_GET['page']==1){ 
-                        echo $_GET['page'];
+                      if($page==1){ 
+                        echo $page;
                     } else{ 
-                        echo $_GET['page']-1;
+                        echo $page-1;
                     }  ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
@@ -136,10 +136,10 @@ session_start();
                
                 <li class="page-item">
                     <a class="page-link" href="./myarchivedoffers.php?page=<?php 
-                    if($_GET['page']==$count){ 
-                        echo $_GET['page'];
+                    if($page==$count){ 
+                        echo $page;
                     } else{ 
-                        echo $_GET['page']+1;
+                        echo $page+1;
                     } 
                      ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>

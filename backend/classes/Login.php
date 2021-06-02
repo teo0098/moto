@@ -30,7 +30,7 @@
                 $user = Users::findUserByEmail($this->email, $connection);
                 $admin = Admins::findAdminByEmail($this->email, $connection);
                 if (!$user && !$admin) {
-                    $_SESSION['loginError'] = 'Złe dane logowania2';
+                    $_SESSION['loginError'] = 'Złe dane logowania';
                     header('Location: ../../frontend/views/signin.php');
                 }
                 else {
