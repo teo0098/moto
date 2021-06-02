@@ -1,5 +1,10 @@
 <?php
-    session_start();
+session_start();
+if (isset($_SESSION['adminID'])) {
+    header("location: adminprofile.php");
+} else if (isset($_SESSION['userID'])) {
+    header("location: userprofile.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -23,7 +28,7 @@
             <article class="card-body mx-auto">
                 <h4 class="card-title mt-3 text-center">Załóż konta</h4>
                 <br>
-                
+
                 <form class="form-signup" method='POST' action="../../backend/server/registration.php">
                     <?php
                     if (isset($_SESSION['registerError'])) {
@@ -42,38 +47,38 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i style="height:24px;" class="fa fa-user mt-1"></i> </span>
                         </div>
-                        <input name="name" class="form-control" pattern="^[A-Za-z]{2,20}$" required placeholder="Imię" type="text"/>
-                        <input name="surname" class="form-control" pattern="^[A-Za-z]{2,30}$" required placeholder="Nazwisko" type="text"/>
+                        <input name="name" class="form-control" pattern="^[A-Za-z]{2,20}$" required placeholder="Imię" type="text" />
+                        <input name="surname" class="form-control" pattern="^[A-Za-z]{2,30}$" required placeholder="Nazwisko" type="text" />
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend" style="width:40px">
                             <span class="input-group-text"> <i style="height:24px;" class="fa fa-envelope mt-1"></i> </span>
                         </div>
-                        <input name="email" class="form-control" required placeholder="Adres Email" type="email"/>
+                        <input name="email" class="form-control" required placeholder="Adres Email" type="email" />
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend" style="width:40px">
                             <span class="input-group-text"> <i style="height:24px;" class="fa fa-phone mt-1"></i> </span>
                         </div>
-                        <input name="phone" class="form-control" pattern="^[0-9]{9}$" required placeholder="Numer Telefonu" type="text"/>
+                        <input name="phone" class="form-control" pattern="^[0-9]{9}$" required placeholder="Numer Telefonu" type="text" />
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i style="height:24px;" class="fa fa-lock mt-1"></i> </span>
                         </div>
-                        <input name='password' pattern="^[A-Z0-9a-z!@#$_]{8,20}$" required class="form-control" placeholder="Hasło" type="password"/>
+                        <input name='password' pattern="^[A-Z0-9a-z!@#$_]{8,20}$" required class="form-control" placeholder="Hasło" type="password" />
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i style="height:24px;" class="fa fa-lock mt-1"></i> </span>
                         </div>
-                        <input required class="form-control" placeholder="Powtórz hasło" type="password"/>
+                        <input required class="form-control" placeholder="Powtórz hasło" type="password" />
                     </div>
                     <br>
                     <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="accept"> Akceptuję <a class="underlineHover" href="../views/signin.php">Regulamin</a>
-                    </label>
+                        <label>
+                            <input type="checkbox" value="accept"> Akceptuję <a class="underlineHover" href="../views/signin.php">Regulamin</a>
+                        </label>
                     </div>
                     <br>
                     <div class="form-group d-flex justify-content-center">
