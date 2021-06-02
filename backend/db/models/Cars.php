@@ -11,6 +11,9 @@
         }
 
         public static function getCarById($id, $connection) {
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;
+            }
             $sqlQuery = "SELECT * FROM cars WHERE id=$id";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result->num_rows > 0) {
@@ -49,6 +52,9 @@
         }
 
         public static function updateCar($data, $carID, $connection) {
+            if (!preg_match('/^[0-9]+$/', $carID)) {
+                return false;
+            }
             $sqlQuery = "UPDATE cars SET brand='".$data['brand']."', model='".$data['model']."',
             production_year='".$data['production_year']."', run='".$data['run']."', fuel='".$data['fuel']."', `power`='".$data["power"]."', 
             gearbox='".$data['gearbox']."', drive='".$data['drive']."', `type`='".$data["type"]."', door='".$data['door']."', 
@@ -62,6 +68,9 @@
         }
 
         public static function deleteCar($carID, $connection) {
+            if (!preg_match('/^[0-9]+$/', $carID)) {
+                return false;
+            }
             $sqlQuery = "DELETE FROM cars WHERE id=$carID";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result) {

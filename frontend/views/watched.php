@@ -49,7 +49,7 @@ if(!isset($_SESSION['adminID']) && !isset($_SESSION['userID']) ) {
                 }
                 else {
                     $page = $_GET['page'];
-                    if(!isset($page) || $_GET['page'] == null)
+                    if(!isset($page) || $_GET['page'] == null || !preg_match('/^[0-9]+$/', $_GET['page']))
                     {
                         $page=1;
                     }
@@ -92,7 +92,7 @@ if(!isset($_SESSION['adminID']) && !isset($_SESSION['userID']) ) {
                     <div class="card rounded">
                         <div class="card-image">
                             <span class="card-notify-badge"><?php echo $cars[$i]['price']; ?> zł</span>
-                            <form style="height: 0px;" method="POST" action="../../backend/server/unwatchOffer.php?page=<?php echo $_GET['page']; ?>">
+                            <form style="height: 0px;" method="POST" action="../../backend/server/unwatchOffer.php?page=<?php echo $page; ?>">
                                 <input type="text" name="offerID" value="<?php echo $cars[$i]['id'] ?>" hidden />
                                 <button><span class="card-notify-trash fa fa-trash"></span></button>
                             </form>
@@ -117,10 +117,10 @@ if(!isset($_SESSION['adminID']) && !isset($_SESSION['userID']) ) {
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link" href="./watched.php?page=<?php
-                      if($_GET['page']==1){ 
-                        echo $_GET['page'];
+                      if($page==1){ 
+                        echo $page;
                     } else{ 
-                        echo $_GET['page']-1;
+                        echo $page-1;
                     }  ?>" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                         <span class="sr-only">Previous</span>
@@ -139,10 +139,10 @@ if(!isset($_SESSION['adminID']) && !isset($_SESSION['userID']) ) {
                
                 <li class="page-item">
                     <a class="page-link" href="./watched.php?page=<?php 
-                    if($_GET['page']==$count){ 
-                        echo $_GET['page'];
+                    if($page==$count){ 
+                        echo $page;
                     } else{ 
-                        echo $_GET['page']+1;
+                        echo $page+1;
                     } 
                      ?>" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
