@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['adminID'])) {
+    header("location: adminprofile.php");
+} else if (isset($_SESSION['userID'])) {
+    header("location: userprofile.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pl">
