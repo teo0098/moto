@@ -1,4 +1,5 @@
 <?php
+    include "./CORS.php";
     require_once "../../vendor/autoload.php";
     include "../db/dbCredentials.php";
     include "../db/dbConnect.php";

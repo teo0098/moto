@@ -102,7 +102,13 @@
             if (!preg_match('/^[0-9]+$/', $id)) {
                 return false;
             }
-            $sqlQuery = "UPDATE offers SET visible=$visible WHERE id=$id";
+            $sqlQuery = "";
+            if ($visible == 0) {
+                $sqlQuery = "UPDATE offers SET visible=$visible WHERE id=$id";
+            }
+            else {
+                $sqlQuery = "UPDATE offers SET visible=$visible, updated_at=NOW() WHERE id=$id";
+            }
             $result = mysqli_query($connection, $sqlQuery);
             if ($result) {
                 return true;

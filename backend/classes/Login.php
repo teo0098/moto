@@ -1,5 +1,15 @@
 <?php
-    session_start();
+    $sess_name = session_name();
+    if (session_start()) {
+        setcookie($sess_name, session_id(), [
+            'expires' => null,
+            'path' => '/',
+            'domain' => null,
+            'secure' => false,
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]);
+    }
 
     include realpath(dirname(__FILE__) . '/../db/models/Users.php');
     include realpath(dirname(__FILE__) . '/../db/models/Admins.php');
