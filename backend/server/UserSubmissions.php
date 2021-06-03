@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "./CORS.php";
 require_once '../../vendor/autoload.php';
 include "../db/dbCredentials.php";
 

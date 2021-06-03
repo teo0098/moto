@@ -1,6 +1,7 @@
 <?php
     session_start();
 
+    include "./CORS.php";
     include "../db/dbCredentials.php";
     include "../db/dbConnect.php";
     include "../db/models/Transactions.php";

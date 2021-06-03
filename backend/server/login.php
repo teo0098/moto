@@ -1,4 +1,5 @@
 <?php
+    include "./CORS.php";
     include "../db/dbCredentials.php";
     include "../db/dbConnect.php";
     include "../classes/Login.php";
