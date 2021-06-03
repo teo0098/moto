@@ -94,7 +94,8 @@ session_start();
                 </div>
                 <hr>
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-lg btn-light border-dark btn-block center mt-3 mb-3" type="submit"><i class="fa fa-phone me-3"></i> Wyświetl numer </button>
+                    <span style="display: none;" id='phoneNumber' class="me-5"><?php echo $car["phone"]; ?></span>
+                    <button id='showPhoneNumber' class="btn btn-lg btn-light border-dark btn-block center mt-3 mb-3"><i class="fa fa-phone me-3"></i> Wyświetl numer </button>
                 </div>
                 <hr>
                 <div class="d-flex justify-content-center mt-2">
@@ -148,6 +149,13 @@ session_start();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/3810206ae2.js" crossorigin="anonymous"></script>
+    <script>
+        const showPhoneNumber = () => {
+            document.getElementById('phoneNumber').style.display = 'block';
+            document.getElementById('showPhoneNumber').style.display = 'none';
+        }
+        document.getElementById('showPhoneNumber').addEventListener('click', showPhoneNumber);
+    </script>
 </body>
 
 </html>

@@ -24,6 +24,9 @@
         }
 
         public static function getOfferById($id, $connection) {
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;
+            }
             $sqlQuery = "SELECT offers.id, offers.price, provinces.name AS province, offers.district, offers.city, offers.description, 
             offers.date, offers.car_id, cars.brand, cars.model, cars.production_year, cars.run, car_fuels.fuel, cars.power, gearbox.type AS gearbox,
             car_drives.drive, car_types.type, cars.door, cars.seats, cars.color, cars.origin, car_states.state, cars.VIN, cars.engine_capacity, cars.image_url, users.name, users.surname, users.phone
@@ -46,6 +49,9 @@
         }
 
         public static function getEditOfferById($id, $connection) {
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;
+            }
             $sqlQuery = "SELECT offers.id, offers.price, provinces.name AS province, offers.district, offers.city, offers.description, 
             offers.date, offers.car_id, cars.brand, cars.model, cars.production_year, cars.run, car_fuels.fuel, cars.power, gearbox.type AS gearbox,
             car_drives.drive, car_types.type, cars.door, cars.seats, cars.color, cars.origin, car_states.state, cars.VIN, cars.engine_capacity, cars.image_url, users.name, users.surname, users.phone
@@ -79,6 +85,9 @@
         }
 
         public static function updateOffer($data, $offerID, $connection) {
+            if (!preg_match('/^[0-9]+$/', $offerID)) {
+                return false;
+            }
             $desc = filter_var($data['description'], FILTER_SANITIZE_STRING);
             $sqlQuery = "UPDATE offers SET price='".$data['price']."', province='".$data['province']."',
             district='".$data['district']."', city='".$data['city']."', `description`='$desc' WHERE id=$offerID";
@@ -90,6 +99,9 @@
         }
 
         public static function updateVisibility($id, $visible, $connection) {
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;
+            }
             $sqlQuery = "UPDATE offers SET visible=$visible WHERE id=$id";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result) {

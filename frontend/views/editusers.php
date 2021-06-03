@@ -47,7 +47,7 @@
         include realpath(dirname(__FILE__) . '/../../backend/db/dbCredentials.php');
 
         $db = new DB($host, $user, $password, $database);
-        if (!$db->connect() || !isset($_GET['id'])) {
+        if (!$db->connect() || !isset($_GET['id']) || !preg_match('/^[0-9]+$/', $_GET['id'])) {
             echo '<div class="alert alert-danger" role="alert">
                         Nie udało się nawiązać połączenia z bazą
                     </div>';

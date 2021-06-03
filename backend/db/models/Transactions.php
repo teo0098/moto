@@ -2,6 +2,9 @@
     class Transactions {
 
         public static function getTransactions($offerID, $connection) {
+            if (!preg_match('/^[0-9]+$/', $offerID)) {
+                return false;
+            }
             $sqlQuery = "SELECT * FROM transactions WHERE offer_id = $offerID";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result->num_rows > 0) {
