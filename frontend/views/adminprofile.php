@@ -84,19 +84,6 @@ if(!isset($_SESSION['adminID'])) {
                 </div>
                 <h4 class="text-center mt-3">Zmiana e-maila</h4>
                 <form method="POST" action="../../backend/server/changeEmailAdmin.php">
-                    <?php
-                    if (isset($_SESSION['changeEmailError'])) {
-                        echo '<div class="alert alert-danger" role="alert">
-                                            ' . $_SESSION['changeEmailError'] . '
-                                        </div>';
-                    } else if (isset($_SESSION['changeEmailSuccess'])) {
-                        echo '<div class="alert alert-success" role="alert">
-                                            ' . $_SESSION['changeEmailSuccess'] . '
-                                        </div>';
-                    }
-                    $_SESSION['changeEmailError'] = null;
-                    $_SESSION['changeEmailSuccess'] = null;
-                    ?>
                     <div class="container">
                         <h7> E-mail: </h7>
                         <input type="text" value="<?php echo $_SESSION['adminEmail']; ?>" class="d-block w-100" name="newEmailAdmin" />

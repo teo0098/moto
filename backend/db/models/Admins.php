@@ -233,6 +233,9 @@
             || !preg_match('/^[A-Za-zęóąśłżźćńĘÓĄŚŁŻŹĆŃ\s]{2,30}$/', $newSurname)) {
                 return 'Wprowadzono niepoprawne dane';
             }
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;   
+            }
             $sqlQuery = "UPDATE users SET `name`='$newName', surname='$newSurname' WHERE id=$id";
             $result = mysqli_query($connection, $sqlQuery);
             if (!$result) {
@@ -246,6 +249,9 @@
             if (!filter_var($newEmail, FILTER_VALIDATE_EMAIL)) 
             {
                 return 'Wprowadzono niepoprawne dane';
+            }
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;   
             }
             $sqlQuery = "SELECT * FROM users WHERE id<>$id AND email='$newEmail'";
             $result = mysqli_query($connection, $sqlQuery);
@@ -268,6 +274,9 @@
             {
                 return 'Wprowadzono niepoprawne dane';
             }
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;   
+            }
             $sqlQuery = "SELECT * FROM users WHERE id<>$id AND phone='$newPhone'";
             $result = mysqli_query($connection, $sqlQuery);
             if ($result->num_rows > 0) 
@@ -286,6 +295,9 @@
         public static function updateUserPassword($newPassword, $id, $connection) {
             if (!preg_match('/^[A-Z0-9a-z!@#$_]{8,20}$/', $newPassword)) {
                     return 'Wprowadzono niepoprawne dane';
+            }
+            if (!preg_match('/^[0-9]+$/', $id)) {
+                return false;   
             }
             $sqlQuery = "SELECT * FROM users WHERE id=$id";
             $result = mysqli_query($connection, $sqlQuery);
